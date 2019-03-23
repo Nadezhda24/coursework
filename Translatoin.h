@@ -80,16 +80,20 @@ double translation_file(double  digit, int ss, string file_name, int accuracy) {
 	while (whole_part > 0) {
 		ofstream f;
 		f.open(file_name, ios::app);
-		f << setw(t) << ' ' << whole_part << " | " << ss << endl;
+		f.close();
+		// перевод целой части 
+		while (whole_part > 0) {
+			f.open(file_name, ios::app);
+			str++;
+			n = whole_part % ss;
+			f<< whole_part << " % " << ss << " = " << n << endl;
+			answer = answer * 10 + n;
 
-		str++;
-		n = whole_part % ss;
-		answer = answer * 10 + n;
-		whole_part = (whole_part - n) / ss;
+			f << " ( " << whole_part << " - " << n << " ) "  << " / " << ss;
+			whole_part = (whole_part - n) / ss;
+			f<< " = " << whole_part << endl;
 
-		f << "-" << whole_part * ss << " |--" << endl;
-		f << "---- " << whole_part << endl;
-		f << " " << n << endl;
+		}
 
 		f.close();
 	}
@@ -105,7 +109,7 @@ double translation_file(double  digit, int ss, string file_name, int accuracy) {
 	if (fraction*accuracy != 0) {
 		f.open(file_name, ios::app);
 		f << " ѕеревод дробной части числа : " << endl;
-		f << "| " << fraction << endl;
+
 		f.close();
 
 		answer = 0;
@@ -114,9 +118,9 @@ double translation_file(double  digit, int ss, string file_name, int accuracy) {
 		while (fraction*accuracy != 0) {
 			ofstream f;
 			f.open(file_name, ios::app);
-			f << "|* " << ss << endl;
-			f << "|--------" << endl;
-			f << "| " << fraction * ss << endl;
+			f << "* " << ss << endl;
+			f << "--------" << endl;
+			f << " " << fraction * ss << endl;
 			f.close();
 			count_accuracy++;
 
@@ -124,9 +128,6 @@ double translation_file(double  digit, int ss, string file_name, int accuracy) {
 			fraction = (fraction*ss) - (int)(fraction*ss);
 		}
 
-		f.open(file_name, ios::app);
-		f << "V" << endl;
-		f.close();
 		g = answer / pow(10, count_accuracy);
 	}
 	else { g = 0; }
