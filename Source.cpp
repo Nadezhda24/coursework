@@ -361,6 +361,8 @@ string parser(string s, int ss, string file_name, int  accuracy) {
 
 }
 
+HWND hEdit;
+HWND hEdit_t;
 string p = "";
 ofstream f;
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -371,13 +373,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	{
 	
 	case WM_CREATE:
+
 		hStat = CreateWindow("static", "Toчность : ", WS_CHILD | WS_VISIBLE | SS_LEFT,
 			start_line + size_of_button, consol + 55, size_of_button * 2, width_input_line, hWnd, 0, hInst, NULL);
 		
-		CreateWindowEx(WS_DLGFRAME, "edit", "", WS_CHILD | WS_VISIBLE | ES_NOHIDESEL,
+	 hEdit =	CreateWindowEx(WS_EX_CLIENTEDGE, "edit", "", WS_CHILD | WS_VISIBLE |
+		 WS_BORDER | ES_MULTILINE | ES_AUTOHSCROLL | ES_AUTOVSCROLL,
 			start_line, consol ,size_of_button*4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
 		
-		CreateWindowEx(WS_DLGFRAME, "edit", "", WS_CHILD | WS_VISIBLE | ES_NOHIDESEL,
+	 hEdit_t = CreateWindowEx(WS_EX_CLIENTEDGE, "edit", "", WS_CHILD | WS_VISIBLE |
+		 WS_BORDER | ES_AUTOHSCROLL | ES_AUTOVSCROLL,
 			start_line+ size_of_button*2, consol+50, size_of_button * 2, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
 		break;
 	case WM_COMMAND:
@@ -386,86 +391,106 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	
 		case IDB_Button1:
-			if (toch_flag) { tochnost[t_ind] = '1'; t_ind++;
-			CreateWindowEx(WS_DLGFRAME, "edit", tochnost, WS_CHILD | WS_VISIBLE | ES_NOHIDESEL,
-				start_line + size_of_button * 2, consol + 50, size_of_button * 4 - size_of_button * 2, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			if (toch_flag) { 
+				tochnost[t_ind] = '1';
+				t_ind++;
+			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				s[i] = '1';
 				i++;
-				CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-					start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+				SendMessage(hEdit, EM_SETSEL | ES_LEFT, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit, EM_REPLACESEL | ES_RIGHT, WPARAM(TRUE), LPARAM(s));
 			}
 			break;
 		case IDB_Button2:
-			if (toch_flag) { tochnost[t_ind] = '2'; t_ind++; CreateWindowEx(WS_DLGFRAME, "edit", tochnost, WS_CHILD | WS_VISIBLE | ES_NOHIDESEL,
-				start_line + size_of_button * 2, consol + 50, size_of_button * 4 - size_of_button * 2, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			if (toch_flag) { 	
+			tochnost[t_ind] = '2'; 
+			t_ind++;
+			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				s[i] = '2';
 				i++;
-				CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-					start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+				SendMessage(hEdit, EM_SETSEL| ES_LEFT, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit, EM_REPLACESEL| ES_RIGHT, WPARAM(TRUE), LPARAM(s));
 			}
 			break;
 		case IDB_Button3:
-			if (toch_flag) { tochnost[t_ind] = '3'; t_ind++; CreateWindowEx(WS_DLGFRAME, "edit", tochnost, WS_CHILD | WS_VISIBLE | ES_NOHIDESEL,
-				start_line + size_of_button * 2, consol + 50, size_of_button * 4 - size_of_button * 2, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			if (toch_flag) { tochnost[t_ind] = '3'; t_ind++; 
+			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				s[i] = '3';
 				i++;
-				CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-					start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(s));
 			}
 			break;
 		case IDB_Button4:
-			if (toch_flag) { tochnost[t_ind] = '4'; t_ind++; CreateWindowEx(WS_DLGFRAME, "edit", tochnost, WS_CHILD | WS_VISIBLE | ES_NOHIDESEL,
-				start_line + size_of_button * 2, consol + 50, size_of_button * 4 - size_of_button * 2, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			if (toch_flag) {
+				tochnost[t_ind] = '4'; 
+				t_ind++; 
+				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				s[i] = '4';
 				i++;
-				CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-					start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(s));
 			}
 			break;
 		case IDB_Button5:
-			if (toch_flag) { tochnost[t_ind] = '5'; t_ind++; CreateWindowEx(WS_DLGFRAME, "edit", tochnost, WS_CHILD | WS_VISIBLE | ES_NOHIDESEL,
-				start_line + size_of_button * 2, consol + 50, size_of_button * 4 - size_of_button * 2, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			if (toch_flag) {
+				tochnost[t_ind] = '5'; 
+				t_ind++; 
+				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				s[i] = '5';
 				i++;
-				CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-					start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(s));
 			}
 			break;
 		case IDB_Button6:
-			if (toch_flag) { tochnost[t_ind] = '6'; t_ind++; CreateWindowEx(WS_DLGFRAME, "edit", tochnost, WS_CHILD | WS_VISIBLE | ES_NOHIDESEL,
-				start_line + size_of_button * 2, consol + 50, size_of_button * 4 - size_of_button * 2, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			if (toch_flag) { tochnost[t_ind] = '6';
+			t_ind++;
+			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				s[i] = '6';
 				i++;
-				CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-					start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+				SendMessage(hEdit, EM_SETSEL , WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(s));
 			}
 			break;
 		case IDB_Button7:
-			if (toch_flag) { tochnost[t_ind] = '7'; t_ind++; CreateWindowEx(WS_DLGFRAME, "edit", tochnost, WS_CHILD | WS_VISIBLE | ES_NOHIDESEL,
-				start_line + size_of_button * 2, consol + 50, size_of_button * 4 - size_of_button * 2, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			if (toch_flag) {
+			tochnost[t_ind] = '7';
+			t_ind++;
+			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				s[i] = '7';
 				i++;
-				CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-					start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(s));
 			}
 			break;
 		case IDB_Button8:
-			if (toch_flag) { tochnost[t_ind] = '8'; t_ind++; CreateWindowEx(WS_DLGFRAME, "edit", tochnost, WS_CHILD | WS_VISIBLE | ES_NOHIDESEL,
-				start_line + size_of_button * 2, consol + 50, size_of_button * 4 - size_of_button * 2, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			if (toch_flag) { 
+				tochnost[t_ind] = '8';
+				t_ind++;
+				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				MessageBox
@@ -476,13 +501,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 					MB_OK 		// стиль окна сообщений
 				);
 			}
-				CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-					start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
-			
+			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(s));
 			break;
 		case IDB_Button9:
-			if (toch_flag) { tochnost[t_ind] = '9'; t_ind++; CreateWindowEx(WS_DLGFRAME, "edit", tochnost, WS_CHILD | WS_VISIBLE | ES_NOHIDESEL,
-				start_line + size_of_button * 2, consol + 50, size_of_button * 4 - size_of_button * 2, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			if (toch_flag) {
+				tochnost[t_ind] = '9';
+				t_ind++; 
+				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				MessageBox
@@ -493,18 +520,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 					MB_OK 		// стиль окна сообщений
 				);
 			}
-			CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-				start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(s));
 			break;
 		case IDB_Button10:
-			if (toch_flag) { tochnost[t_ind] = '0'; t_ind++; CreateWindowEx(WS_DLGFRAME, "edit", tochnost, WS_CHILD | WS_VISIBLE | ES_NOHIDESEL,
-				start_line + size_of_button * 2, consol + 50, size_of_button * 4 - size_of_button * 2, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			if (toch_flag) {
+				tochnost[t_ind] = '0';
+				t_ind++;
+				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				s[i] = '0';
 				i++;
-				CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-					start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(s));
 			}
 			break;
 		case IDB_Button11:
@@ -525,8 +555,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				s[i] = ' ';
 				i++;
 			}
-			CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-				start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(s));
 			break;
 		case IDB_Button12:
 			if (toch_flag) {
@@ -546,8 +576,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				s[i] = ' ';
 				i++;
 			}
-			CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-				start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(s));
 			break;
 		case IDB_Button13:
 			if (toch_flag) {
@@ -567,8 +597,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				s[i] = ' ';
 				i++;
 			}
-			CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-				start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(s));
 			break;
 		case IDB_Button14:
 			if (toch_flag) {
@@ -588,8 +618,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				s[i] = ' ';
 				i++;
 			}
-			CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-				start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(s));
 			break;
 		case IDB_Button15:
 			if (toch_flag) {
@@ -616,8 +646,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 					s[i] = '.';
 					i++;
 					count_point++;
-					CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-						start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+					SendMessage(hEdit, EM_SETSEL | ES_LEFT, WPARAM(0), LPARAM(-1));
+					SendMessage(hEdit, EM_REPLACESEL | ES_RIGHT, WPARAM(TRUE), LPARAM(s));
 				}
 			}
 			break;
@@ -640,8 +670,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				s[i] = ' ';
 				i++;
 			}
-			CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-				start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(s));
 			break;
 		case IDB_Button18:
 			if (toch_flag) {
@@ -661,8 +691,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				s[i] = ' ';
 				i++;
 			}
-			CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-				start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(s));
 			break;
 
 		case IDB_Button19:
@@ -683,33 +713,30 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				s[i + 4] = ' ';
 				i = i + 5;
 			}
-			CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-				start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(s));
 			break;
 		case IDB_Button20:
 			if (toch_flag) {
 				t_ind--;
 				tochnost[t_ind] = ' ';
-				CreateWindowEx(WS_DLGFRAME, "edit", tochnost, WS_CHILD | WS_VISIBLE | ES_NOHIDESEL,
-				start_line + size_of_button * 2, consol + 50, size_of_button * 4 - size_of_button * 2, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				i--;
 				s[i] = ' ';
-				CreateWindowEx(WS_DLGFRAME, "edit", s, WS_CHILD | WS_VISIBLE | ES_RIGHT,
-					start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(s));
 			}
 			break;
 		case IDB_Button16:
 			
 			s[i] = ' ';	
-			//string p = "";
 			for (int j = 0; j < size(s); j++) {
 				p = p + s[j];
 			}
 		
-
-		//	ofstream f;
 			f.open(file_name);
 		
 			if (f.is_open()) {
@@ -720,13 +747,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 			f << endl;			
 			f.close();
-			if (tochnost[0] = ' ') { tochnost[0] = '1'; 	CreateWindowEx(WS_DLGFRAME, "edit", "1", WS_CHILD | WS_VISIBLE | ES_NOHIDESEL,
-				start_line + size_of_button * 2, consol + 50, size_of_button * 2, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
+			if (tochnost[0] = ' ') { 
+				tochnost[0] = '1';
+				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 
-					CreateWindowEx(WS_DLGFRAME, "edit", parser(s, 8, file_name, stoi(tochnost)).c_str(), WS_CHILD | WS_VISIBLE | ES_RIGHT,
-				start_line, consol, size_of_button * 4, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
-					
+	
+			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(parser(s, 8, file_name, stoi(tochnost)).c_str()));
 			break;
 		case IDB_Button21:
 			if (!toch_flag) { toch_flag = true; }

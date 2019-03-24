@@ -111,7 +111,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 	line = start_line;
 
 	hButton17 = CreateWindow("button", "(",
-		WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+		WS_CHILD | WS_VISIBLE |  BS_PUSHBUTTON,
 		line, column,
 		size_of_button, size_of_button,
 		hWnd,
