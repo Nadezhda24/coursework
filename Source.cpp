@@ -374,7 +374,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	
 	case WM_CREATE:
 
-		hStat = CreateWindow("static", "Toчность : ", WS_CHILD | WS_VISIBLE | SS_LEFT,
+	hStat = CreateWindow("static", "Toчность : ", WS_CHILD | WS_VISIBLE | SS_LEFT,
 			start_line + size_of_button, consol + 55, size_of_button * 2, width_input_line, hWnd, 0, hInst, NULL);
 		
 	 hEdit =	CreateWindowEx(WS_EX_CLIENTEDGE, "edit", "", WS_CHILD | WS_VISIBLE |

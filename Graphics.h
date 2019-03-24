@@ -70,7 +70,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 
 	// создание диалогового окна
 	HWND hWnd = CreateWindow(lpzClass, TEXT("calculator"),
-		WS_OVERLAPPEDWINDOW | WS_VISIBLE, x, y, 4 * size_of_button + 2 * len, 5 * size_of_button + 3 * len + start_colom, NULL, NULL, hInstance, NULL);
+		WS_OVERLAPPEDWINDOW| WS_VSCROLL| WS_HSCROLL | WS_VISIBLE, x, y, 4 * size_of_button + 2 * len, 5 * size_of_button + 3 * len + start_colom, NULL, NULL, hInstance, NULL);
 
 	// если окно не создано, описатель будет равен 0
 	if (!hWnd) return 2;
