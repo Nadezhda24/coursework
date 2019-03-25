@@ -365,6 +365,15 @@ HWND hEdit;
 HWND hEdit_t;
 string p = "";
 ofstream f;
+
+HWND hWndLabel;
+HBRUSH hBrushLabel;
+COLORREF clrLabelText;
+COLORREF clrLabelBkGnd;
+//HDC hdc;
+
+HBRUSH hButtonBackground = NULL;
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	string p = "";
@@ -394,8 +403,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			if (toch_flag) { 
 				tochnost[t_ind] = '1';
 				t_ind++;
-			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
-			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
+			SendMessage(hEdit_t, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit_t, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				s[i] = '1';
@@ -408,8 +417,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			if (toch_flag) { 	
 			tochnost[t_ind] = '2'; 
 			t_ind++;
-			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
-			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
+			SendMessage(hEdit_t, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit_t, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				s[i] = '2';
@@ -420,8 +429,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			break;
 		case IDB_Button3:
 			if (toch_flag) { tochnost[t_ind] = '3'; t_ind++; 
-			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
-			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
+			SendMessage(hEdit_t, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit_t, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				s[i] = '3';
@@ -434,8 +443,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			if (toch_flag) {
 				tochnost[t_ind] = '4'; 
 				t_ind++; 
-				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
-				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
+				SendMessage(hEdit_t, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit_t, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				s[i] = '4';
@@ -448,8 +457,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			if (toch_flag) {
 				tochnost[t_ind] = '5'; 
 				t_ind++; 
-				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
-				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
+				SendMessage(hEdit_t, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit_t, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				s[i] = '5';
@@ -461,8 +470,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		case IDB_Button6:
 			if (toch_flag) { tochnost[t_ind] = '6';
 			t_ind++;
-			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
-			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
+			SendMessage(hEdit_t, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit_t, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				s[i] = '6';
@@ -475,8 +484,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			if (toch_flag) {
 			tochnost[t_ind] = '7';
 			t_ind++;
-			SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
-			SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
+			SendMessage(hEdit_t, EM_SETSEL, WPARAM(0), LPARAM(-1));
+			SendMessage(hEdit_t, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				s[i] = '7';
@@ -489,8 +498,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			if (toch_flag) { 
 				tochnost[t_ind] = '8';
 				t_ind++;
-				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
-				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
+				SendMessage(hEdit_t, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit_t, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				MessageBox
@@ -508,8 +517,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			if (toch_flag) {
 				tochnost[t_ind] = '9';
 				t_ind++; 
-				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
-				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
+				SendMessage(hEdit_t, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit_t, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				MessageBox
@@ -527,8 +536,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			if (toch_flag) {
 				tochnost[t_ind] = '0';
 				t_ind++;
-				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
-				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
+				SendMessage(hEdit_t, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit_t, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				s[i] = '0';
@@ -749,8 +758,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			f.close();
 			if (tochnost[0] = ' ') { 
 				tochnost[0] = '1';
-				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
-				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
+				SendMessage(hEdit_t, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit_t, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 
 	
@@ -787,8 +796,31 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	
 		break;
 
-	
-	 
+case WM_CTLCOLORSTATIC:
+{
+	HDC hdcStatic = (HDC)wParam;
+	SetTextColor(hdcStatic, RGB(0, 0, 0));
+	SetBkColor(hdcStatic, RGB(248, 248, 255));
+	HBRUSH hbrBkgnd = NULL;
+	if (hbrBkgnd == NULL)
+	{
+		hbrBkgnd = CreateSolidBrush(RGB(248, 248, 255));
+	}
+	return (INT_PTR)hbrBkgnd;
+}
+						break;
+
+case WM_CTLCOLORBTN:
+	if (GetDlgCtrlID((HWND)lParam) == IDB_Button1)
+	{
+		HDC hBtnDC = (HDC)wParam;
+		SetBkColor(hBtnDC, RGB(255, 235, 205));
+		SetTextColor(hBtnDC, RGB(255, 0, 0));
+		if (hButtonBackground == NULL)
+			hButtonBackground = CreateSolidBrush(RGB(255, 235, 205));
+		return (BOOL)hButtonBackground;
+	}
+	break;
 	case WM_DESTROY:
 		PostQuitMessage(0);  // реакция на сообщение
 		break;
@@ -798,3 +830,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	}
 	return 0;
 }
+
+/*DWORD WINAPI changecolor()
+{
+	if (hBrushLabel) {
+		DeleteObject(hBrushLabel);
+		hBrushLabel = NULL;
+	}
+	clrLabelText = RGB(0, 0, 0);
+	clrLabelBkGnd = RGB(255, 187, 255);
+	InvalidateRect(hWndLabel, NULL, TRUE);
+	return 0;
+}*/
