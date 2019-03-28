@@ -34,9 +34,14 @@ int const consol = 10; // консоль по у
 #define IDB_Button21 21
 #define IDB_Button22 22
 
+// идентификатор дочернего окна
+#define ID_FIRSTCHILD 100
+
 // объявление функций
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
-LRESULT CALLBACK WndProcСhild(HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK СhildProc(HWND, UINT, WPARAM, LPARAM);
+
+HINSTANCE hinst;
 
 ATOM RegMyWindowClass(HINSTANCE, LPCTSTR);
 ATOM RegMyWindowClassChild(HINSTANCE, LPCTSTR);
@@ -58,10 +63,6 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 	if (!RegMyWindowClass(hInstance, lpzClass))
 		return 1;
 
-
-
-
-
 	// вычисление координат центра экрана
 	RECT screen_rect;
 	GetWindowRect(GetDesktopWindow(), &screen_rect); // разрешение экрана
@@ -70,23 +71,12 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 
 	// создание диалогового окна
 	HWND hWnd = CreateWindow(lpzClass, TEXT("calculator"),
-		WS_OVERLAPPEDWINDOW| WS_VSCROLL| WS_HSCROLL | WS_VISIBLE, x, y, 4 * size_of_button + 3 * len, 5 * size_of_button + 3 * len + start_colom, NULL, NULL, hInstance, NULL);
-
+		WS_OVERLAPPEDWINDOW| WS_VISIBLE| WS_CLIPCHILDREN| WS_TILEDWINDOW, x, y, 4 * size_of_button + 2 * len, 5 * size_of_button + 3 * len + start_colom, NULL, NULL, hInstance, NULL);
+	//WS_VSCROLL | WS_HSCROLL | горизонтальная и вертикальная полоса прокрутки 
 	// если окно не создано, описатель будет равен 0
 	if (!hWnd) return 2;
-	// создание дочернего окна 
-	HWND hW= CreateWindowEx(WS_EX_TOPMOST,
-		"HelloWin",
-		"2nd Application",
-		WS_CHILD | WS_OVERLAPPEDWINDOW,
-		100, 100,
-		200, 200,
-		hWnd,
-		NULL,
-		hInstance,
-		NULL);
-
 	
+
 
 
 	// Идентификаторы кнопок
@@ -387,8 +377,24 @@ LRESULT CALLBACK ChildProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam
 	switch (message)
 	{
 	case WM_DESTROY: PostQuitMessage(0);
+
+
 		break; // Завершение программы
 			   // Обработка сообщения по умолчанию
+
+	case WM_CTLCOLORSTATIC:
+	{
+		HDC hdcStatic = (HDC)wParam;
+		SetTextColor(hdcStatic, RGB(0, 0, 0));
+		SetBkColor(hdcStatic, RGB(248, 248, 255));
+		HBRUSH hbrBkgnd = NULL;
+		if (hbrBkgnd == NULL)
+		{
+			hbrBkgnd = CreateSolidBrush(RGB(248, 248, 255));
+		}
+		return (INT_PTR)hbrBkgnd;
+	}
+	break;
 	default: return DefWindowProc(hWnd, message, wParam, lParam);
 	}
 	return 0;
@@ -414,5 +420,9 @@ LRESULT CALLBACK MyStaticWndProc(HWND hwnd, UINT Message, WPARAM wparam, LPARAM 
 		return 0;
 	}
 }
+
+
+
+
 #define _CRT_SECURE_NO_WARNINGS
 #endif   

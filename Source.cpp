@@ -384,7 +384,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_CREATE:
 
 	hStat = CreateWindow("static", "Toчность : ", WS_CHILD | WS_VISIBLE | SS_LEFT,
-			start_line + size_of_button, consol + 55, size_of_button * 2, width_input_line, hWnd, 0, hInst, NULL);
+			start_line + size_of_button, consol + 55, size_of_button , width_input_line, hWnd, 0, hInst, NULL);
 		
 	 hEdit =	CreateWindowEx(WS_EX_CLIENTEDGE, "edit", "", WS_CHILD | WS_VISIBLE |
 		 WS_BORDER | ES_MULTILINE | ES_AUTOHSCROLL | ES_AUTOVSCROLL,
@@ -393,7 +393,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	 hEdit_t = CreateWindowEx(WS_EX_CLIENTEDGE, "edit", "", WS_CHILD | WS_VISIBLE |
 		 WS_BORDER | ES_AUTOHSCROLL | ES_AUTOVSCROLL,
 			start_line+ size_of_button*2, consol+50, size_of_button * 2, width_input_line, hWnd, (HMENU)10000, hInst, NULL);
-		break;
+	
+	
+
+	  break;
 	case WM_COMMAND:
 		switch (wParam)
 		{
@@ -729,8 +732,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			if (toch_flag) {
 				t_ind--;
 				tochnost[t_ind] = ' ';
-				SendMessage(hEdit, EM_SETSEL, WPARAM(0), LPARAM(-1));
-				SendMessage(hEdit, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
+				SendMessage(hEdit_t, EM_SETSEL, WPARAM(0), LPARAM(-1));
+				SendMessage(hEdit_t, EM_REPLACESEL, WPARAM(TRUE), LPARAM(tochnost));
 			}
 			else {
 				i--;
@@ -772,10 +775,37 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			break;
 
 		case IDB_Button22:
-			int start_text_x = start_line * 2 + 4 * size_of_button + 30;
-			int consol_y = consol;
+
+			//cоздание дочернего окна 
+
+		
+
+			char ChildClassName[] = "KWndClassChild";
+			LPCTSTR lpzClassCh = TEXT("ans");
+			WNDCLASS w;
+			memset(&w, 0, sizeof(WNDCLASS));
+			w.lpfnWndProc = ChildProc;
+			w.hInstance = hinst;
+			w.hbrBackground = (HBRUSH)COLOR_APPWORKSPACE;
+			w.lpszClassName = "ChildWClass";
+			w.hCursor = LoadCursor(NULL, IDC_CROSS);
+			RegisterClass(&w);
+			
+			HWND child;
+			
+			child = CreateWindowEx(0, "ChildWClass", (LPCTSTR)NULL,
+				WS_OVERLAPPEDWINDOW | WS_VISIBLE | WS_CHILD, 0, 0, 4 * size_of_button + 2 * len, 5 * size_of_button + 3 * len + start_colom, hWnd, (HMENU)(int)(ID_FIRSTCHILD), hinst, NULL);
+			ShowWindow(child, SW_NORMAL);
+			UpdateWindow(child);
+
+			int start_text_x = 10;
+			int consol_y = 10;
+			
+			
 			hStat = CreateWindow("static", "Подробное решение:", WS_CHILD | WS_VISIBLE | SS_LEFT,
-				start_text_x, consol_y, size_of_button * 2, width_input_line, hWnd, 0, hInst, NULL);
+				start_text_x, consol_y, size_of_button * 2, width_input_line, child, 0, hInst, NULL);
+			
+			
 			consol_y = consol_y + width_input_line;
 			string line;
 			ifstream in(file_name); // окрываем файл для чтения
@@ -784,7 +814,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				while (getline(in, line))
 				{
 					hStat = CreateWindow("static", line.c_str(), WS_CHILD | WS_VISIBLE | SS_LEFT,
-						start_text_x, consol_y, size_of_button * 6, width_input_line, hWnd, 0, hInst, NULL);
+						start_text_x, consol_y, size_of_button * 6, width_input_line, child, 0, hinst, NULL);
 
 					consol_y = consol_y + width_input_line;
 				}
@@ -830,6 +860,15 @@ case WM_CTLCOLORBTN:
 	}
 	return 0;
 }
+
+/*LRESULT CALLBACK ChildProc(HWND hwnd, UINT Message, WPARAM wparam, LPARAM lparam)
+{
+	if (Message == WM_DESTROY)
+	{
+		return 0;
+	}
+	return DefWindowProc(hwnd, Message, wparam, lparam);
+}*/
 
 /*DWORD WINAPI changecolor()
 {
