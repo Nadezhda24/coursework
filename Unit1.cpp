@@ -718,24 +718,30 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		break;
 
 	  case 18:
-		s+=' ';
-		f.open(file_name.c_str(), ios::app);
+	  flag_ans = true;
+	  s+=' ';
+	  f.open(file_name.c_str());
 
 			if (f.is_open()) {
 				f << " Введенное вырадение: ";
-				f << s.c_str();
+
+				f << s.c_str() <<  endl;
 				f << "\n 1.Преобразование выражения из инфиксной записи в постфиксную для определения последовательности действий : ";
 			}
 
 			f << endl;
 			f.close();
-			if (t[0]==' ') {
-					 t[0]='1';
-			}
+
+						if (TB_accuracy->Text =="") {
+								t+='1';
+						}
 			 flag_ans = true;
 			 AnsiString ans_s = s;
 			 AnsiString ans_par = parser(ans_s.c_str(), 8, file_name, StrToInt(t)).c_str();
-			 TB_field->Text = ans_par;
+			 TB_accuracy->Text = t;
+
+			 AnsiString ans_s1 =  parser(ans_s.c_str(), 8, file_name.c_str(), StrToInt(t)).c_str();
+			TB_field->Text=ans_s1;
 		break;
 
 	}
@@ -749,6 +755,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 void __fastcall TForm1::BT_showResultClick(TObject *Sender)
 {
 	Form2->ShowModal();
+
 }
 //---------------------------------------------------------------------------
 
