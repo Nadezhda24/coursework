@@ -724,8 +724,8 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 			if (f.is_open()) {
 				f << " Введенное вырадение: ";
-
-				f << s.c_str() <<  endl;
+				  AnsiString r= s;
+				f << r.c_str() <<  endl;
 				f << "\n 1.Преобразование выражения из инфиксной записи в постфиксную для определения последовательности действий : ";
 			}
 
@@ -736,8 +736,9 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 								t+='1';
 						}
 			 flag_ans = true;
+
 			 AnsiString ans_s = s;
-			 AnsiString ans_par = parser(ans_s.c_str(), 8, file_name, StrToInt(t)).c_str();
+
 			 TB_accuracy->Text = t;
 
 			 AnsiString ans_s1 =  parser(ans_s.c_str(), 8, file_name.c_str(), StrToInt(t)).c_str();

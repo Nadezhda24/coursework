@@ -115,7 +115,7 @@ object Form1: TForm1
     OnClick = Button1Click
   end
   object Button4: TButton
-    Tag = 4
+    Tag = 17
     Left = 220
     Top = 254
     Width = 70
