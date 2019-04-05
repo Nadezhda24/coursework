@@ -47,10 +47,10 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
         <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
-        <ILINK_LibraryPath>..\..\..\..\Desktop\Новая папка\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <ILINK_LibraryPath>..\..\..\Desktop\;..\..\..\..\Desktop\Новая папка\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <Multithreaded>true</Multithreaded>
         <SanitizedProjectName>Project1</SanitizedProjectName>
-        <IncludePath>..\..\..\..\Desktop\Новая папка\;$(IncludePath)</IncludePath>
+        <IncludePath>..\..\..\Desktop\;..\..\..\..\Desktop\Новая папка\;$(IncludePath)</IncludePath>
         <ProjectType>CppVCLApplication</ProjectType>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <_TCHARMapping>wchar_t</_TCHARMapping>
@@ -114,12 +114,21 @@
         <BCC_PCHName_Clang>Project1PCH1.h</BCC_PCHName_Clang>
     </PropertyGroup>
     <ItemGroup>
+        <None Include="Index.h">
+            <BuildOrder>4</BuildOrder>
+        </None>
+        <None Include="Parser.h">
+            <BuildOrder>6</BuildOrder>
+        </None>
         <CppCompile Include="Project1.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
         <PCHCompile Include="Project1PCH1.h">
             <BuildOrder>1</BuildOrder>
         </PCHCompile>
+        <None Include="Translation.h">
+            <BuildOrder>5</BuildOrder>
+        </None>
         <CppCompile Include="Unit1.cpp">
             <Form>Form1</Form>
             <FormType>dfm</FormType>
@@ -594,13 +603,13 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>
                 <Platform value="Win32">True</Platform>
