@@ -3,6 +3,18 @@
 
 #include "translation.h"
 #include "index.h"
+  #include <sstream>
+
+
+  double string_to_double( const std::string& s )
+ {
+   std::istringstream i(s);
+   double x;
+   if (!(i >> x))
+	 return 0;
+   return x;
+ }
+
 
 enum state { start, digit, double_digit, word, symbol, error };
 
@@ -82,13 +94,12 @@ public:
 			}
 			else {
 
-			AnsiString doub1 = operation_stack.top().c_str();
-			double ch1 = doub1.ToDouble();
-				n2 = translation_10(ch1,ss, accuracy, file_name);
-				operation_stack.pop();
-				 AnsiString doub2 = operation_stack.top().c_str();
-				 double ch2 = doub2.ToDouble();
+			double ch1 = string_to_double(operation_stack.top().c_str());
+			n2 = translation_10(ch1,ss, accuracy, file_name);
+			operation_stack.pop();
 
+
+				 double ch2 = string_to_double(operation_stack.top().c_str());
 				n1 = translation_10(ch2, ss, accuracy, file_name);
 				operation_stack.pop();
 
@@ -97,8 +108,8 @@ public:
 				case 2:
 					if (num.top() == "+") {
 						obj.Addition(n1, n2);
-					   pr.Delete(0,1);
-						AnsiString	pr = FloatToStr(translation_file(obj.element, ss, file_name, accuracy)) ;
+
+							pr = FloatToStr(translation_file(obj.element, ss, file_name, accuracy)) ;
 
 
 
@@ -112,8 +123,8 @@ public:
 					}
 					else {
 						obj.Subtraction(n1, n2);
-						   pr.Delete(0,1);
-						AnsiString	pr = FloatToStr(translation(obj.element, ss, accuracy));
+
+							pr = FloatToStr(translation(obj.element, ss, accuracy));
 
 
 						ofstream f;
@@ -130,8 +141,7 @@ public:
 
 					if (num.top() == "*") {
 						obj.Multiplication(n1, n2);
-						   pr.Delete(0,1);
-						AnsiString	pr = FloatToStr(translation(obj.element, ss, accuracy));
+							pr = FloatToStr(translation(obj.element, ss, accuracy));
 
 
 						ofstream f;
@@ -151,7 +161,6 @@ public:
 						else {
 
 							obj.Division(n1, n2);
-							   pr.Delete(0,1);
 								pr = FloatToStr(translation(obj.element, ss, accuracy));
 
 
@@ -174,8 +183,7 @@ public:
 						}
 						else {
 							obj.DivisionWithoutRemainder(n1, n2);
-						   pr.Delete(0,1);
-								AnsiString	pr = FloatToStr(translation(obj.element, ss, accuracy));
+								pr =FloatToStr(translation(obj.element, ss, accuracy));
 
 							ofstream f;
 							f.open(file_name.c_str(), ios::app);

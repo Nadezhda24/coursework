@@ -196,7 +196,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 			 TB_accuracy->Text = t;
 
 			 AnsiString ans_s1 =  parser(ans_s.c_str(), 8, file_name.c_str(), StrToInt(t)).c_str();
-			TB_field->Text=s;
+			TB_field->Text = string_to_double( parser(ans_s.c_str(), 8, file_name.c_str(), StrToInt(t)).c_str());
 
 
     string label_text="";
