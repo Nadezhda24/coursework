@@ -23,16 +23,6 @@ using namespace std;
 __fastcall TForm2::TForm2(TComponent* Owner)
 	: TForm(Owner)
 {
-	string line;
-			ifstream in(file_name.c_str()); // окрываем файл для чтения
-			if (in.is_open())
-			{
-				while (getline(in, line))
-				{
-					 Label1->Caption= Label1->Caption + line.c_str() + '\n';
-				}
-			}
-			in.close();     // закрываем файл
 
 }
 //---------------------------------------------------------------------------

@@ -175,7 +175,7 @@ double translation_10(double digit, int ss, int accuracy, string file_name) {
 	ofstream f;
 
 	f.open(file_name.c_str(), ios::app);
-	f << endl;
+
 	f << setw(t) << " Перевод числа " << digit << " в 10-ую систему счисления : " << endl;
 
 
@@ -372,14 +372,7 @@ public:
 					}
 					else if (num.top() == "/") {
 						if (n2 == 0) {
-							/*MessageBox
-							(
-								hWnd,		// дескриптор окна владельца
-								"\t\t\tОшибка.\n\t\t\tДеление на 0.\n \t\tНажмите \"OK\" и введите корректное выражение заново.",	// адрес текста в окне сообщений
-								"Ошибка",	// адрес заголовка в окне сообщений
-								MB_OK 		// стиль окна сообщений
-							);
-							*/
+							ShowMessage(	"\t\t\tОшибка.\n\t\t\tДеление на 0.\n \t\tНажмите \"OK\" и введите корректное выражение заново.");
 
 						}
 						else {
@@ -400,13 +393,8 @@ public:
 					}
 					else if (num.top() == "div") {
 						if (n2 == 0) {
-						/*	MessageBox
-							(
-								hWnd,		// дескриптор окна владельца
-								"\t\t\tОшибка.\n\t\t\tДеление на 0.\n \t\tНажмите \"OK\" и введите корректное выражение заново.",	// адрес текста в окне сообщений
-								"Ошибка",	// адрес заголовка в окне сообщений
-								MB_OK 		// стиль окна сообщений
-							);*/
+							ShowMessage(	"\t\t\tОшибка.\n\t\t\tДеление на 0.\n \t\tНажмите \"OK\" и введите корректное выражение заново.");
+
 
 						}
 						else {
@@ -537,14 +525,8 @@ string parser(string s, int ss, string file_name, int  accuracy) {
 			}
 			break;
 		case error:
-			/*MessageBox
-			(
-				hWnd,		// дескриптор окна владельца
-				"\t\t\tОшибка.\n \t\tНажмите \"OK\" и введите корректное выражение заново.",	// адрес текста в окне сообщений
-				"Ошибка",	// адрес заголовка в окне сообщений
-				MB_OK 		// стиль окна сообщений
-			);
-			*/
+		ShowMessage("\t\t\tОшибка.\n \t\tНажмите \"OK\" и введите корректное выражение заново.");
+
 			state = start;
 			i = s.length();
 			break;
@@ -676,7 +658,11 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	}else {
 		s+=" div ";}
 		break;
-	case 13:
+	case 13:   	if (f_accuary) {
+		 t.Delete(t.Length(),1);
+	}    else {
+		s.Delete(s.Length(),1);}
+
 	   //	s.erase(s.end());
 		break;
 	 case 14:
@@ -726,7 +712,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 				f << " Введенное вырадение: ";
 				  AnsiString r= s;
 				f << r.c_str() <<  endl;
-				f << "\n 1.Преобразование выражения из инфиксной записи в постфиксную для определения последовательности действий : ";
+				f << "\n 1.Преобразование выражения из инфиксной записи в постфиксную\n для определения последовательности действий : ";
 			}
 
 			f << endl;
@@ -743,6 +729,27 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 			 AnsiString ans_s1 =  parser(ans_s.c_str(), 8, file_name.c_str(), StrToInt(t)).c_str();
 			TB_field->Text=ans_s1;
+
+
+    string label_text="";
+    string line;
+    ifstream in(file_name.c_str()); // окрываем файл для чтения
+    if (in.is_open())
+    {
+    while (getline(in, line))
+    {
+    label_text = label_text + line.c_str() + '\n';
+    }
+    }
+    in.close();
+    Form2->Label1->Caption = label_text.c_str();
+    Form2->ShowModal();
+
+
+
+
+
+
 		break;
 
 	}
@@ -755,7 +762,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::BT_showResultClick(TObject *Sender)
 {
-	Form2->ShowModal();
+  //	Form2->ShowModal();
 
 }
 //---------------------------------------------------------------------------
