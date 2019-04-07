@@ -56,42 +56,91 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		if (f_accuary) {
 			ShowMessage("\t\t\tОшибка ввода.\n\t Вы не можите использовать \'0\' для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");
 		}else{
-		s+='0'; }
+	if (s.Length()>1 ) {
+			if ((s[s.Length()-1])==')'  ) {
+				ShowMessage( "\t\t\tОшибка ввода.\n\t\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+			}  else {s+='0';}
+		} else {s+='0';}
+	}
+
 		break;
 	case 1:
-	if(f_accuary){t+='1';}  else {
-		s += '1';         }
+	if(f_accuary){t+='1';}
+	else{
+	if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' ) {
+				ShowMessage( "\t\t\tОшибка ввода.\n\t\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+			}  else {s+='1';}
+		} else {s+='1';}
+	}
+
 		break;
 	case 2:
-		   if(f_accuary){t+='2';}else{
-		s += '2';             }
+		   if(f_accuary){t+='2';}	else{
+	if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' ) {
+				ShowMessage( "\t\t\tОшибка ввода.\n\t\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+			}  else {s+='2';}
+		} else {s+='2';}
+	}
+
 		break;
 	case 3:
-	if(f_accuary){t+='3';}
-	else {
-		s +='3';}
+	if(f_accuary){t+='3';
+	}else{
+	if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' ) {
+				ShowMessage( "\t\t\tОшибка ввода.\n\t\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+			}  else {s+='3';}
+		} else {s+='3';}
+	}
+
 		break;
 	case 4:
 	if (f_accuary) { t+= '4';
+	}else{
+	if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' ) {
+				ShowMessage( "\t\t\tОшибка ввода.\n\t\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+			}  else {s+='4';}
+		} else {s+='4';}
+	}
 
-	} else{
-		s +='4';}
 		break;
 	case 5:
 	if (f_accuary) { t+='5';
-
 	}else{
-		s +='5';}
+		  if (s.Length()>1) {
+
+			if (s[s.Length()-1]==')') {
+				ShowMessage( "\t\t\tОшибка ввода.\n\t\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+			}  else {s+='5';}
+		}else {s+='5';}
+			 }
+
+
 		break;
 	case 6:
-	if(f_accuary){t+='6';}else {
-		s +='6';       }
+	if(f_accuary){t+='6';
+		}else{
+	if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' ) {
+				ShowMessage( "\t\t\tОшибка ввода.\n\t\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+			}  else {s+='6';}
+		} else {s+='6';}
+	}
+
 		break;
 	case 7:
 	if (f_accuary) { t+='7';
+	}else{
+	if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' ) {
+				ShowMessage( "\t\t\tОшибка ввода.\n\t\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+			}  else {s+='7';}
+		} else {s+='7';}
+	}
 
-	}else {
-		s +='7'; }
 		break;
 	case 8:  if (f_accuary) {
 					t+='8';
@@ -108,14 +157,22 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		break;
 	case 10:
 	if(f_accuary){
-	ShowMessage(	"\t\t\tОшибка ввода.\n\t Используйте числа только числа для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");	// адрес текста в окне сообщений
-	}     else{
-		s+=" ( ";}
+	ShowMessage( "\t\t\tОшибка ввода.\n\t Используйте числа только числа для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");	// адрес текста в окне сообщений
+	}else{
+		if (s=="") {s+=" ( ";}
+		else {
+			if (isdigit(s[s.Length()-1])||s[s.Length()-1]=='.' ) {
+				ShowMessage( "\t\t\tОшибка ввода.\n\t \n \t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+			}  else {s+=" ( ";}
+
+		}
+		}
 		break;
 	case 11:
 	if(f_accuary){
 		ShowMessage(	"\t\t\tОшибка ввода.\n\t Используйте числа только числа для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");
 	}  else {
+
 		s+=" ) ";}
 		break;
 	case 12:
@@ -127,9 +184,10 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	case 13:   	if (f_accuary) {
 		 t.Delete(t.Length(),1);
 	}    else {
+
 		s.Delete(s.Length(),1);}
 
-	   //	s.erase(s.end());
+
 		break;
 	 case 14:
 	if (f_accuary) {
@@ -161,7 +219,15 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		 ShowMessage(	"\t\t\tОшибка ввода.\n\t Используйте числа только числа для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");
 
 		 }   else {
-		s+='.';
+		 if (s.Length()==0) {
+		   ShowMessage(	"\t\t\tОшибка ввода.\n\tНажмите \"OK\" и продолжите ввод.");
+
+		 } else {
+
+		 if (!isdigit(s[s.Length()])) {
+			  ShowMessage(	"\t\t\tОшибка ввода.\n\tНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+		 }   else {
+		s+='.'; } }
 		}
 		break;
 	   case 20:
@@ -201,7 +267,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 		  } catch (const Exception &e){
 
-			  ShowMessage(	"\t\t\tВведите  корректное выражение.\n \t\tНажмите \"OK\", чтобы продолжить.");
+			  ShowMessage("\t\t\tВведите  корректное выражение.\n \t\tНажмите \"OK\", чтобы продолжить.");
 			 s="";     flag_ans=false;
 		  }
 
@@ -218,30 +284,18 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 	TB_field->Text = s;
 	TB_accuracy->Text = t;
-	/*if (!flag_ans) {
-	TB_field->Text = s;
-	TB_accuracy->Text = t;
-
-	}   else {
-	s =  FloatToStr(answer_parser) ;
-	TB_field->Text = s;
-	TB_accuracy->Text = t;
-
-	}                      */
 
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::BT_showResultClick(TObject *Sender)
 {
-         	string label_text="";
+	string label_text="";
 	string line;
 	ifstream in(file_name.c_str()); // окрываем файл для чтения
-	if (in.is_open())
-	{
-	while (getline(in, line))
-	{
-	label_text = label_text + line.c_str() + '\n';
-	}
+		if (in.is_open()){
+			while (getline(in, line)){
+				label_text = label_text + line.c_str() + '\n';
+			}
 	}
 	in.close();
 	Form2->Label1->Caption = label_text.c_str();

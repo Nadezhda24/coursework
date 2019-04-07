@@ -13,6 +13,8 @@
 #include <string>
 #include <math.h>
 #include <iomanip>
+#include <exception>
+#include <stdexcept>
 
 #include "parser.h"
 //---------------------------------------------------------------------------
@@ -40,7 +42,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 bool f_accuary= false;
 bool flag_ans = false;
 	ofstream f;
-
+  double answer_parser  ;
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
 		String s="",t="";
@@ -167,17 +169,18 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		else{f_accuary=true;}
 		break;
 
-	  case 18:
-	  if(	TB_field->Text==" "){
-		 ShowMessage(	"\t\t\tВведите выражение.\n \t\tНажмите \"OK\", чтобы продолжить.");
 
+	  case 18:
+	  if( TB_field->Text==""){
+		 ShowMessage(	"\t\t\tВведите выражение.\n \t\tНажмите \"OK\", чтобы продолжить.");
 	  }
-	  else{flag_ans = true;
+	  else{
+	  flag_ans = true;
 	  s+=' ';
 	  f.open(file_name.c_str());
 
 			if (f.is_open()) {
-				f << " Введенное вырадение: ";
+				f << " Введенное выражение: ";
 				  AnsiString r= s;
 				f << r.c_str() <<  endl;
 				f << "\n 1.Преобразование выражения из инфиксной записи в постфиксную\n для определения последовательности действий : ";
@@ -186,51 +189,63 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 			f << endl;
 			f.close();
 
-						if (TB_accuracy->Text =="") {
-								t+='1';
-						}
-			 flag_ans = true;
+			if (TB_accuracy->Text =="") {t+='1';}
 
 			 AnsiString ans_s = s;
 
 			 TB_accuracy->Text = t;
 
-			 AnsiString ans_s1 =  parser(ans_s.c_str(), 8, file_name.c_str(), StrToInt(t)).c_str();
-			TB_field->Text = string_to_double( parser(ans_s.c_str(), 8, file_name.c_str(), StrToInt(t)).c_str());
+			 try {
 
+			answer_parser = string_to_double( parser(ans_s.c_str(), 8, file_name.c_str(), StrToInt(t)).c_str());
 
-    string label_text="";
-    string line;
-    ifstream in(file_name.c_str()); // окрываем файл для чтения
-    if (in.is_open())
-    {
-	while (getline(in, line))
-    {
-    label_text = label_text + line.c_str() + '\n';
-    }
-    }
-    in.close();
-    Form2->Label1->Caption = label_text.c_str();
-    Form2->ShowModal();
+		  } catch (const Exception &e){
 
-
+			  ShowMessage(	"\t\t\tВведите  корректное выражение.\n \t\tНажмите \"OK\", чтобы продолжить.");
+			 s="";     flag_ans=false;
+		  }
 
 	   }
 
-	   flag_ans = false;
+	  if (flag_ans)	s =  FloatToStr(answer_parser) ;
+
+
 		break;
 
+
 	}
-	if (!flag_ans) {
+
+
 	TB_field->Text = s;
 	TB_accuracy->Text = t;
-	}
+	/*if (!flag_ans) {
+	TB_field->Text = s;
+	TB_accuracy->Text = t;
+
+	}   else {
+	s =  FloatToStr(answer_parser) ;
+	TB_field->Text = s;
+	TB_accuracy->Text = t;
+
+	}                      */
 
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::BT_showResultClick(TObject *Sender)
 {
-  //	Form2->ShowModal();
+         	string label_text="";
+	string line;
+	ifstream in(file_name.c_str()); // окрываем файл для чтения
+	if (in.is_open())
+	{
+	while (getline(in, line))
+	{
+	label_text = label_text + line.c_str() + '\n';
+	}
+	}
+	in.close();
+	Form2->Label1->Caption = label_text.c_str();
+	Form2->ShowModal();
 
 }
 //---------------------------------------------------------------------------
