@@ -213,6 +213,7 @@ public:
 
 string parser(string s, int ss, string file_name, int  accuracy) {
 	string  sl = "", data = ""; // sl для формаривания слова , data для формирования числа
+	int count_bracket = 0;
 	state state = start;
 	calculator  cl;
 	int i = 0; // счетчик в входной строке
@@ -299,6 +300,8 @@ string parser(string s, int ss, string file_name, int  accuracy) {
 		case symbol:
 			switch (index(c)) {
 			case 3:
+				 if (c=='(') { count_bracket +=1;}
+				 if (c==')') {count_bracket -=1;}
 				if (index(next_c) == 4) { state = start; }
 				cl.opz(z);
 				i++;
@@ -316,7 +319,9 @@ string parser(string s, int ss, string file_name, int  accuracy) {
 			break;
 		}
 	}
-
+	 if (count_bracket!=0) {
+			ShowMessage("\t\t\tОшибка.\n Не правильно расставленны скобки. \t\tНажмите \"OK\" и введите корректное выражение заново.");
+	 }
 	// проверка стека при создании опз (когда строка разобрана)
 	if (!operation_stack.empty()) {
 		while (operation_stack.empty()) {
