@@ -1,4 +1,4 @@
-#ifndef _TRANSLATION_H   
+#ifndef _TRANSLATION_H
 #define _TRANSLATION_H
 #pragma hdrstop
 #include "Unit1.h"
@@ -14,6 +14,8 @@
 
 using namespace std;
 int t = 5;
+
+
 //перевод из 10-ой в 8-ую систему счисления
 double translation(double  digit, int ss, int accuracy) {
 	accuracy = pow(10, accuracy);
@@ -150,7 +152,12 @@ double translation_file(double  digit, int ss, string file_name, int accuracy) {
 
 // перевод из 8-ой в 10-ую
 double translation_10(double digit, int ss, int accuracy, string file_name) {
+ bool	f_m = false;
 
+	if (digit < 0) {
+					f_m = true;
+					digit= digit * (-1);
+	}
 	ofstream f;
 
 	f.open(file_name.c_str(), ios::app);
@@ -197,7 +204,9 @@ double translation_10(double digit, int ss, int accuracy, string file_name) {
 
 
 	double rez = rez_whole_part + rez_fraction;
-
+	 if (f_m) {
+		  rez = rez *(-1);
+	 }
 	f << "= " << rez << endl;
 
 	f.close();

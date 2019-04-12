@@ -15,7 +15,8 @@
 #include <iomanip>
 #include <exception>
 #include <stdexcept>
-
+ #include <stdlib.h>
+ #include <sstream>
 #include "parser.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -45,11 +46,11 @@ bool flag_ans = false;
   double answer_parser  ;
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
-		String s="",t="";
+		String s="";
 
 
 	TButton *button = dynamic_cast<TButton *>(Sender);
-	t = TB_accuracy->Text;
+
 	s = TB_field->Text;
 	switch (button->Tag) {
 	case 0:
@@ -142,19 +143,6 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	}
 
 		break;
-	case 8:  if (f_accuary) {
-					t+='8';
-			 }else{
-		ShowMessage("\t\t\tОшибка ввода.\n\t Используйте числа только из восьмиричной системы \t\t\t\t счисления.\n \t\tНажмите \"OK\" и продолжите ввод.");
-	   }
-		break;
-	case 9:
-	if (f_accuary) {
-		   t+='9';
-	}else{
-		ShowMessage("\t\t\tОшибка ввода.\n\t Используйте числа только из восьмиричной системы \t\t\t\t счисления.\n \t\tНажмите \"OK\" и продолжите ввод.");
-		  }
-		break;
 	case 10:
 	if(f_accuary){
 	ShowMessage( "\t\t\tОшибка ввода.\n\t Используйте числа только числа для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");	// адрес текста в окне сообщений
@@ -181,11 +169,8 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	}else {
 		s+=" div ";}
 		break;
-	case 13:   	if (f_accuary) {
-		 t.Delete(t.Length(),1);
-	}    else {
-
-		s.Delete(s.Length(),1);}
+	case 13:
+		s.Delete(s.Length(),1);
 
 
 		break;
@@ -213,28 +198,6 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		 }else {
 		s+=" + ";}
 		break;
-	   case 19:
-
-		 if (f_accuary) {
-		 ShowMessage(	"\t\t\tОшибка ввода.\n\t Используйте числа только числа для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");
-
-		 }   else {
-		 if (s.Length()==0) {
-		   ShowMessage(	"\t\t\tОшибка ввода.\n\tНажмите \"OK\" и продолжите ввод.");
-
-		 } else {
-
-		 if (!isdigit(s[s.Length()])) {
-			  ShowMessage(	"\t\t\tОшибка ввода.\n\tНажмите \"OK\", исправьте ошибку и продолжите ввод.");
-		 }   else {
-		s+='.'; } }
-		}
-		break;
-	   case 20:
-		if (f_accuary){f_accuary=false;}
-		else{f_accuary=true;}
-		break;
-
 
 	  case 18:
 	  if( TB_field->Text==""){
@@ -255,15 +218,21 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 			f << endl;
 			f.close();
 
-			if (TB_accuracy->Text =="") {t+='1';}
 
 			 AnsiString ans_s = s;
 
-			 TB_accuracy->Text = t;
+
 
 			 try {
 
-			answer_parser = string_to_double( parser(ans_s.c_str(), 8, file_name.c_str(), StrToInt(t)).c_str());
+			 std::stringstream ss;
+			std::string s =  parser(ans_s.c_str(), 8, file_name.c_str(), StrToInt(t));
+			 for (int i=0;i < s.length(); i++){
+         	   if (s[i]==','){s[i]='.';}
+	 }
+    ss << s;
+	ss >> answer_parser;
+		   //	answer_parser =  strtod( parser(ans_s.c_str(), 8, file_name.c_str(), StrToInt(t)).c_str());
 
 		  } catch (const Exception &e){
 
@@ -283,7 +252,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 
 	TB_field->Text = s;
-	TB_accuracy->Text = t;
+
 
 }
 //---------------------------------------------------------------------------

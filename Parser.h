@@ -93,13 +93,14 @@ public:
 				num.pop();
 			}
 			else {
-
-			double ch1 = string_to_double(operation_stack.top().c_str());
+			 AnsiString d1 = operation_stack.top().c_str();
+			 // d1.Delete(2,1);
+			double ch1 = string_to_double(d1.c_str());
 			n2 = translation_10(ch1,ss, accuracy, file_name);
 			operation_stack.pop();
-
-
-				 double ch2 = string_to_double(operation_stack.top().c_str());
+					AnsiString d2 = operation_stack.top().c_str();
+			   //	 d2.Delete(2,1);
+				 double ch2 = string_to_double(d2.c_str());
 				n1 = translation_10(ch2, ss, accuracy, file_name);
 				operation_stack.pop();
 
@@ -109,13 +110,13 @@ public:
 					if (num.top() == "+") {
 						obj.Addition(n1, n2);
 
-							pr = FloatToStr(translation_file(obj.element, ss, file_name, accuracy)) ;
+				  	pr = FloatToStr(translation_file(obj.element, ss, file_name, accuracy)) ;
 
 
 
 						ofstream f;
 						f.open(file_name.c_str(), ios::app);
-						f << '\t' << count_action << ") " << translation_file(n1, ss, file_name, accuracy) << " + " << translation_file(n2, ss, file_name, accuracy) << " = " <<  pr.c_str() << endl;
+						f << '\t' << count_action << ") " << translation(n1, ss, accuracy) << " + " << translation(n2, ss, accuracy) << " = " <<  pr.c_str() << endl;
 						f.close();
 
 

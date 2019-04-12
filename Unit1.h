@@ -12,9 +12,7 @@ class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
 	TEdit *TB_field;
-	TEdit *TB_accuracy;
 	TButton *Button1;
-	TButton *Button2;
 	TButton *BT_showResult;
 	TButton *Button3;
 	TButton *Button4;
@@ -27,16 +25,12 @@ __published:	// IDE-managed Components
 	TButton *Button11;
 	TButton *Button12;
 	TButton *Button13;
-	TButton *Button14;
-	TButton *Button15;
 	TButton *Button16;
 	TButton *Button17;
 	TButton *Button18;
 	TButton *Button19;
 	TButton *Button20;
-	TButton *Button21;
 	TLabel *Label1;
-	TLabel *Label2;
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall BT_showResultClick(TObject *Sender);
 private:	// User declarations

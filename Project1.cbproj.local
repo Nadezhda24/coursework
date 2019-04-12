@@ -16,5 +16,19 @@
     <Transaction>1899.12.30 00:00:00.000.552,=C:\Users\Asus\Documents\GitHub\coursework\Index.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.927,=C:\Users\Asus\Desktop\Translation.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.818,C:\Users\Asus\Desktop\Новая папка\Unit2.dfm=C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
-  </Transactions>
+  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="Index.h"/>
+    <File Path="Parser.h"/>
+    <File Path="Project1.cpp"/>
+    <File Path="Project1PCH1.h"/>
+    <File Path="Translation.h"/>
+    <File Path="Unit1.cpp"/>
+    <File Path="Unit1.cpp"/>
+    <File Path="Unit1.dfm"/>
+    <File Path="Unit1.h"/>
+    <File Path="Unit2.cpp"/>
+    <File Path="Unit2.cpp"/>
+    <File Path="Unit2.dfm"/>
+    <File Path="Unit2.h"/>
+  </ProjectSortOrder>
 </BorlandProject>
