@@ -9,7 +9,7 @@
 #include <math.h>
 #include <iomanip>
 #include <iostream>
-
+#include <iomanip>
 
 
 using namespace std;
@@ -207,7 +207,7 @@ double translation_10(double digit, int ss, int accuracy, string file_name) {
 	 if (f_m) {
 		  rez = rez *(-1);
 	 }
-	f << "= " << rez << endl;
+	f << "= " <<  rez << endl;
 
 	f.close();
 	return rez;

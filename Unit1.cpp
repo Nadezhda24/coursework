@@ -44,12 +44,15 @@ bool f_accuary= false;
 bool flag_ans = false;
 	ofstream f;
   double answer_parser  ;
+
+
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
-		String s="";
+		String s="",t="";
 
-
+		   t = TB_accuracy->Text;
 	TButton *button = dynamic_cast<TButton *>(Sender);
+
 
 	s = TB_field->Text;
 	switch (button->Tag) {
@@ -141,7 +144,20 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 			}  else {s+='7';}
 		} else {s+='7';}
 	}
-
+	break;
+      case 8:  if (f_accuary) {
+					t+='8';
+			 }else{
+		ShowMessage("\t\t\tОшибка ввода.\n\t Ильпользуйте только числа из восьмиричной системы счисления.\t\tИсправьте ошибку, нажмите \"OK\" и продолжите ввод.");
+	   }
+		break;
+	case 9:
+	if (f_accuary) {
+		   t+='9';
+	}else{
+ShowMessage("\t\t\tОшибка ввода.\n\t Ильпользуйте только числа из восьмиричной системы счисления.\t\tИсправьте ошибку, нажмите \"OK\" и продолжите ввод.");
+		  }
+		break;
 		break;
 	case 10:
 	if(f_accuary){
@@ -169,10 +185,11 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	}else {
 		s+=" div ";}
 		break;
-	case 13:
-		s.Delete(s.Length(),1);
+case 13:   	if (f_accuary) {
+		 t.Delete(t.Length(),1);
+	}    else {
 
-
+		s.Delete(s.Length(),1);}
 		break;
 	 case 14:
 	if (f_accuary) {
@@ -198,6 +215,34 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		 }else {
 		s+=" + ";}
 		break;
+		   case 19:
+
+		 if (f_accuary) {
+		ShowMessage(	"\t\t\tОшибка ввода.\n\t Используйте числа только числа для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");
+
+		 }   else {
+		 if (s.Length()==0) {
+		  ShowMessage(	"\t\t\tОшибка ввода.\n\Нажмите \"OK\" и продолжите ввод.");
+
+		 } else {
+
+		 if (!isdigit(s[s.Length()])) {
+			  ShowMessage(	"\t\t\tОшибка ввода.\n\Нажмите \"OK\" и продолжите ввод.");
+		 }   else {
+		s+='.'; } }
+		}
+		break;
+
+	   case 20:
+		if (f_accuary){f_accuary = false;}
+		else{f_accuary = true;}
+
+			if (f_accuary){TB_accuracy->Color= clGradientInactiveCaption;
+			TB_field->Color=clBtnHighlight;  }
+
+		else {TB_field->Color= clGradientInactiveCaption;
+		TB_accuracy->Color=clBtnHighlight; }
+		break;
 
 	  case 18:
 	  if( TB_field->Text==""){
@@ -218,20 +263,27 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 			f << endl;
 			f.close();
 
-
+					if (TB_accuracy->Text =="") {t+='1';}
 			 AnsiString ans_s = s;
 
-
-
+				  TB_accuracy->Text = t;
+			 int y;
 			 try {
 
 			 std::stringstream ss;
 			std::string s =  parser(ans_s.c_str(), 8, file_name.c_str(), StrToInt(t));
 			 for (int i=0;i < s.length(); i++){
-         	   if (s[i]==','){s[i]='.';}
+			   if (s[i]==','){s[i]='.'; y=i;  }
 	 }
-    ss << s;
-	ss >> answer_parser;
+	  int i=y+1 + StrToInt(t);
+	  int toch = StrToInt(t);
+
+	 while (i < s.length()){
+		  s.erase(i,1);
+	 }
+
+	   ss << s;
+		ss >> answer_parser;
 		   //	answer_parser =  strtod( parser(ans_s.c_str(), 8, file_name.c_str(), StrToInt(t)).c_str());
 
 		  } catch (const Exception &e){
@@ -252,6 +304,13 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 
 	TB_field->Text = s;
+	TB_accuracy->Text = t;
+    if (f_accuary){TB_accuracy->Color= clGradientInactiveCaption;
+			TB_field->Color=clBtnHighlight;  }
+
+		else {TB_field->Color= clGradientInactiveCaption;
+		TB_accuracy->Color=clBtnHighlight; }
+
 
 
 }
@@ -275,4 +334,18 @@ void __fastcall TForm1::BT_showResultClick(TObject *Sender)
 
 
 
+
+void __fastcall TForm1::Button21Click(TObject *Sender)
+{
+      	if (f_accuary){f_accuary = false;}
+		else{f_accuary = true;}
+
+			if (f_accuary){TB_accuracy->Color= clGradientInactiveCaption;
+			TB_field->Color=clBtnHighlight;  }
+
+		else {TB_field->Color= clGradientInactiveCaption;
+		TB_accuracy->Color=clBtnHighlight; }
+
+}
+//---------------------------------------------------------------------------
 

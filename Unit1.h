@@ -31,8 +31,15 @@ __published:	// IDE-managed Components
 	TButton *Button19;
 	TButton *Button20;
 	TLabel *Label1;
+	TButton *Button2;
+	TButton *Button14;
+	TButton *Button15;
+	TEdit *TB_accuracy;
+	TLabel *Label2;
+	TButton *Button21;
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall BT_showResultClick(TObject *Sender);
+	void __fastcall Button21Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

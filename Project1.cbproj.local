@@ -1,22 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.818,C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Unit2.h=C:\Users\Asus\Desktop\Новая папка\Unit2.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.208,=C:\Users\Asus\Documents\GitHub\coursework\Parser.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.678,=C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Unit2.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.818,C:\Users\Asus\Desktop\Новая папка\Unit2.cpp=C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Unit2.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.929,C:\Users\Asus\Desktop\Новая папка\Unit1.cpp=C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.711,C:\Users\Asus\Desktop\Новая папка\Project1PCH1.h=C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.138,=C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.879,C:\Users\Asus\Desktop\Новая папка\Project1.cbproj=C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.114,=C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.929,C:\Users\Asus\Desktop\Новая папка\Unit1.dfm=C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.929,C:\Users\Asus\Desktop\Новая папка\Unit1.h=C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Unit1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.557,=C:\Users\Asus\Documents\GitHub\coursework\Translation.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.818,C:\Users\Asus\Desktop\Новая папка\Unit2.h=C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Unit2.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.552,=C:\Users\Asus\Documents\GitHub\coursework\Index.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.929,C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Unit1.h=C:\Users\Asus\Desktop\Новая папка\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.929,C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Unit1.cpp=C:\Users\Asus\Desktop\Новая папка\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.879,C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Project1.cbproj=C:\Users\Asus\Desktop\Новая папка\Project1.cbproj</Transaction>
     <Transaction>1899.12.30 00:00:00.000.927,=C:\Users\Asus\Desktop\Translation.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.818,C:\Users\Asus\Desktop\Новая папка\Unit2.dfm=C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
-  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+    <Transaction>1899.12.30 00:00:00.000.138,=C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.818,C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Unit2.dfm=C:\Users\Asus\Desktop\Новая папка\Unit2.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.711,C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=C:\Users\Asus\Desktop\Новая папка\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.557,=C:\Users\Asus\Documents\GitHub\coursework\Translation.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.552,=C:\Users\Asus\Documents\GitHub\coursework\Index.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.114,=C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.818,C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Unit2.cpp=C:\Users\Asus\Desktop\Новая папка\Unit2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.678,=C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Unit2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.929,C:\Users\Asus\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\Asus\Desktop\Новая папка\Unit1.dfm</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="Index.h"/>
     <File Path="Parser.h"/>
     <File Path="Project1.cpp"/>
