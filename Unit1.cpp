@@ -15,7 +15,8 @@
 #include <iomanip>
 #include <exception>
 #include <stdexcept>
-
+ #include <stdlib.h>
+ #include <sstream>
 #include "parser.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -224,7 +225,14 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 			 try {
 
-			answer_parser = string_to_double( parser(ans_s.c_str(), 8, file_name.c_str(), StrToInt(t)).c_str());
+			 std::stringstream ss;
+			std::string s =  parser(ans_s.c_str(), 8, file_name.c_str(), StrToInt(t));
+			 for (int i=0;i < s.length(); i++){
+         	   if (s[i]==','){s[i]='.';}
+	 }
+    ss << s;
+	ss >> answer_parser;
+		   //	answer_parser =  strtod( parser(ans_s.c_str(), 8, file_name.c_str(), StrToInt(t)).c_str());
 
 		  } catch (const Exception &e){
 
