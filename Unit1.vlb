@@ -1,20 +1,11 @@
-﻿[TB_accuracy]
-Coordinates=269,146,89,58
-
-[TB_field]
+﻿[TB_field]
 Coordinates=86,78,62,58
 
 [Button1]
 Coordinates=227,78,59,58
 
-[Button2]
-Coordinates=372,78,59,58
-
 [BT_showResult]
 Coordinates=79,146,104,58
-
-[Button21]
-Coordinates=10,282,66,58
 
 [Button17]
 Coordinates=155,10,66,58
@@ -38,9 +29,6 @@ Coordinates=10,214,59,58
 [Button18]
 Coordinates=300,10,66,58
 
-[Button14]
-Coordinates=369,214,66,58
-
 [Button20]
 Coordinates=148,214,66,58
 
@@ -49,9 +37,6 @@ Coordinates=193,146,66,58
 
 [Button5]
 Coordinates=10,10,59,58
-
-[Button15]
-Coordinates=296,78,66,58
 
 [Button13]
 Coordinates=376,10,66,58
@@ -72,5 +57,5 @@ Coordinates=79,214,59,58
 Coordinates=368,146,66,58
 
 []
-Coordinates=290,365,91,36
+Coordinates=296,78,66,58
 
