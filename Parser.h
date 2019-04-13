@@ -93,14 +93,22 @@ public:
 				num.pop();
 			}
 			else {
-			 AnsiString d1 = operation_stack.top().c_str();
-			 // d1.Delete(2,1);
-			double ch1 = string_to_double(d1.c_str());
+			 string d1 = operation_stack.top().c_str();
+				 for (int i=0;i <d1.length(); i++){
+			   if (d1[i]==','){d1[i]='.';  }
+	 }
+				AnsiString d1_1 = d1.c_str();
+			double ch1 = string_to_double(d1_1.c_str());
 			n2 = translation_10(ch1,ss, accuracy, file_name);
 			operation_stack.pop();
-					AnsiString d2 = operation_stack.top().c_str();
-			   //	 d2.Delete(2,1);
-				 double ch2 = string_to_double(d2.c_str());
+
+					string d2 = operation_stack.top().c_str();
+						 for (int i=0;i <d2.length(); i++){
+			   if (d2[i]==','){d2[i]='.';  }
+	 }
+
+					AnsiString d2_2 = d2.c_str();
+				 double ch2 = string_to_double(d2_2.c_str());
 				n1 = translation_10(ch2, ss, accuracy, file_name);
 				operation_stack.pop();
 
@@ -306,7 +314,10 @@ string parser(string s, int ss, string file_name, int  accuracy) {
 				if (index(next_c) == 4) { state = start; }
 				cl.opz(z);
 				i++;
-
+				if (count_bracket < 0) {
+			 ShowMessage("\t\t\tОшибка.\n Не правильно расставленны скобки. \t\tНажмите \"OK\" и введите корректное выражение заново.");
+				return 0;
+				}
 				break;
 			default: state = error;
 				break;
@@ -314,7 +325,7 @@ string parser(string s, int ss, string file_name, int  accuracy) {
 			break;
 		case error:
 		ShowMessage("\t\t\tОшибка.\n \t\tНажмите \"OK\" и введите корректное выражение заново.");
-
+              return 0;
 			state = start;
 			i = s.length();
 			break;
