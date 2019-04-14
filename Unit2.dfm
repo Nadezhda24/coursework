@@ -5,7 +5,7 @@ object Form2: TForm2
   Height = 505
   AutoScroll = True
   Caption = #1056#1077#1079#1091#1083#1100#1090#1072#1090
-  Color = clCream
+  Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

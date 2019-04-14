@@ -4,9 +4,9 @@ object Form1: TForm1
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1050#1072#1083#1100#1082#1091#1083#1103#1090#1086#1088
-  ClientHeight = 362
-  ClientWidth = 304
-  Color = clCream
+  ClientHeight = 360
+  ClientWidth = 314
+  Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -38,14 +38,14 @@ object Form1: TForm1
   object TB_field: TEdit
     Left = 17
     Top = 13
-    Width = 273
+    Width = 280
     Height = 21
     Enabled = False
     TabOrder = 0
   end
   object Button1: TButton
-    Left = 16
-    Top = 257
+    Left = 17
+    Top = 267
     Width = 70
     Height = 50
     Caption = '0'
@@ -60,9 +60,9 @@ object Form1: TForm1
   end
   object BT_showResult: TButton
     Tag = 21
-    Left = 104
-    Top = 305
-    Width = 186
+    Left = 107
+    Top = 317
+    Width = 190
     Height = 27
     Caption = 'show'
     Font.Charset = ANSI_CHARSET
@@ -76,8 +76,8 @@ object Form1: TForm1
   end
   object Button3: TButton
     Tag = 18
-    Left = 151
-    Top = 257
+    Left = 157
+    Top = 267
     Width = 70
     Height = 50
     Caption = '='
@@ -92,8 +92,8 @@ object Form1: TForm1
   end
   object Button4: TButton
     Tag = 17
-    Left = 220
-    Top = 257
+    Left = 227
+    Top = 267
     Width = 70
     Height = 50
     Caption = '+'
@@ -108,8 +108,8 @@ object Form1: TForm1
   end
   object Button5: TButton
     Tag = 1
-    Left = 16
-    Top = 214
+    Left = 17
+    Top = 217
     Width = 70
     Height = 50
     Caption = '1'
@@ -124,8 +124,8 @@ object Form1: TForm1
   end
   object Button6: TButton
     Tag = 2
-    Left = 84
-    Top = 214
+    Left = 87
+    Top = 217
     Width = 70
     Height = 50
     Caption = '2'
@@ -140,8 +140,8 @@ object Form1: TForm1
   end
   object Button7: TButton
     Tag = 3
-    Left = 152
-    Top = 214
+    Left = 157
+    Top = 217
     Width = 70
     Height = 50
     Caption = '3'
@@ -156,8 +156,8 @@ object Form1: TForm1
   end
   object Button8: TButton
     Tag = 16
-    Left = 220
-    Top = 214
+    Left = 227
+    Top = 217
     Width = 70
     Height = 50
     Caption = '-'
@@ -172,8 +172,8 @@ object Form1: TForm1
   end
   object Button9: TButton
     Tag = 4
-    Left = 16
-    Top = 166
+    Left = 17
+    Top = 167
     Width = 70
     Height = 50
     Caption = '4'
@@ -188,8 +188,8 @@ object Form1: TForm1
   end
   object Button10: TButton
     Tag = 5
-    Left = 84
-    Top = 166
+    Left = 87
+    Top = 167
     Width = 70
     Height = 50
     Caption = '5'
@@ -204,8 +204,8 @@ object Form1: TForm1
   end
   object Button11: TButton
     Tag = 6
-    Left = 152
-    Top = 166
+    Left = 157
+    Top = 167
     Width = 70
     Height = 50
     Caption = '6'
@@ -220,8 +220,8 @@ object Form1: TForm1
   end
   object Button12: TButton
     Tag = 15
-    Left = 220
-    Top = 166
+    Left = 227
+    Top = 167
     Width = 70
     Height = 50
     Caption = 'x'
@@ -237,7 +237,7 @@ object Form1: TForm1
   object Button13: TButton
     Tag = 7
     Left = 17
-    Top = 118
+    Top = 117
     Width = 70
     Height = 50
     Caption = '7'
@@ -252,8 +252,8 @@ object Form1: TForm1
   end
   object Button16: TButton
     Tag = 14
-    Left = 220
-    Top = 118
+    Left = 227
+    Top = 117
     Width = 70
     Height = 50
     Caption = '/'
@@ -268,8 +268,8 @@ object Form1: TForm1
   end
   object Button17: TButton
     Tag = 10
-    Left = 16
-    Top = 70
+    Left = 17
+    Top = 67
     Width = 70
     Height = 50
     Caption = '('
@@ -284,8 +284,8 @@ object Form1: TForm1
   end
   object Button18: TButton
     Tag = 11
-    Left = 84
-    Top = 70
+    Left = 87
+    Top = 67
     Width = 70
     Height = 50
     Caption = ')'
@@ -300,8 +300,8 @@ object Form1: TForm1
   end
   object Button19: TButton
     Tag = 12
-    Left = 152
-    Top = 70
+    Left = 157
+    Top = 67
     Width = 70
     Height = 50
     Caption = 'div'
@@ -316,8 +316,8 @@ object Form1: TForm1
   end
   object Button20: TButton
     Tag = 13
-    Left = 220
-    Top = 70
+    Left = 227
+    Top = 67
     Width = 70
     Height = 50
     Caption = '<'
@@ -332,8 +332,8 @@ object Form1: TForm1
   end
   object Button2: TButton
     Tag = 8
-    Left = 84
-    Top = 118
+    Left = 87
+    Top = 117
     Width = 70
     Height = 50
     Caption = '8'
@@ -348,8 +348,8 @@ object Form1: TForm1
   end
   object Button14: TButton
     Tag = 9
-    Left = 152
-    Top = 118
+    Left = 157
+    Top = 117
     Width = 70
     Height = 50
     Caption = '9'
@@ -364,10 +364,10 @@ object Form1: TForm1
   end
   object Button15: TButton
     Tag = 19
-    Left = 84
-    Top = 260
+    Left = 87
+    Top = 267
     Width = 70
-    Height = 47
+    Height = 50
     Caption = '.'
     Font.Charset = ANSI_CHARSET
     Font.Color = clBlack
@@ -381,7 +381,7 @@ object Form1: TForm1
   object TB_accuracy: TEdit
     Left = 176
     Top = 40
-    Width = 114
+    Width = 121
     Height = 21
     Color = clBtnHighlight
     Enabled = False
@@ -390,8 +390,8 @@ object Form1: TForm1
   object Button21: TButton
     Tag = 20
     Left = 17
-    Top = 305
-    Width = 89
+    Top = 317
+    Width = 90
     Height = 27
     Caption = 'accuracy '
     Font.Charset = ANSI_CHARSET
