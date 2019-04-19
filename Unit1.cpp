@@ -44,7 +44,7 @@ bool f_accuary= false;
 bool flag_ans = false;
 ofstream f;
 double answer_parser;
-
+int  flag_rez = 0;
 
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
@@ -388,7 +388,8 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	break;
 
 	case 18:
-
+	   flag_rez ++;
+	   if(flag_rez == 1){
 	  if( TB_field->Text==""){
 		 ShowMessage(	"\t\t\tВведите выражение.\n \t\tНажмите \"OK\", чтобы продолжить.");}
 	  else{
@@ -445,13 +446,16 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 				flag_ans=false;
 			}
 
-			if (flag_ans)	s =  FloatToStr(answer_parser) ;
+			if (flag_ans) {	s =  FloatToStr(answer_parser) ;
+            flag_rez = 0;
+			}
 
 			while (!operation_stack.empty()) {operation_stack.pop();}
 			while (!number_stack.empty()) {number_stack.pop();}
 			while (!num.empty()) {num.pop();}
 	  }
 	}
+	  }
 	break;
 	}
 
