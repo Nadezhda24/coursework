@@ -19,6 +19,7 @@
  #include <sstream>
 #include "parser.h"
 #include <conio.h>
+#include <windows.h>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -63,7 +64,11 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	case 0:
 
 		if (f_accuary){
+		if (t.Length()>0) {
+					t+='0';
+		}else{
 			ShowMessage("\t\t\tОшибка ввода.\n\t Вы не можите использовать \'0\' для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");
+		}
 		}else{
 			if (s.Length()>1 ) {
 				if ((s[s.Length()-1])==')'  ) {
@@ -181,7 +186,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 			  }
 			 }
 			else {
-				if (isdigit(s[s.Length()-1])||s[s.Length()-1]=='.' ) {
+				if (isdigit(s[s.Length()])||s[s.Length()]=='.' ) {
 								ShowMessage( "\t\t\tОшибка ввода.\n Пропущен знак операции.\n\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
 				}else {s+=" ( ";}
 			}
@@ -523,10 +528,17 @@ void __fastcall TForm1::Button21Click(TObject *Sender)
 
 
 
-void __fastcall TForm1::TB_fieldKeyUp(TObject *Sender, WORD &Key, TShiftState Shift)
 
+void __fastcall TForm1::TB_fieldKeyPress(TObject *Sender, System::WideChar &Key)
 {
-	if (Key == 32 || Key > 48 && Key < 90)  {TB_field->  ReadOnly = true;}
+
+	if (kbhit) {
+				TB_field->ReadOnly = true;
+			   ShowMessage("\t\t\tВвод с клавиатуры запрещен.\n \t\tНажмите \"OK\", чтобы продолжить.");
+
+			}
+
+
 }
 //---------------------------------------------------------------------------
 

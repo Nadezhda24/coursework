@@ -20,6 +20,7 @@ TForm2 *Form2;
 using namespace std;
   string file_name = "detailed_answer_kr.txt";
 //---------------------------------------------------------------------------
+
 __fastcall TForm2::TForm2(TComponent* Owner)
 	: TForm(Owner)
 {

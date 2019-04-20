@@ -30,6 +30,7 @@ int i = 0;
 char tochnost[5] = "";
 int t_ind = 0; // индекс строки для точности числа
 string p = ""; // для преобразования char to string
+
 class counter {
 private :
 double element;

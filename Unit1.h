@@ -40,7 +40,7 @@ __published:	// IDE-managed Components
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall BT_showResultClick(TObject *Sender);
 	void __fastcall Button21Click(TObject *Sender);
-	void __fastcall TB_fieldKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
+	void __fastcall TB_fieldKeyPress(TObject *Sender, System::WideChar &Key);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
