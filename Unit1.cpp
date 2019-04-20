@@ -18,6 +18,7 @@
  #include <stdlib.h>
  #include <sstream>
 #include "parser.h"
+#include <conio.h>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -48,6 +49,8 @@ int  flag_rez = 0;
 
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
+
+
 	String s="",t="";
 
 	t = TB_accuracy->Text;
@@ -447,14 +450,16 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 			}
 
 			if (flag_ans) {	s =  FloatToStr(answer_parser) ;
-            flag_rez = 0;
+
 			}
 
 			while (!operation_stack.empty()) {operation_stack.pop();}
 			while (!number_stack.empty()) {number_stack.pop();}
 			while (!num.empty()) {num.pop();}
 	  }
+
 	}
+	flag_rez = 0;
 	  }
 	break;
 	}
@@ -515,4 +520,13 @@ void __fastcall TForm1::Button21Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+
+
+
+void __fastcall TForm1::TB_fieldKeyUp(TObject *Sender, WORD &Key, TShiftState Shift)
+
+{
+	if (Key == 32 || Key > 48 && Key < 90)  {TB_field->  ReadOnly = true;}
+}
+//---------------------------------------------------------------------------
 

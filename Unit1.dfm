@@ -40,8 +40,8 @@ object Form1: TForm1
     Top = 13
     Width = 280
     Height = 21
-    Enabled = False
     TabOrder = 0
+    OnKeyUp = TB_fieldKeyUp
   end
   object Button1: TButton
     Left = 17
