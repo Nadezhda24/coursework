@@ -13,64 +13,19 @@
 
 
 using namespace std;
-int t = 5;
-
-
-//перевод из 10-ой в 8-ую систему счисления
-double translation(double  digit, int ss, int accuracy) {
-	accuracy = pow(10, accuracy);
-	int str = 0;
-	long long answer = 0;
-	int whole_part = int(digit); // целая часть
-	double fraction = digit - whole_part; // дробная часть
-	int n;
-
-
-
-	// перевод целой части
-	while (whole_part > 0) {
-
-		str++;
-		n = whole_part % ss;
-		answer = answer * 10 + n;
-		whole_part = (whole_part - n) / ss;
-
-
-	}
-	while (answer > 0) {
-		n = answer % 10;
-		whole_part = whole_part * 10 + n;
-		answer = answer / 10;
-		str--;
-	}
-	whole_part = whole_part * pow(10, str);
-	double g;
-	// перевод дробной части
-	if (fraction*accuracy != 0) {
-
-		answer = 0;
-
-		int count_accuracy = 0;
-		while (fraction*accuracy != 0) {
-
-			count_accuracy++;
-
-			answer = answer * 10 + (int)(fraction*ss);
-			fraction = (fraction*ss) - (int)(fraction*ss);
-		}
-
-
-		g = answer / pow(10, count_accuracy);
-	}
-	else { g = 0; }
-
-
-	double ans = whole_part + g;
-	return ans;
-
-}
+int t = 20;
+int t2 = 25;
 //перевод из 10-ой в 8-ую систему счисления
 double translation_file(double  digit, int ss, string file_name, int accuracy) {
+	if (digit != 0) {
+
+
+	bool flag_minus  = false;
+	if (digit < 0) {
+		  flag_minus = true;
+		  digit = digit *(-1);
+	}
+
 	accuracy = pow(10, accuracy);
 	int str = 0;
 	long long answer = 0;
@@ -86,29 +41,19 @@ double translation_file(double  digit, int ss, string file_name, int accuracy) {
 	f << setw(t) << " Перевод целой части числа: " << endl;
 	f.close();
 
-
-
-	// перевод целой части
-	while (whole_part > 0) {
-		ofstream f;
-		f.open(file_name.c_str(), ios::app);
-		f.close();
 		// перевод целой части
 		while (whole_part > 0) {
 			f.open(file_name.c_str(), ios::app);
 			str++;
 			n = whole_part % ss;
-			f << whole_part << " % " << ss << " = " << n << endl;
+			f<< setw(t2)<<whole_part << " % " << ss << " = " << n << endl;
 			answer = answer * 10 + n;
 
-			f << " ( " << whole_part << " - " << n << " ) " << " / " << ss;
+			f << setw(t2-1)<< "( " << whole_part << " - " << n << " ) " << " / " << ss;
 			whole_part = (whole_part - n) / ss;
 			f << " = " << whole_part << endl;
-
+			f.close();
 		}
-
-		f.close();
-	}
 	while (answer > 0) {
 		n = answer % 10;
 		whole_part = whole_part * 10 + n;
@@ -122,22 +67,21 @@ double translation_file(double  digit, int ss, string file_name, int accuracy) {
 		f.open(file_name.c_str(), ios::app);
 		f << " Перевод дробной части числа : " << endl;
 
-		f.close();
-
 		answer = 0;
 
 		int count_accuracy = 0;
+		f << setw(t2+5) <<fraction  << endl;
+		f.close();
 		while (fraction*accuracy != 0) {
 			ofstream f;
 			f.open(file_name.c_str(), ios::app);
-			f << "* " << ss << endl;
-			f << "--------" << endl;
-			f << " " << fraction * ss << endl;
-			f.close();
+			f <<setw(t2)<< "* " << ss << endl;
+			f<<setw(t2+5) << "--------" << endl;
+			f <<setw(t2)<< " " << fraction * ss << endl;
 			count_accuracy++;
-
 			answer = answer * 10 + (int)(fraction*ss);
 			fraction = (fraction*ss) - (int)(fraction*ss);
+			f.close();
 		}
 
 		g = answer / pow(10, count_accuracy);
@@ -146,12 +90,18 @@ double translation_file(double  digit, int ss, string file_name, int accuracy) {
 
 
 	double ans = whole_part + g;
+	if (flag_minus) {
+				  ans = ans *(-1);
+	}
 	return ans;
-
+	  } else {return 0;}
 }
 
 // перевод из 8-ой в 10-ую
 double translation_10(double digit, int ss, int accuracy, string file_name) {
+ int j =  accuracy ;
+ if(digit != 0) {
+
  bool	f_m = false;
 
 	if (digit < 0) {
@@ -166,10 +116,18 @@ double translation_10(double digit, int ss, int accuracy, string file_name) {
 
 
 	long long answer = 0;
-	int whole_part = int(digit);
+	long long whole_part = int(digit);
 	// целая часть
 
-	int fraction = (digit - whole_part)*pow(10, accuracy); // дробная часть
+	 // дробная часть
+long long fraction_1 = (digit - whole_part)*pow(10, accuracy);
+long long fraction=0;
+while (fraction_1>0){
+int d = fraction_1 % 10;
+fraction = fraction*10 + d;
+fraction_1=fraction_1/10;
+
+}
 
 	int str = 0;
 	int rez_whole_part = 0;
@@ -177,8 +135,8 @@ double translation_10(double digit, int ss, int accuracy, string file_name) {
 	{
 
 		int d = whole_part % 10;
-		if (d > 7) { f << "ERROR" << endl; return 0; }
-		rez_whole_part = rez_whole_part + d * pow(ss, str);
+	   if (d > (ss-1) )  { f << "ERROR" << endl; return 0; }
+	   else {rez_whole_part = rez_whole_part + d * pow(ss, str); }
 
 		f << d << " * " << ss << '^' << str;
 		str++;
@@ -187,18 +145,21 @@ double translation_10(double digit, int ss, int accuracy, string file_name) {
 	}
 	double rez_fraction = 0;
 	str = 1;
-	while (fraction > 0) {
-		f << " + ";
+
+	while ( fraction*accuracy != 0) {
+	  f << " + ";
 		int d = fraction % 10;
 
-		if (d > ss - 1) { f << "ERROR" << endl; }
-		if (d == 0) { fraction = fraction / 10; }
+		if (d > (ss - 1)) { f << "" ; }
+	   else {	if (d == 0) { fraction = fraction / 10; }
 		else {
 			rez_fraction = rez_fraction + d / (pow(ss, str));
 			f << d << " * " << ss << '^' << "(-" << str << ')';
 			str++;
 			fraction = fraction / 10;
-			if (fraction > 0) f << " + ";
+
+			//if (fraction > 0) f << " + ";
+		}
 		}
 	}
 
@@ -210,7 +171,8 @@ double translation_10(double digit, int ss, int accuracy, string file_name) {
 	f << "= " <<  rez << endl;
 
 	f.close();
-	return rez;
+	return rez; }
+	else {return 0;}
 }
 
 

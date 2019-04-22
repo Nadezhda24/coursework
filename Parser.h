@@ -33,51 +33,45 @@ string p = ""; // для преобразования char to string
 
 class counter {
 private :
-double element;
+	double element;
 public:
 
-void Addition(double el_1, double el_2) { element = el_1 + el_2; } //сложение
-void Subtraction(double el_1, double el_2) { element = el_1 - el_2; } //вычитание
-void Multiplication(double el_1, double el_2) { element = el_1 * el_2; } //умножение
-void Division(double el_1, double el_2) { element = el_1 / el_2; } // деление с остатком
-void DivisionWithoutRemainder(double el_1, double el_2) { element = (int)el_1 / (int)el_2; } // деление без остатка
-double Get_element() {return element;}
+	void Addition(double FirstElement, double SecondElement) { element =  FirstElement + SecondElement; } //сложение
+	void Subtraction(double  FirstElement, double SecondElement) { element =  FirstElement - SecondElement; } //вычитание
+	void Multiplication(double  FirstElement, double SecondElement) { element =  FirstElement * SecondElement; } //умножение
+	void Division(double  FirstElement, double SecondElement) { element =  FirstElement / SecondElement; } // деление с остатком
+	void DivisionWithoutRemainder(double  FirstElement, double SecondElement) { element = (int) FirstElement / (int)SecondElement; } // деление без остатка
+	double Get_element() {return element;}
 };
 
 class calculator {
-private:
-
+	private:
 string line;
-
 public:
 
 //преобразование выражения в опз
 void opz(string operation) {
-if (indexk_op(operation) == 4) { number_stack.push(operation); }
-else if (indexk_op(operation) == 3 || indexk_op(operation) == 2) {
-if (operation_stack.empty() || indexk_op(operation_stack.top()) < 2) {
-operation_stack.push(operation);
-}
-else {
-
-while (indexk_op(operation_stack.top()) >= indexk_op(operation)) {
-number_stack.push(operation_stack.top());
-operation_stack.pop();
-}
-operation_stack.push(operation);
-}
-}
-else if (indexk_op(operation) == 1) {
-operation_stack.push(operation);
-}
-else if (indexk_op(operation) == 0) {
-while (indexk_op(operation_stack.top()) != 1) {
-number_stack.push(operation_stack.top());
-operation_stack.pop();
-}
-operation_stack.pop();
-}
-
+	if (indexk_op(operation) == 4) { number_stack.push(operation); }
+	else if (indexk_op(operation) == 3 || indexk_op(operation) == 2) {
+		if (operation_stack.empty() || indexk_op(operation_stack.top()) < 2) {
+			operation_stack.push(operation);
+		}
+	else {
+		while (indexk_op(operation_stack.top()) >= indexk_op(operation)) {
+			number_stack.push(operation_stack.top());
+			operation_stack.pop();
+			}
+		operation_stack.push(operation);
+		}
+	}
+	else if (indexk_op(operation) == 1) {operation_stack.push(operation);}
+	else if (indexk_op(operation) == 0) {
+		while (indexk_op(operation_stack.top()) != 1) {
+			number_stack.push(operation_stack.top());
+			operation_stack.pop();
+		}
+	operation_stack.pop();
+	}
 }
 
 //вычисление выражения, записанного в ОПЗ
@@ -85,121 +79,98 @@ void answer(int ss, string file_name, int accuracy) {
 counter obj;
 string s;
 double n1, n2;
-int count_action = 1; // номер действия
+int CountAction = 1; // номер действия
+ofstream f;
 while (!num.empty()) {
-if (indexk_op(num.top()) == 4) {
-operation_stack.push(num.top());
-num.pop();
+	if (indexk_op(num.top()) == 4) {
+	operation_stack.push(num.top());
+	num.pop();
+	}
+	else {
+		string SecondDigit  = operation_stack.top().c_str();
+		for (int i=0;i < SecondDigit .length(); i++){
+			if (SecondDigit [i]==','){SecondDigit [i]='.'; }
+		}
+		AnsiString SecondDigitDoubel = SecondDigit.c_str();
+		double SecondDigitStringToDouble = string_to_double(SecondDigitDoubel.c_str());
+		n2 = translation_10(SecondDigitStringToDouble, ss, accuracy, file_name);
+		operation_stack.pop();
+
+
+		string FirstDigit = operation_stack.top().c_str();
+		for (int i=0;i < FirstDigit.length(); i++){
+			if (FirstDigit[i]==','){FirstDigit[i]='.'; }
+		}
+		AnsiString FirstDigitDoubel = FirstDigit.c_str();
+		double FirstDigitStringToDouble = string_to_double(FirstDigitDoubel.c_str());
+		n1 = translation_10(FirstDigitStringToDouble,ss, accuracy, file_name);
+		operation_stack.pop();
+
+		AnsiString CalculationResult;
+		switch (indexk_op(num.top())) {
+			case 2:
+				if (num.top() == "+") {
+					obj.Addition(n1, n2);
+					CalculationResult = FloatToStr(translation_file(obj.Get_element(), ss, file_name, accuracy)) ;
+					ofstream f;
+					f.open(file_name.c_str(), ios::app);
+					f << '\t' << CountAction << ") " << translation_file(n1, ss, file_name, accuracy) << " + " << translation_file(n2, ss, file_name, accuracy)  << " = " << CalculationResult.c_str() << endl;
+					f.close();
+					CountAction++;
+				}
+				else {
+					obj.Subtraction(n1, n2);
+					CalculationResult = FloatToStr(translation_file(obj.Get_element(), ss,file_name ,accuracy));
+					ofstream f;
+					f.open(file_name.c_str(), ios::app);
+					f << '\t' << CountAction << ") " << translation_file(n1, ss, file_name, accuracy) << " - " << translation_file(n2, ss, file_name, accuracy) << " = " << CalculationResult.c_str() << endl;
+					f.close();
+					CountAction++;
+				}
+			break;
+			case 3:
+				if (num.top() == "*") {
+					obj.Multiplication(n1, n2);
+					CalculationResult = FloatToStr(translation_file(obj.Get_element(), ss, file_name,accuracy));
+					ofstream f;
+					f.open(file_name.c_str(), ios::app);
+					f << '\t' << CountAction << ") " << translation_file(n1, ss, file_name, accuracy) << " * " << translation_file(n2, ss, file_name, accuracy) << " = " << CalculationResult.c_str() << endl;
+					f.close();
+					CountAction++;
+				}
+				else if (num.top() == "/") {
+					if (n2 == 0) {
+					ShowMessage( "\t\t\tОшибка.\n\t\t\tДеление на 0.\n \t\tНажмите \"OK\" и введите корректное выражение заново.");
+					}
+				else {
+				obj.Division(n1, n2);
+				CalculationResult = FloatToStr(translation_file(obj.Get_element(), ss, file_name,accuracy));
+				ofstream f;
+				f.open(file_name.c_str(), ios::app);
+				f << '\t' << CountAction << ") " << translation_file(n1, ss, file_name, accuracy) << " / " << translation_file(n2, ss, file_name, accuracy) << " = " << CalculationResult.c_str() << endl;
+				f.close();
+				CountAction++;
+				}
+			}
+				else if (num.top() == "div") {
+					if (n2 == 0) {
+					ShowMessage( "\t\t\tОшибка.\n\t\t\tДеление на 0.\n \t\tНажмите \"OK\" и введите корректное выражение заново.");
+				}
+				else {
+				obj.DivisionWithoutRemainder(n1, n2);
+				CalculationResult =FloatToStr(translation_file(obj.Get_element(), ss, file_name,accuracy));
+				ofstream f;
+				f.open(file_name.c_str(), ios::app);
+				f << '\t' << CountAction<< ") " << translation_file(n1, ss, file_name, accuracy) << " div " << translation_file(n2, ss, file_name, accuracy) << " = " << CalculationResult.c_str()<< endl;
+				f.close();
+				CountAction++;}
+			}
+			break;
+		}
+	num.pop();
+	operation_stack.push(CalculationResult.c_str());
+	}
 }
-else {
-string d1 = operation_stack.top().c_str();
-for (int i=0;i <d1.length(); i++){
-if (d1[i]==','){d1[i]='.'; }
-}
-AnsiString d1_1 = d1.c_str();
-double ch1 = string_to_double(d1_1.c_str());
-n2 = translation_10(ch1,ss, accuracy, file_name);
-operation_stack.pop();
-
-string d2 = operation_stack.top().c_str();
-for (int i=0;i <d2.length(); i++){
-if (d2[i]==','){d2[i]='.'; }
-}
-
-AnsiString d2_2 = d2.c_str();
-double ch2 = string_to_double(d2_2.c_str());
-n1 = translation_10(ch2, ss, accuracy, file_name);
-operation_stack.pop();
-
-AnsiString pr ;
-switch (indexk_op(num.top())) {
-case 2:
-if (num.top() == "+") {
-obj.Addition(n1, n2);
-
-pr = FloatToStr(translation_file(obj.Get_element(), ss, file_name, accuracy)) ;
-
-ofstream f;
-f.open(file_name.c_str(), ios::app);
-f << '\t' << count_action << ") " << translation(n1, ss, accuracy) << " + " << translation(n2, ss, accuracy) << " = " << pr.c_str() << endl;
-f.close();
-
-count_action++;
-}
-else {
-obj.Subtraction(n1, n2);
-
-pr = FloatToStr(translation(obj.Get_element(), ss, accuracy));
-
-ofstream f;
-f.open(file_name.c_str(), ios::app);
-f << '\t' << count_action << ") " << translation_file(n1, ss, file_name, accuracy) << " - " << translation_file(n2, ss, file_name, accuracy) << " = " << pr.c_str() << endl;
-f.close();
-
-//cout « count_action « ' ' « translation(n1, ss, file_name, accuracy) « " - " « translation(n2, ss, file_name, accuracy) « " = "
-//<< s << endl;
-count_action++;
-}
-break;
-case 3:
-
-if (num.top() == "*") {
-obj.Multiplication(n1, n2);
-pr = FloatToStr(translation(obj.Get_element(), ss, accuracy));
-
-ofstream f;
-f.open(file_name.c_str(), ios::app);
-f << '\t' << count_action << ") " << translation_file(n1, ss, file_name, accuracy) << " * " << translation_file(n2, ss, file_name, accuracy) << " = " << pr.c_str() << endl;
-f.close();
-
-//cout « count_action « ' ' « translation(n1, ss, file_name, accuracy) « " * " « translation(n2, ss, file_name, accuracy) « " = " « s « endl;
-count_action++;
-}
-else if (num.top() == "/") {
-if (n2 == 0) {
-ShowMessage( "\t\t\tОшибка.\n\t\t\tДеление на 0.\n \t\tНажмите \"OK\" и введите корректное выражение заново.");
-
-}
-else {
-
-obj.Division(n1, n2);
-pr = FloatToStr(translation(obj.Get_element(), ss, accuracy));
-
-ofstream f;
-f.open(file_name.c_str(), ios::app);
-f << '\t' << count_action << ") " << translation_file(n1, ss, file_name, accuracy) << " / " << translation_file(n2, ss, file_name, accuracy) << " = " << pr.c_str() << endl;
-f.close();
-
-// cout « count_action « ' ' « translation(n1, ss, file_name, accuracy) « " / " « translation(n2, ss, file_name, accuracy) « " = " « s « endl;
-count_action++;
-}
-}
-else if (num.top() == "div") {
-if (n2 == 0) {
-ShowMessage( "\t\t\tОшибка.\n\t\t\tДеление на 0.\n \t\tНажмите \"OK\" и введите корректное выражение заново.");
-
-}
-else {
-obj.DivisionWithoutRemainder(n1, n2);
-pr =FloatToStr(translation(obj.Get_element(), ss, accuracy));
-
-ofstream f;
-f.open(file_name.c_str(), ios::app);
-f << '\t' << count_action << ") " << translation_file(n1, ss, file_name, accuracy) << " div " << translation_file(n2, ss, file_name, accuracy) << " = " << pr.c_str()<< endl;
-f.close();
-
-}
-// cout « count_action « ' ' « translation(n1, ss, file_name, accuracy) « " div " « translation(n2, ss, file_name, accuracy) « " = " « s « endl;
-count_action++;
-} //целочисленное деление
-break;
-}
-num.pop();
-operation_stack.push(pr.c_str());
-}
-
-}
-
 }
 
 };
@@ -210,143 +181,137 @@ int count_bracket = 0;
 state state = start;
 calculator cl;
 int i = 0; // счетчик в входной строке
-//int j = 0, l = 0, m = 0;
 char c, next_c; // c текущий символ строки , next_c cледующий
 bool flag = false; // флаг для перехода в состояние "double_digit"
 
 s = "( " + s + ") ";
 while (i < s.length() - 1) {
-c = s[i];
-next_c = s[i + 1];
-string z = "";
-z = z + c;
-switch (state)
-{
-case start:
-switch (index(c))
-{
-case 1: state = word;
-break;
-case 2: state = digit;
-if (flag) state = double_digit;
-break;
-case 3: state = symbol;
-break;
-case 4: state = start; i++;
-count_point = 0;
-break;
-default: state = error;
-break;
+	c = s[i];
+	next_c = s[i + 1];
+	string z = "";
+	z = z + c;
+	switch (state){
+	case start:
+		switch (index(c))
+			{
+			case 1: state = word;
+			break;
+			case 2: state = digit;
+				if (flag) state = double_digit;
+			break;
+			case 3: state = symbol;
+			break;
+			case 4: state = start; i++;
+			count_point = 0;
+			break;
+			default: state = error;
+			break;
+			}
+	break;
+	case word:
+		switch (index(c)){
+			case 1:
+				i++;
+				sl = sl + c;
+				if (index(next_c) == 4) {
+					state = start;
+					cl.opz(sl);
+					sl = "";
+				}
+			break;
+			default: state = error;
+			break;
+			}
+			break;
+	case digit:
+		switch (index(c)){
+			case 2:
+				if (data.size()< 14) {
+					i++;
+					data = data + c;
+						if (next_c == '.') {
+							state = double_digit;
+							flag = true;
+						}
+						if (index(next_c) == 4) {
+							state = start;
+							cl.opz(data);
+							data = "";
+							flag = false;
+							count_point = 0;
+						}
+				} else {
+					ShowMessage("Ошибка.\nСлишком большое число.\nНажмите \"OK\" и введите корректное выражение заново.");
+					return 0;
+				 }
+			break;
+			default: state = error;
+			break;
+		}
+	break;
+	case double_digit:
+		if(data.size()< 14) {
+			i++;
+			data = data + c;
+			if (index(next_c) == 4) {
+				state = start;
+				cl.opz(data);
+				data = "";
+				count_point =0;
+				flag = true;
+			}
+		}else {
+			ShowMessage("Ошибка.\nСлишком большое число. \nНажмите \"OK\" и введите корректное выражение заново.");
+			return 0;
+		}
+	break;
+	case symbol:
+		switch (index(c)) {
+			case 3:
+				if (c=='(') { count_bracket +=1;}
+				if (c==')') {count_bracket -=1;}
+				if (index(next_c) == 4) { state = start; }
+				cl.opz(z);
+				i++;
+				if (count_bracket < 0) {
+					ShowMessage("Ошибка.\nНе правильно расставленны скобки.\nНажмите \"OK\" и введите корректное выражение заново.");
+					return 0;
+				}
+			break;
+			default: state = error;
+			break;
+		}
+	break;
+	case error:
+		state = start;
+		i = s.length();
+		ShowMessage("Ошибка.\nНажмите \"OK\" и введите корректное выражение заново.");
+		return 0;
+	break;
+	}
+}
 
-}
-break;
-case word:
-switch (index(c))
-{
-case 1:
-i++;
-sl = sl + c;
-if (index(next_c) == 4) {
-state = start;
-cl.opz(sl);
-sl = "";
-}
-break;
-default: state = error;
-break;
-}
-break;
-case digit:
-switch (index(c))
-{
-case 2:
-if (data.size()< 14) {
-i++;
-data = data + c;
-if (next_c == '.') {
-state = double_digit;
-flag = true;
-}
-if (index(next_c) == 4) {
-state = start;
-cl.opz(data);
-data = "";
-flag = false;
-count_point = 0;
-}
-} else {
-ShowMessage("\t\t\tОшибка.\n Слишком большое число. \t\tНажмите \"OK\" и введите корректное выражение заново.");
-return 0;
-
-}
-break;
-default: state = error;
-break;
-}
-break;
-case double_digit:
-if(data.size()< 14) {
-i++;
-data = data + c;
-if (index(next_c) == 4) {
-state = start;
-cl.opz(data);
-data = "";
-count_point =
-0;
-flag = true;
-} }else {
-
-ShowMessage("\t\t\tОшибка.\n Слишком большое число. \t\tНажмите \"OK\" и введите корректное выражение заново.");
-return 0;
-}
-break;
-case symbol:
-switch (index(c)) {
-case 3:
-if (c=='(') { count_bracket +=1;}
-if (c==')') {count_bracket -=1;}
-if (index(next_c) == 4) { state = start; }
-cl.opz(z);
-i++;
-if (count_bracket < 0) {
-ShowMessage("\t\t\tОшибка.\n Не правильно расставленны скобки. \t\tНажмите \"OK\" и введите корректное выражение заново.");
-return 0;
-}
-break;
-default: state = error;
-break;
-}
-break;
-case error:
-ShowMessage("\t\t\tОшибка.\n \t\tНажмите \"OK\" и введите корректное выражение заново.");
-return 0;
-state = start;
-i = s.length();
-break;
-}
-}
 if (count_bracket!=0) {
-ShowMessage("\t\t\tОшибка.\n Не правильно расставленны скобки. \t\tНажмите \"OK\" и введите корректное выражение заново.");
-}
+	ShowMessage("Ошибка.\nНе правильно расставленны скобки. \nНажмите \"OK\" и введите корректное выражение заново.");
+    return 0;
+	}
 // проверка стека при создании опз (когда строка разобрана)
 if (!operation_stack.empty()) {
-while (operation_stack.empty()) {
-number_stack.push(operation_stack.top());
-operation_stack.pop();
-}
+	while (operation_stack.empty()) {
+		number_stack.push(operation_stack.top());
+		operation_stack.pop();
+		}
 }
 string print_opz = "";
 //переворачиваем стек
 while (!number_stack.empty()) {
-print_opz = number_stack.top() + ' ' + print_opz;
-num.push(number_stack.top());
-number_stack.pop();
+	print_opz = number_stack.top() + ' ' + print_opz;
+	num.push(number_stack.top());
+	number_stack.pop();
 }
 ofstream f;
 f.open(file_name.c_str(), ios::app);
 f << ' ' + print_opz << endl << " 2.Подсчет выражения : \n";
-
 f.close();
 
 cl.answer(ss, file_name, accuracy);

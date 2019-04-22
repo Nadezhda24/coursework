@@ -47,7 +47,7 @@ bool flag_ans = false;
 ofstream f;
 double answer_parser;
 int  flag_rez = 0;
-
+ int c_b=0;
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
 
@@ -181,15 +181,16 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	}else{
 		if (s.Length() < 1) {s+=" ( ";}
 		else if (s.Length() == 1) {
-			  if (isdigit(s[s.Length()])){
+			  if (isdigit(s[s.Length()])||s[s.Length()-1] ==')' ){
 				ShowMessage( "\t\t\tОшибка ввода.\n Пропущен знак операции.\n\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
 			  }
 			 }
 			else {
-				if (isdigit(s[s.Length()])||s[s.Length()]=='.' ) {
+				if (isdigit(s[s.Length()])||s[s.Length()]=='.'||s[s.Length()-1] ==')' ) {
 								ShowMessage( "\t\t\tОшибка ввода.\n Пропущен знак операции.\n\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
 				}else {s+=" ( ";}
 			}
+			c_b++;
 		}
 		break;
 
@@ -197,7 +198,9 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 	if(f_accuary){
 		ShowMessage(	"\t\t\tОшибка ввода.\n\t Используйте числа только числа для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");
-	}else {s+=" ) ";}
+	}else {s+=" ) ";
+	c_b--;
+	}
 	break;
 
 	case 12:
@@ -451,6 +454,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 			}catch (const Exception &e){
 				ShowMessage("\t\t\tВведите  корректное выражение.\n \t\tНажмите \"OK\", чтобы продолжить.");
 				s="";
+				c_b=0;
 				flag_ans=false;
 			}
 
@@ -469,7 +473,12 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	break;
 	}
 
-
+	 if (c_b < 0) {
+			   ShowMessage("Ошибка.\nНе правильно расставленны скобки. \nНажмите \"OK\" и введите корректное выражение заново.");
+				s="";
+				c_b=0;
+				flag_ans=false;
+	 }
 	TB_field->Text = s;
 	TB_accuracy->Text = t;
 	if (f_accuary){
