@@ -23,21 +23,26 @@
  -----------------
  ***Описание пользовательского интерфейса***
   При запуске программы пользователь видит перед собой главное окно приложения
- ![calculator] (https://github.com/Nadezhda24/coursework/master/cl.jpg)
+
+ ![calculator] (https://github.com/Nadezhda24/coursework/blob/master/cl.jpg)
 
   Размер главного окна не изменяем. Интерфейс привычен для пользователя, так как имеет вид стандартного калькулятора.
   Ввод данных может быть выполнен только по нажатию кнопок расположенных на экране. Обозначение кнопок «(»,  «)», «div», «/», « * », «-», «+»,  «.», «0», «1», «2», «3», «4», «5», «6», «7», «8», «9» при нажатии будут выводиться в соответствующее текстовое поле.
   При нажатии «=» пользователь запускает калькулятор. Если строка ввода выражения оказалась пустой, то выведется соответствующее сообщение:
- ![Message missing expression] (https://github.com/Nadezhda24/coursework/master/vv.jpg)
+
+ ![Message missing expression] (https://github.com/Nadezhda24/coursework/blob/master/vv.jpg)
 
   Так же могут возникнуть ситуации, когда пользователь введет некорректное выражение, которое невозможно подсчитать. В этом случае выведется следующее сообщение и очиститься строка ввода выражения:
-  ![Expression error message] (https://github.com/Nadezhda24/coursework/master/vvv.jpg)
+
+  ![Expression error message] (https://github.com/Nadezhda24/coursework/blob/master/vvv.jpg)
 
   Кнопка «accuracy» позволяет переключить поле ввода выражения, расположенное сверху, в пассивное состояние, тем самым переведя поле ввода точности, расположенное над кнопками, в активное. Выполняется и обратное переключение активности полей. При нажатии этой кнопки поле, в которое пользователь будет вводить выражение, изменяет свой цвет. Данная визуальная подсказка упрощает работу с калькулятором. Если поле ввода точности находится в активном состоянии, то пользователю запрещается вводить какие-либо символы за исключением цифр, находящихся в диапазоне от «1» до «15», в противном случае будет выведено сообщение об ошибке, изображенное на рисунках ниже, в зависимости от ситуации.
-  ![Input accuracy error message] (https://github.com/Nadezhda24/coursework/master/vvvv.jpg)
 
-  ![Accuracy message] (https://github.com/Nadezhda24/coursework/master/vvvvv.jpg)
+  ![Input accuracy error message] (https://github.com/Nadezhda24/coursework/blob/master/vvvv.jpg)
+
+  ![Accuracy message] (https://github.com/Nadezhda24/coursework/blob/master/vvvvv.jpg)
 
   Кнопка «show» позволяет пользователю посмотреть подробный результат вычислений. По нажатию данной кнопки открывается дочернее окно, размер которого можно менять, при необходимости появляется полоса прокрутки для более удобной работы с окном:
-  ![Show] (https://github.com/Nadezhda24/coursework/master/show.jpg)
+
+  ![Show] (https://github.com/Nadezhda24/coursework/blob/master/show.jpg)
  
