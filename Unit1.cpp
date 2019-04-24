@@ -67,12 +67,12 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		if (t.Length()>0) {
 					t+='0';
 		}else{
-			ShowMessage("\t\t\tОшибка ввода.\n\t Вы не можите использовать \'0\' для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");
+			ShowMessage("Ошибка ввода.\nВы не можете использовать \'0\' для задания точности.\nНажмите \"OK\" и продолжите ввод.");
 		}
 		}else{
 			if (s.Length()>1 ) {
 				if ((s[s.Length()-1])==')'  ) {
-					ShowMessage( "\t\t\tОшибка ввода.\n\t\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+					ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
 				}else {s+='0';}
 			}else {s+='0';}
 		}
@@ -84,7 +84,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	else{
 		if (s.Length()>1) {
 			if ((s[s.Length()-1])==')' ) {
-				ShowMessage( "\t\t\tОшибка ввода.\n\t\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
 			}else {s+='1';}
 		} else {s+='1';}
 	}
@@ -96,7 +96,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	else{
 		if (s.Length()>1) {
 			if ((s[s.Length()-1])==')' ) {
-				ShowMessage( "\t\t\tОшибка ввода.\n\t\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
 			}else {s+='2';}
 		} else {s+='2';}
 	}
@@ -107,7 +107,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	else{
 		if (s.Length()>1) {
 			if ((s[s.Length()-1])==')' ) {
-				ShowMessage( "\t\t\tОшибка ввода.\n\t\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
 			}else {s+='3';}
 		} else {s+='3';}
 	}
@@ -119,7 +119,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	else{
 		if (s.Length()>1) {
 			if ((s[s.Length()-1])==')' ) {
-				ShowMessage( "\t\t\tОшибка ввода.\n\t\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
 			} else {s+='4';}
 		} else {s+='4';}
 	}
@@ -131,7 +131,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	else{
 		  if (s.Length()>1) {
 			if (s[s.Length()-1]==')') {
-				ShowMessage( "\t\t\tОшибка ввода.\n\t\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
 			}else {s+='5';}
 		}else {s+='5';}
 	}
@@ -143,7 +143,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	else{
 		if (s.Length()>1) {
 			if ((s[s.Length()-1])==')' ) {
-				ShowMessage( "\t\t\tОшибка ввода.\n\t\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
 			}else {s+='6';}
 		} else {s+='6';}
 	}
@@ -154,7 +154,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	else{
 		if (s.Length()>1) {
 			if ((s[s.Length()-1])==')' ) {
-				ShowMessage( "\t\t\tОшибка ввода.\n\t\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
 			}  else {s+='7';}
 		} else {s+='7';}
 	}
@@ -163,31 +163,31 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	case 8:
 	if (f_accuary) {t+='8';}
 	else{
-			ShowMessage("\t\t\tОшибка ввода.\n\t Ильпользуйте только числа из восьмиричной системы счисления.\t\tИсправьте ошибку, нажмите \"OK\" и продолжите ввод.");
+			ShowMessage("Ошибка ввода.\nИcпользуйте только числа из восьмиричной системы счисления.\nИсправьте ошибку, нажмите \"OK\" и продолжите ввод.");
 	   }
 		break;
 
 	case 9:
 	if (f_accuary) {t+='9';}
 	else{
-		ShowMessage("\t\t\tОшибка ввода.\n\t Ильпользуйте только числа из восьмиричной системы счисления.\t\tИсправьте ошибку, нажмите \"OK\" и продолжите ввод.");
+		ShowMessage("Ошибка ввода.\nИcпользуйте только числа из восьмиричной системы счисления.\nИсправьте ошибку, нажмите \"OK\" и продолжите ввод.");
 		}
 	break;
 
 	case 10:
 
 	if(f_accuary){
-		ShowMessage( "\t\t\tОшибка ввода.\n\t Используйте числа только числа для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");	// адрес текста в окне сообщений
+		ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");	// адрес текста в окне сообщений
 	}else{
 		if (s.Length() < 1) {s+=" ( ";}
 		else if (s.Length() == 1) {
 			  if (isdigit(s[s.Length()])||s[s.Length()-1] ==')' ){
-				ShowMessage( "\t\t\tОшибка ввода.\n Пропущен знак операции.\n\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
 			  }
 			 }
 			else {
 				if (isdigit(s[s.Length()])||s[s.Length()]=='.'||s[s.Length()-1] ==')' ) {
-								ShowMessage( "\t\t\tОшибка ввода.\n Пропущен знак операции.\n\t\tНажмите \"OK\",исправьте ошибку и продолжите ввод.");
+						ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
 				}else {s+=" ( ";}
 			}
 			c_b++;
@@ -197,34 +197,29 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	case 11:
 
 	if(f_accuary){
-		ShowMessage(	"\t\t\tОшибка ввода.\n\t Используйте числа только числа для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");
-	}else {s+=" ) ";
+		ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");
+	}else {
+	s+=" ) ";
 	c_b--;
 	}
 	break;
 
 	case 12:
 	if (f_accuary) {
-			ShowMessage(	"\t\t\tОшибка ввода.\n\t Используйте числа только числа для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");
+			ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");
 	}else{
 		if (s.Length()==0) {
-			ShowMessage(	"\t\t\tОшибка ввода.\n\t Работа с унарными операциями запрещена.\n \t\tНажмите \"OK\" и продолжите ввод.");}
+			ShowMessage( "Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else if (s.Length() > 1){
 			 if (s[s.Length()-1]=='(') {
-					ShowMessage(	"\t\t\tОшибка ввода.\n\t Работа с унарными операциями запрещена.\n \t\tНажмите \"OK\" и продолжите ввод.");}
+					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else{
 			if (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
 				if (s[s.Length()-1]=='v') {
-					s.Delete(s.Length(),1);
-					s.Delete(s.Length(),1);
-					s.Delete(s.Length(),1);
-					s.Delete(s.Length(),1);
-					s.Delete(s.Length(),1);
+					s.Delete(s.Length()-4,5);
 					s+=" div ";}
 				else {
-					s.Delete(s.Length(),1);
-					s.Delete(s.Length(),1);
-					s.Delete(s.Length(),1);
+					s.Delete(s.Length()-2,3);
 					s+=" div ";}
 		   }
 		   else {s+=" div ";}
@@ -238,7 +233,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 	if (f_accuary){t.Delete(t.Length(),1);}
 	else {
-		if (s.Length()== 0){ShowMessage( "\t\t\tСтрока очищена.\n \t\tНажмите \"OK\" и введите выражение.");}
+		if (s.Length()== 0){ShowMessage( "Строка очищена.\nНажмите \"OK\" и введите выражение.");}
 		else {
 		if (s.Length() > 1){
 			if (s.Length() == 2) {
@@ -274,22 +269,19 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	case 14:
 
 	if (f_accuary) {
-	 ShowMessage( "\t\t\tОшибка ввода.\n\t Используйте числа только числа для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");
+		ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");
 	}else {
 		if (s.Length()==0) {
-			ShowMessage(	"\t\t\tОшибка ввода.\n\t Работа с унарными операциями запрещена.\n \t\tНажмите \"OK\" и продолжите ввод.");}
+			ShowMessage( "Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else if (s.Length() > 1) {
 			if (s[s.Length()-1]=='(') {
-					ShowMessage(	"\t\t\tОшибка ввода.\n\t Работа с унарными операциями запрещена.\n \t\tНажмите \"OK\" и продолжите ввод.");}
+					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else  {
 
 		   if (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
 			   if (s[s.Length()-1]!='v') {s[s.Length()-1] = '/'; }
 				else {
-					s.Delete(s.Length(),1);
-					s.Delete(s.Length(),1);
-					s.Delete(s.Length(),1);
-					s.Delete(s.Length(),1);
+					s.Delete(s.Length()-4,5);
 					s+=" / ";
 				}
 		   }
@@ -301,45 +293,40 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	case 15:
 
 	if (f_accuary) {
-			ShowMessage(	"\t\t\tОшибка ввода.\n\t Используйте числа только числа для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");
+			ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");
 	}else {
 		if (s.Length()==0) {
-			ShowMessage(	"\t\t\tОшибка ввода.\n\t Работа с унарными операциями запрещена.\n \t\tНажмите \"OK\" и продолжите ввод.");
+			ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");
 		}
 		 else if (s.Length() > 1) {
 		 if (s[s.Length()-1]=='(') {
-					ShowMessage(	"\t\t\tОшибка ввода.\n\t Работа с унарными операциями запрещена.\n \t\tНажмите \"OK\" и продолжите ввод.");}
+					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else{
 
 	if (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
 			  if (s[s.Length()-1]!='v') {	  s[s.Length()-1] = '*'; }
-				else {	s.Delete(s.Length(),1);
-				 s.Delete(s.Length(),1);
-				s.Delete(s.Length(),1);
-				s.Delete(s.Length(),1);
+				else {
+				s.Delete(s.Length()-4,5);
 				s+=" * ";   }
 		   }else {s+=" * "; } }
-		   }else {
-		s+=" * ";} }
+		   }else {s+=" * ";}
+	}
 		break;
 	 case 16:
 	if(f_accuary){
-		ShowMessage(	"\t\t\tОшибка ввода.\n\t Используйте числа только числа для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");
+			ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");
 	}else{
 		if (s.Length()==0) {
-			ShowMessage(	"\t\t\tОшибка ввода.\n\t Работа с унарными операциями запрещена.\n \t\tНажмите \"OK\" и продолжите ввод.");
+			ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");
 		}
 		 else if (s.Length() > 1 ) {
 		  if (s[s.Length()-1]=='(') {
-					ShowMessage(	"\t\t\tОшибка ввода.\n\t Работа с унарными операциями запрещена.\n \t\tНажмите \"OK\" и продолжите ввод.");}
+					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else{
 			if (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
 				if (s[s.Length()-1]!='v') {s[s.Length()-1] = '-'; }
 				else {
-					s.Delete(s.Length(),1);
-					s.Delete(s.Length(),1);
-					s.Delete(s.Length(),1);
-					s.Delete(s.Length(),1);
+					s.Delete(s.Length()-4,5);
 					s+=" - ";}
 			}
 		   else {s+=" - ";}}
@@ -350,21 +337,18 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	case 17:
 
 		 if(f_accuary){
-			ShowMessage(	"\t\t\tОшибка ввода.\n\t Используйте числа только числа для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");
+				ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");
 		 }else {
 			if (s.Length()== 0) {
-				ShowMessage(	"\t\t\tОшибка ввода.\n\t Работа с унарными операциями запрещена.\n \t\tНажмите \"OK\" и продолжите ввод.");}
+				ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 			else if (s.Length() > 1) {
 			 if (s[s.Length()-1]=='(') {
-					ShowMessage(	"\t\t\tОшибка ввода.\n\t Работа с унарными операциями запрещена.\n \t\tНажмите \"OK\" и продолжите ввод.");}
+					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else{
 				if (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
 					if (s[s.Length()-1]!='v') { s[s.Length()-1] = '+'; }
 						else {
-							s.Delete(s.Length(),1);
-							s.Delete(s.Length(),1);
-							s.Delete(s.Length(),1);
-							s.Delete(s.Length(),1);
+							s.Delete(s.Length()-4,5);
 							s+=" + ";}
 				}else {s+=" + ";} }
 		   }else {s+=" + ";}
@@ -374,39 +358,26 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	case 19:
 
 	if (f_accuary) {
-		ShowMessage(	"\t\t\tОшибка ввода.\n\t Используйте числа только числа для задания точности.\n \t\tНажмите \"OK\" и продолжите ввод.");}
+			ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод."); }
 	else{
 		if (s.Length()==0) {
-			ShowMessage(	"\t\t\tОшибка ввода.\n\Нажмите \"OK\" и продолжите ввод.");}
+			ShowMessage("Ошибка ввода.\nНажмите \"OK\" и продолжите ввод.");}
 		else {
 			if (!isdigit(s[s.Length()])) {
-				ShowMessage(	"\t\t\tОшибка ввода.\n\Нажмите \"OK\" и продолжите ввод.");}
+				ShowMessage("Ошибка ввода.\nНажмите \"OK\" и продолжите ввод.");}
 			else {s+='.';}
 		}
 	}
 	break;
 
-	case 20:
-	if (f_accuary){f_accuary = false;}
-	else{f_accuary = true;}
-
-	if (f_accuary){
-		TB_accuracy->Color= clGradientInactiveCaption;
-		TB_field->Color=clBtnHighlight; }
-	else {
-		TB_field->Color= clGradientInactiveCaption;
-		TB_accuracy->Color=clBtnHighlight;}
-	break;
-
 	case 18:
-	   flag_rez ++;
-	   if(flag_rez == 1){
+
 	  if( TB_field->Text==""){
-		 ShowMessage(	"\t\t\tВведите выражение.\n \t\tНажмите \"OK\", чтобы продолжить.");}
+		 ShowMessage("Введите выражение.\nНажмите \"OK\", чтобы продолжить.");}
 	  else{
 		flag_ans = true;
 		if (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v'){
-		ShowMessage(	"\t\t\tОшибка ввода.\n\t Работа с унарными операциями запрещена.\n \t\tИсправьте ошибку, нажмите \"OK\" и продолжите ввод.");
+		ShowMessage( "Ошибка ввода.\nРабота с унарными операциями запрещена.\nИсправьте ошибку, нажмите \"OK\" и продолжите ввод.");
 
 		}else {
 		s+=' ';
@@ -425,7 +396,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		if (TB_accuracy->Text =="") {t='1';}
 		int toch = StrToInt(t);
 		if (toch > 15) {
-		   ShowMessage(	"\t\t\tCлишком большая точность числа.\n Максимальная точность 15.\t\tНажмите \"OK\", чтобы продолжить.");
+		   ShowMessage(	"Cлишком большая точность числа.\nМаксимальная точность 15.\nНажмите \"OK\", чтобы продолжить.");
 		   t = "15";
 	   }
 		AnsiString ans_s = s;
@@ -462,14 +433,11 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 			}
 
-			while (!operation_stack.empty()) {operation_stack.pop();}
-			while (!number_stack.empty()) {number_stack.pop();}
-			while (!num.empty()) {num.pop();}
+
 	  }
 
 	}
-	flag_rez = 0;
-	  }
+
 	break;
 	}
 
@@ -517,8 +485,6 @@ void __fastcall TForm1::Button21Click(TObject *Sender)
 {
 
 
-	 Button21->Brush->Color=clWhite;
-
 
 		if (f_accuary){f_accuary = false;}
 		else{f_accuary = true;}
@@ -543,7 +509,7 @@ void __fastcall TForm1::TB_fieldKeyPress(TObject *Sender, System::WideChar &Key)
 
 	if (kbhit) {
 				TB_field->ReadOnly = true;
-			   ShowMessage("\t\t\tВвод с клавиатуры запрещен.\n \t\tНажмите \"OK\", чтобы продолжить.");
+			   ShowMessage("Ввод с клавиатуры запрещен.\nНажмите \"OK\", чтобы продолжить.");
 
 			}
 

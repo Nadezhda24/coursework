@@ -16,7 +16,7 @@ using namespace std;
 int t = 20;
 int t2 = 25;
 //перевод из 10-ой в 8-ую систему счисления
-double translation_file(double  digit, int ss, string file_name, int accuracy) {
+double translation_file(double  digit, int number_system, string file_name, int accuracy) {
 	if (digit != 0) {
 
 
@@ -45,12 +45,12 @@ double translation_file(double  digit, int ss, string file_name, int accuracy) {
 		while (whole_part > 0) {
 			f.open(file_name.c_str(), ios::app);
 			str++;
-			n = whole_part % ss;
-			f<< setw(t2)<<whole_part << " % " << ss << " = " << n << endl;
+			n = whole_part % number_system;
+			f<< setw(t2)<<whole_part << " % " << number_system << " = " << n << endl;
 			answer = answer * 10 + n;
 
-			f << setw(t2-1)<< "( " << whole_part << " - " << n << " ) " << " / " << ss;
-			whole_part = (whole_part - n) / ss;
+			f << setw(t2-1)<< "( " << whole_part << " - " << n << " ) " << " / " << number_system;
+			whole_part = (whole_part - n) / number_system;
 			f << " = " << whole_part << endl;
 			f.close();
 		}
@@ -75,12 +75,12 @@ double translation_file(double  digit, int ss, string file_name, int accuracy) {
 		while (fraction*accuracy != 0) {
 			ofstream f;
 			f.open(file_name.c_str(), ios::app);
-			f <<setw(t2)<< "* " << ss << endl;
+			f <<setw(t2)<< "* " << number_system << endl;
 			f<<setw(t2+5) << "--------" << endl;
-			f <<setw(t2)<< " " << fraction * ss << endl;
+			f <<setw(t2)<< " " << fraction * number_system << endl;
 			count_accuracy++;
-			answer = answer * 10 + (int)(fraction*ss);
-			fraction = (fraction*ss) - (int)(fraction*ss);
+			answer = answer * 10 + (int)(fraction*number_system);
+			fraction = (fraction*number_system) - (int)(fraction*number_system);
 			f.close();
 		}
 
@@ -98,7 +98,7 @@ double translation_file(double  digit, int ss, string file_name, int accuracy) {
 }
 
 // перевод из 8-ой в 10-ую
-double translation_10(double digit, int ss, int accuracy, string file_name) {
+double translation_10(double digit, int number_system, int accuracy, string file_name) {
  int j =  accuracy ;
  if(digit != 0) {
 
@@ -135,10 +135,10 @@ fraction_1=fraction_1/10;
 	{
 
 		int d = whole_part % 10;
-	   if (d > (ss-1) )  { f << "ERROR" << endl; return 0; }
-	   else {rez_whole_part = rez_whole_part + d * pow(ss, str); }
+	   if (d > (number_system-1) )  { f << "ERROR" << endl; return 0; }
+	   else {rez_whole_part = rez_whole_part + d * pow(number_system, str); }
 
-		f << d << " * " << ss << '^' << str;
+		f << d << " * " << number_system << '^' << str;
 		str++;
 		whole_part = whole_part / 10;
 		if (whole_part > 0) f << " + ";
@@ -150,11 +150,11 @@ fraction_1=fraction_1/10;
 	  f << " + ";
 		int d = fraction % 10;
 
-		if (d > (ss - 1)) { f << "" ; }
+		if (d > (number_system - 1)) { f << "" ; }
 	   else {	if (d == 0) { fraction = fraction / 10; }
 		else {
-			rez_fraction = rez_fraction + d / (pow(ss, str));
-			f << d << " * " << ss << '^' << "(-" << str << ')';
+			rez_fraction = rez_fraction + d / (pow(number_system, str));
+			f << d << " * " << number_system << '^' << "(-" << str << ')';
 			str++;
 			fraction = fraction / 10;
 

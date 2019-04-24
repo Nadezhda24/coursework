@@ -21,7 +21,7 @@ stack <string> number_stack;
 stack <string> operation_stack;
 stack <string> num;
 
-int const ss = 8; // система сисления
+int const number_system = 8; // система сисления
 string file_name = "detailed_answer_kr.txt";
 int count_point = 0; // счетчик точек
 bool toch_flag = false; // флаг для ораничения колиества точек в диапозоне одного числа
@@ -41,7 +41,7 @@ public:
 	void Multiplication(double  FirstElement, double SecondElement) { element =  FirstElement * SecondElement; } //умножение
 	void Division(double  FirstElement, double SecondElement) { element =  FirstElement / SecondElement; } // деление с остатком
 	void DivisionWithoutRemainder(double  FirstElement, double SecondElement) { element = (int) FirstElement / (int)SecondElement; } // деление без остатка
-	double Get_element() {return element;}
+	double GetElement() {return element;}
 };
 
 class calculator {
@@ -75,7 +75,7 @@ void opz(string operation) {
 }
 
 //вычисление выражения, записанного в ОПЗ
-void answer(int ss, string file_name, int accuracy) {
+void answer(int number_system, string file_name, int accuracy) {
 counter obj;
 string s;
 double n1, n2;
@@ -93,7 +93,7 @@ while (!num.empty()) {
 		}
 		AnsiString SecondDigitDoubel = SecondDigit.c_str();
 		double SecondDigitStringToDouble = string_to_double(SecondDigitDoubel.c_str());
-		n2 = translation_10(SecondDigitStringToDouble, ss, accuracy, file_name);
+		n2 = translation_10(SecondDigitStringToDouble, number_system, accuracy, file_name);
 		operation_stack.pop();
 
 
@@ -103,7 +103,7 @@ while (!num.empty()) {
 		}
 		AnsiString FirstDigitDoubel = FirstDigit.c_str();
 		double FirstDigitStringToDouble = string_to_double(FirstDigitDoubel.c_str());
-		n1 = translation_10(FirstDigitStringToDouble,ss, accuracy, file_name);
+		n1 = translation_10(FirstDigitStringToDouble,number_system, accuracy, file_name);
 		operation_stack.pop();
 
 		AnsiString CalculationResult;
@@ -111,19 +111,19 @@ while (!num.empty()) {
 			case 2:
 				if (num.top() == "+") {
 					obj.Addition(n1, n2);
-					CalculationResult = FloatToStr(translation_file(obj.Get_element(), ss, file_name, accuracy)) ;
+					CalculationResult = FloatToStr(translation_file(obj.GetElement(), number_system, file_name, accuracy)) ;
 					ofstream f;
 					f.open(file_name.c_str(), ios::app);
-					f << '\t' << CountAction << ") " << translation_file(n1, ss, file_name, accuracy) << " + " << translation_file(n2, ss, file_name, accuracy)  << " = " << CalculationResult.c_str() << endl;
+					f << '\t' << CountAction << ") " << translation_file(n1, number_system, file_name, accuracy) << " + " << translation_file(n2, number_system, file_name, accuracy)  << " = " << CalculationResult.c_str() << endl;
 					f.close();
 					CountAction++;
 				}
 				else {
 					obj.Subtraction(n1, n2);
-					CalculationResult = FloatToStr(translation_file(obj.Get_element(), ss,file_name ,accuracy));
+					CalculationResult = FloatToStr(translation_file(obj.GetElement(), number_system,file_name ,accuracy));
 					ofstream f;
 					f.open(file_name.c_str(), ios::app);
-					f << '\t' << CountAction << ") " << translation_file(n1, ss, file_name, accuracy) << " - " << translation_file(n2, ss, file_name, accuracy) << " = " << CalculationResult.c_str() << endl;
+					f << '\t' << CountAction << ") " << translation_file(n1, number_system, file_name, accuracy) << " - " << translation_file(n2, number_system, file_name, accuracy) << " = " << CalculationResult.c_str() << endl;
 					f.close();
 					CountAction++;
 				}
@@ -131,37 +131,37 @@ while (!num.empty()) {
 			case 3:
 				if (num.top() == "*") {
 					obj.Multiplication(n1, n2);
-					CalculationResult = FloatToStr(translation_file(obj.Get_element(), ss, file_name,accuracy));
+					CalculationResult = FloatToStr(translation_file(obj.GetElement(), number_system, file_name,accuracy));
 					ofstream f;
 					f.open(file_name.c_str(), ios::app);
-					f << '\t' << CountAction << ") " << translation_file(n1, ss, file_name, accuracy) << " * " << translation_file(n2, ss, file_name, accuracy) << " = " << CalculationResult.c_str() << endl;
+					f << '\t' << CountAction << ") " << translation_file(n1, number_system, file_name, accuracy) << " * " << translation_file(n2, number_system, file_name, accuracy) << " = " << CalculationResult.c_str() << endl;
 					f.close();
 					CountAction++;
 				}
 				else if (num.top() == "/") {
 					if (n2 == 0) {
-					ShowMessage( "\t\t\tОшибка.\n\t\t\tДеление на 0.\n \t\tНажмите \"OK\" и введите корректное выражение заново.");
+					ShowMessage( "Ошибка.\nДеление на 0.\nНажмите \"OK\" и введите корректное выражение заново.");
 					}
 				else {
 				obj.Division(n1, n2);
-				CalculationResult = FloatToStr(translation_file(obj.Get_element(), ss, file_name,accuracy));
+				CalculationResult = FloatToStr(translation_file(obj.GetElement(), number_system, file_name,accuracy));
 				ofstream f;
 				f.open(file_name.c_str(), ios::app);
-				f << '\t' << CountAction << ") " << translation_file(n1, ss, file_name, accuracy) << " / " << translation_file(n2, ss, file_name, accuracy) << " = " << CalculationResult.c_str() << endl;
+				f << '\t' << CountAction << ") " << translation_file(n1, number_system, file_name, accuracy) << " / " << translation_file(n2, number_system, file_name, accuracy) << " = " << CalculationResult.c_str() << endl;
 				f.close();
 				CountAction++;
 				}
 			}
 				else if (num.top() == "div") {
 					if (n2 == 0) {
-					ShowMessage( "\t\t\tОшибка.\n\t\t\tДеление на 0.\n \t\tНажмите \"OK\" и введите корректное выражение заново.");
+					ShowMessage( "Ошибка.\nДеление на 0.\nНажмите \"OK\" и введите корректное выражение заново.");
 				}
 				else {
 				obj.DivisionWithoutRemainder(n1, n2);
-				CalculationResult =FloatToStr(translation_file(obj.Get_element(), ss, file_name,accuracy));
+				CalculationResult =FloatToStr(translation_file(obj.GetElement(), number_system, file_name,accuracy));
 				ofstream f;
 				f.open(file_name.c_str(), ios::app);
-				f << '\t' << CountAction<< ") " << translation_file(n1, ss, file_name, accuracy) << " div " << translation_file(n2, ss, file_name, accuracy) << " = " << CalculationResult.c_str()<< endl;
+				f << '\t' << CountAction<< ") " << translation_file(n1, number_system, file_name, accuracy) << " div " << translation_file(n2, number_system, file_name, accuracy) << " = " << CalculationResult.c_str()<< endl;
 				f.close();
 				CountAction++;}
 			}
@@ -175,7 +175,7 @@ while (!num.empty()) {
 
 };
 
-string parser(string s, int ss, string file_name, int accuracy) {
+string parser(string s, int number_system, string file_name, int accuracy) {
 string sl = "", data = ""; // sl для формаривания слова , data для формирования числа
 int count_bracket = 0;
 state state = start;
@@ -314,7 +314,7 @@ f.open(file_name.c_str(), ios::app);
 f << ' ' + print_opz << endl << " 2.Подсчет выражения : \n";
 f.close();
 
-cl.answer(ss, file_name, accuracy);
+cl.answer(number_system, file_name, accuracy);
 
 string ans = operation_stack.top();
 return ans;
