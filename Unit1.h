@@ -11,7 +11,7 @@
 class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
-	TEdit *TB_field;
+	TEdit *TB_field_hex;
 	TButton *Button1;
 	TButton *BT_showResult;
 	TButton *Button3;
@@ -37,10 +37,35 @@ __published:	// IDE-managed Components
 	TEdit *TB_accuracy;
 	TLabel *Label2;
 	TButton *Button21;
+	TEdit *TB_field_dec;
+	TEdit *TB_field_oct;
+	TEdit *TB_field_bin;
+	TButton *Button22;
+	TButton *Button23;
+	TButton *Button24;
+	TButton *Button25;
+	TButton *Button26;
+	TButton *Button27;
+	TButton *Button28;
+	TButton *Button29;
+	TButton *Button30;
+	TButton *Button31;
+	TButton *Button32;
+	TButton *Button33;
+	TButton *Button34;
+	TButton *Button35;
+	TButton *Button36;
+	TButton *Button37;
+	TButton *Button38;
+	TButton *Button39;
+	TButton *Button40;
+	TButton *Button41;
+	TEdit *TB_field;
+	TLabel *Label3;
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall BT_showResultClick(TObject *Sender);
 	void __fastcall Button21Click(TObject *Sender);
-	void __fastcall TB_fieldKeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall TB_field_hexKeyPress(TObject *Sender, System::WideChar &Key);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

@@ -1,7 +1,4 @@
-﻿[TB_field]
-Coordinates=86,78,62,58
-
-[Button1]
+﻿[Button1]
 Coordinates=227,78,59,58
 
 [BT_showResult]
@@ -58,4 +55,7 @@ Coordinates=368,146,66,58
 
 []
 Coordinates=296,78,66,58
+
+[TB_field_hex]
+Coordinates=86,78,62,58
 

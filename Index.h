@@ -13,8 +13,8 @@ using namespace std;
 int k, k_op;
 //коэффициент для выбора состояния
 int index(char c) {
-	if (((c >= 'a') && (c <= 'z')) || ((c >= 'A') && (c <= 'Z'))) { k = 1; }
-	else if (((c >= '0') && (c <= '9'))) { k = 2; }
+	if (((c >= 'a') && (c <= 'z')) || ((c >= 'G') && (c <= 'Z'))) { k = 1; }
+	else if(((c >= '0') && (c <= '9')) ||((c >= 'A')&&(c<='F'))) { k = 2; }
 	else if ((c == '%') || (c == '+') || (c == '-') || (c == '*') || (c == '/') || (c == '(') || (c == ')')) { k = 3; }
 	else if (c == ' ') { k = 4; }
 	return k;
@@ -27,7 +27,7 @@ int indexk_op(string z) {
 	else if ((z == "+") || (z == "-")) { k_op = 2; }
 	else if (z == "(") { k_op = 1; }
 	else if (z == ")") { k_op = 0; }
-	else if (isdigit(z[0]) || z[0] == ' ') { k_op = 4; }
+	else if (index(z[0])==2 || z[0] == ' ') { k_op = 4; }
 	return k_op;
 }
 

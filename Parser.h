@@ -14,14 +14,14 @@ return 0;
 return x;
 }
 
-enum state { start, digit, double_digit, word, symbol, error };
+enum state { start, digit, double_digit, word, symbol,error };
 
 string z;
 stack <string> number_stack;
 stack <string> operation_stack;
 stack <string> num;
 
-int const number_system = 8; // система сисления
+//int const number_system = 8; // система сисления
 string file_name = "detailed_answer_kr.txt";
 int count_point = 0; // счетчик точек
 bool toch_flag = false; // флаг для ораничения колиества точек в диапозоне одного числа
@@ -93,7 +93,11 @@ while (!num.empty()) {
 		}
 		AnsiString SecondDigitDoubel = SecondDigit.c_str();
 		double SecondDigitStringToDouble = string_to_double(SecondDigitDoubel.c_str());
-		n2 = translation_10(SecondDigitStringToDouble, number_system, accuracy, file_name);
+		if (number_system==16) {
+		n2=  translation_16(SecondDigit,number_system, accuracy, file_name);
+		}else{
+		n2 = translation_10(SecondDigitStringToDouble,number_system, accuracy, file_name);
+		}
 		operation_stack.pop();
 
 
@@ -103,7 +107,11 @@ while (!num.empty()) {
 		}
 		AnsiString FirstDigitDoubel = FirstDigit.c_str();
 		double FirstDigitStringToDouble = string_to_double(FirstDigitDoubel.c_str());
+		if (number_system==16) {
+		n1=  translation_16(FirstDigit,number_system, accuracy, file_name);
+		}else{
 		n1 = translation_10(FirstDigitStringToDouble,number_system, accuracy, file_name);
+		}
 		operation_stack.pop();
 
 		AnsiString CalculationResult;

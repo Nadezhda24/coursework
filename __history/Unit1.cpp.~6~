@@ -1,0 +1,882 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+
+#pragma hdrstop
+
+#include "Unit1.h"
+#include "Unit2.h"
+ #include <iostream>
+#include <cstdlib>
+#include <stack>
+#include <fstream>
+#include <string>
+#include <math.h>
+#include <iomanip>
+#include <exception>
+#include <stdexcept>
+ #include <stdlib.h>
+ #include <sstream>
+#include "parser.h"
+#include <conio.h>
+#include <windows.h>
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+
+using namespace std;
+
+
+
+
+
+
+TForm1 *Form1;
+
+
+
+
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+bool f_accuary= false;
+bool flag_ans = false;
+ofstream f;
+double answer_parser;
+int  flag_rez = 0;
+ int c_b=0;
+ bool f_hex= false, f_dec = true, f_oct = false, f_bin = false;
+int  number_system =10 ;
+
+void __fastcall TForm1::Button1Click(TObject *Sender)
+{
+
+				String s ="",t ="", d ="";
+
+
+	t = TB_accuracy->Text;
+
+	TButton *button = dynamic_cast<TButton *>(Sender);
+
+	s = TB_field->Text;
+
+
+	switch (button->Tag) {
+	case 0:
+
+		if (f_accuary){
+		if (t.Length()>0) {
+					t+='0';
+		}else{
+			ShowMessage("Ошибка ввода.\nВы не можете использовать \'0\' для задания точности.\nНажмите \"OK\" и продолжите ввод.");
+		}
+		}else{
+			if (s.Length()>1 ) {
+				if ((s[s.Length()-1])==')'  ) {
+					ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+				}else {s+='0';d+='0';}
+			}else {s+='0';d+='0';}
+		}
+	break;
+
+	case 1:
+
+	if(f_accuary){t+='1';}
+	else{
+		if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' ) {
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}else {s+='1';d+='1';}
+		} else {s+='1';d+='1';}
+	}
+	break;
+
+	case 2:
+
+	if(f_accuary){t+='2';}
+	else{
+		if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' ) {
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}else {s+='2';d+='2';}
+		} else {s+='2';d+='2';}
+	}
+	break;
+
+	case 3:
+	if(f_accuary){t+='3';}
+	else{
+		if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' ) {
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}else {s+='3';d+='3';}
+		} else {s+='3';d+='3';}
+	}
+	break;
+
+	case 4:
+
+	if (f_accuary) { t+= '4';}
+	else{
+		if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' ) {
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			} else {s+='4';d+='4';}
+		} else {s+='4';d+='4';}
+	}
+		break;
+
+	case 5:
+
+	if (f_accuary) { t+='5';}
+	else{
+		  if (s.Length()>1) {
+			if (s[s.Length()-1]==')') {
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}else {s+='5';d+='5';}
+		}else {s+='5';d+='5';}
+	}
+		break;
+
+	case 6:
+
+	if(f_accuary){t+='6';}
+	else{
+		if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' ) {
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}else {s+='6';d+='6';}
+		} else {s+='6';d+='6';}
+	}
+		break;
+
+	case 7:
+	if (f_accuary) { t+='7';}
+	else{
+		if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' ) {
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}  else {s+='7';d+='7';}
+		} else {s+='7';d+='7';}
+	}
+	break;
+
+	case 8:
+	if (f_accuary) { t+='8';}
+	else{
+		if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' ) {
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}  else {s+='8';d+='8';}
+		} else {s+='8';d+='8';}
+	}
+	 break;
+	case 9:
+	if (f_accuary) { t+='9';}
+	else{
+		if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' ) {
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}  else {s+='9';d+='8';}
+		} else {s+='9';d+='8';}
+	}
+	break;
+
+	case 10:
+
+	if(f_accuary){
+		ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");	// адрес текста в окне сообщений
+	}else{
+		if (s.Length() < 1) {s+=" ( ";}
+		else if (s.Length() == 1) {
+			  if (isdigit(s[s.Length()])||s[s.Length()-1] ==')' ){
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			  }
+			 }
+			else {
+				if (isdigit(s[s.Length()])||s[s.Length()]=='.'||s[s.Length()-1] ==')' ) {
+						ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+				}else {s+=" ( ";}
+			}
+			c_b++;
+		}
+		break;
+
+	case 11:
+
+	if(f_accuary){
+		ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");
+	}else {
+	s+=" ) ";
+	c_b--;
+	}
+	break;
+
+	case 12:
+	if (f_accuary) {
+			ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");
+	}else{
+		if (s.Length()==0) {
+			ShowMessage( "Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
+		else if (s.Length() > 1){
+			 if (s[s.Length()-1]=='(') {
+					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
+		else{
+			if (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+				if (s[s.Length()-1]=='v') {
+					s.Delete(s.Length()-4,5);
+					s+=" div ";}
+				else {
+					s.Delete(s.Length()-2,3);
+					s+=" div ";}
+		   }
+		   else {s+=" div ";}
+		   }
+		}
+		else {s+=" div ";}
+	}
+	break;
+
+	case 13:
+
+	if (f_accuary){t.Delete(t.Length(),1);}
+	else {
+		if (s.Length()== 0){ShowMessage( "Строка очищена.\nНажмите \"OK\" и введите выражение.");}
+		else {
+		if (s.Length() > 1){
+			if (s.Length() == 2) {
+				s.Delete(s.Length(),1);}
+
+			 else if (s[s.Length()-1] == '(' || s[s.Length()-1] == ')' ) {
+				s.Delete(s.Length()-2,3);
+			   }
+			 else if  (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v'){
+					if (s[s.Length()-1] == 'v'){ s.Delete(s.Length()-4,5);}
+					else {s.Delete(s.Length()-2,3);}
+			}
+
+			else {s.Delete(s.Length(),1);}
+				 }
+
+		  else if (s.Length() == 1 || s[s.Length()] == '-' ) {
+		   s.Delete(s.Length(),1);
+		  }
+
+
+			else {
+				if  (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v'){
+					if (s[s.Length()-1] == 'v'){ s.Delete(s.Length()-4,5);}
+					else {s.Delete(s.Length()-2,3);}
+			}
+		else {s.Delete(s.Length(),1);}
+		}
+	}
+	}
+	break;
+
+	case 14:
+
+	if (f_accuary) {
+		ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");
+	}else {
+		if (s.Length()==0) {
+			ShowMessage( "Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
+		else if (s.Length() > 1) {
+			if (s[s.Length()-1]=='(') {
+					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
+		else  {
+
+		   if (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+			   if (s[s.Length()-1]!='v') {s[s.Length()-1] = '/'; }
+				else {
+					s.Delete(s.Length()-4,5);
+					s+=" / ";
+				}
+		   }
+		   else {s+=" / ";} }
+		}else {s+=" / ";}
+	}
+	break;
+
+	case 15:
+
+	if (f_accuary) {
+			ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");
+	}else {
+		if (s.Length()==0) {
+			ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");
+		}
+		 else if (s.Length() > 1) {
+		 if (s[s.Length()-1]=='(') {
+					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
+		else{
+
+	if (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+			  if (s[s.Length()-1]!='v') {	  s[s.Length()-1] = '*'; }
+				else {
+				s.Delete(s.Length()-4,5);
+				s+=" * ";   }
+		   }else {s+=" * "; } }
+		   }else {s+=" * ";}
+	}
+		break;
+	 case 16:
+	if(f_accuary){
+			ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");
+	}else{
+		if (s.Length()==0) {
+			ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");
+		}
+		 else if (s.Length() > 1 ) {
+		  if (s[s.Length()-1]=='(') {
+					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
+		else{
+			if (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+				if (s[s.Length()-1]!='v') {s[s.Length()-1] = '-'; }
+				else {
+					s.Delete(s.Length()-4,5);
+					s+=" - ";}
+			}
+		   else {s+=" - ";}}
+		 } else {s+=" - ";}
+	}
+	break;
+
+	case 17:
+
+		 if(f_accuary){
+				ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");
+		 }else {
+			if (s.Length()== 0) {
+				ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
+			else if (s.Length() > 1) {
+			 if (s[s.Length()-1]=='(') {
+					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
+		else{
+				if (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+					if (s[s.Length()-1]!='v') { s[s.Length()-1] = '+'; }
+						else {
+							s.Delete(s.Length()-4,5);
+							s+=" + ";}
+				}else {s+=" + ";} }
+		   }else {s+=" + ";}
+		}
+	break;
+
+	case 19:
+
+	if (f_accuary) {
+			ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод."); }
+	else{
+		if (s.Length()==0) {
+			ShowMessage("Ошибка ввода.\nНажмите \"OK\" и продолжите ввод.");}
+		else {
+			if (!isdigit(s[s.Length()])) {
+				ShowMessage("Ошибка ввода.\nНажмите \"OK\" и продолжите ввод.");}
+			else {s+='.';}
+		}
+	}
+	break;
+
+	case 18:
+
+	  if( TB_field->Text==""){
+		 ShowMessage("Введите выражение.\nНажмите \"OK\", чтобы продолжить.");}
+	  else{
+		flag_ans = true;
+		if (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v'){
+		ShowMessage( "Ошибка ввода.\nРабота с унарными операциями запрещена.\nИсправьте ошибку, нажмите \"OK\" и продолжите ввод.");
+
+		}else {
+		s+=' ';
+		f.open(file_name.c_str());
+
+		if (f.is_open()) {
+			f << " Введенное выражение: ";
+			AnsiString r= s;
+			f << r.c_str() <<  endl;
+			f << "\n 1.Преобразование выражения из инфиксной записи в постфиксную\n для определения последовательности действий : ";
+		}
+
+		f << endl;
+		f.close();
+
+		if (TB_accuracy->Text =="") {t='1';}
+		int toch = StrToInt(t);
+		if (toch > 15) {
+		   ShowMessage(	"Cлишком большая точность числа.\nМаксимальная точность 15.\nНажмите \"OK\", чтобы продолжить.");
+		   t = "15";
+	   }
+		AnsiString ans_s = s;
+		TB_accuracy->Text = t;
+		int y=0;
+
+			 try {
+				std::stringstream ss;
+				std::string s =  parser(ans_s.c_str(), 8, file_name.c_str(), StrToInt(t));
+				for (int i=0;i < s.length(); i++){
+					if (s[i]==','){
+						s[i]='.';
+						y=i;
+					}
+				}
+
+				int i;
+				if (y!=0) {
+					i=y+1 + StrToInt(t);
+					while (i < s.length()){s.erase(i,1);}
+				}
+
+				ss << s;
+				ss >> answer_parser;
+
+			}catch (const Exception &e){
+				ShowMessage("\t\t\tВведите  корректное выражение.\n \t\tНажмите \"OK\", чтобы продолжить.");
+				s="";
+				c_b=0;
+				flag_ans=false;
+			}
+
+			if (flag_ans) {	s =  FloatToStr(answer_parser) ;
+
+			}
+
+
+	  }
+
+	}
+
+	break;
+	case 23:
+	 s += " sin ";
+
+	break;
+	case 24:
+	  s += " cos ";
+	break;
+	case 25:
+	 s += " tg ";
+	break;
+	case 26:
+	 s += " ctg ";
+	break;
+	case 27:
+	 s += " arcsin ";
+	break;
+	case 28:
+	 s += " arccos ";
+	break;
+	case 29:
+	 s += " arctg ";
+	break;
+	case 30:
+	 s += " arcctg ";
+	break;
+	case 32:
+	f_hex = true;
+	f_dec = false;
+	f_oct = false;
+	f_bin = false;
+	TB_field_hex->Color=clGradientInactiveCaption;
+	TB_field_dec->Color=clBtnHighlight;
+	TB_field_oct->Color=clBtnHighlight;
+	TB_field_bin->Color=clBtnHighlight;
+	Button36->Enabled = true;
+	Button37->Enabled = true;
+	Button38->Enabled = true;
+	Button39->Enabled = true;
+	Button40->Enabled = true;
+	Button41->Enabled = true;
+
+	Button2->Enabled = true;
+	Button14->Enabled = true;
+
+	Button6->Enabled = true;
+	Button7->Enabled = true;
+	Button9->Enabled = true;
+	Button13->Enabled = true;
+	Button11->Enabled = true;
+	Button10->Enabled = true;
+	number_system = 16;
+	Label3->Caption = "HEX : ";
+	break;
+	case 33:
+	f_hex = false;
+	f_dec = true;
+	f_oct = false;
+	f_bin = false;
+	TB_field_hex->Color=clBtnHighlight;
+	TB_field_dec->Color=clGradientInactiveCaption;
+	TB_field_oct->Color=clBtnHighlight;
+	TB_field_bin->Color=clBtnHighlight;
+	Button36->Enabled = false;
+	Button37->Enabled = false;
+	Button38->Enabled = false;
+	Button39->Enabled = false;
+	Button40->Enabled = false;
+	Button41->Enabled = false;
+
+	Button2->Enabled = true;
+	Button14->Enabled = true;
+
+	Button6->Enabled = true;
+	Button7->Enabled = true;
+	Button9->Enabled = true;
+	Button13->Enabled = true;
+	Button11->Enabled = true;
+	Button10->Enabled = true;
+		number_system = 10;
+		Label3->Caption = "DEC : ";
+	break;
+	case 34:
+	f_hex = false;
+	f_dec = false;
+	f_oct = true;
+	f_bin = false;
+	TB_field_hex->Color=clBtnHighlight;
+	TB_field_dec->Color=clBtnHighlight;
+	TB_field_oct->Color=clGradientInactiveCaption;
+	TB_field_bin->Color=clBtnHighlight;
+	Button36->Enabled = false;
+	Button37->Enabled = false;
+	Button38->Enabled = false;
+	Button39->Enabled = false;
+	Button40->Enabled = false;
+	Button41->Enabled = false;
+	Button2->Enabled = false;
+	Button14->Enabled = false;
+
+	Button6->Enabled = true;
+	Button7->Enabled = true;
+	Button9->Enabled = true;
+	Button13->Enabled = true;
+	Button11->Enabled = true;
+	Button10->Enabled = true;
+		number_system = 8;
+		Label3->Caption = "OCT : ";
+	break;
+	case 35:
+	f_hex = false;
+	f_dec = false;
+	f_oct = false;
+	f_bin = true;
+	TB_field_hex->Color=clBtnHighlight;
+	TB_field_dec->Color=clBtnHighlight;
+	TB_field_oct->Color=clBtnHighlight;
+	TB_field_bin->Color=clGradientInactiveCaption;
+	Button36->Enabled = false;
+	Button37->Enabled = false;
+	Button38->Enabled = false;
+	Button39->Enabled = false;
+	Button40->Enabled = false;
+	Button41->Enabled = false;
+	Button2->Enabled = false;
+	Button14->Enabled = false;
+	Button6->Enabled = false;
+	Button7->Enabled = false;
+	Button9->Enabled = false;
+	Button13->Enabled = false;
+	Button11->Enabled = false;
+	Button10->Enabled = false;
+	number_system = 2;
+	Label3->Caption = "BIN : ";
+	break;
+	}
+
+	 if (c_b < 0) {
+			   ShowMessage("Ошибка.\nНе правильно расставленны скобки. \nНажмите \"OK\" и введите корректное выражение заново.");
+				s="";
+				c_b=0;
+				flag_ans=false;
+	 }
+	TB_field->Text = s;
+	TB_accuracy->Text = t;
+	if (f_accuary){
+		TB_accuracy->Color= clGradientInactiveCaption;
+		 TB_field_hex->Color=clBtnHighlight;
+		 TB_field_dec->Color=clBtnHighlight;
+		 TB_field_oct->Color=clBtnHighlight;
+		 TB_field_bin->Color=clBtnHighlight;
+	}else {
+		if (f_hex){ TB_field_hex->Color= clGradientInactiveCaption;}
+		else if (f_oct) { TB_field_oct->Color= clGradientInactiveCaption;}
+		else if (f_bin) {TB_field_bin->Color= clGradientInactiveCaption;}
+		else {TB_field_dec->Color= clGradientInactiveCaption;}
+		TB_accuracy->Color=clBtnHighlight;
+	 }
+	 double num_hex, num_dec, num_oct, num_bin;
+	if (TB_accuracy->Text =="") {t='1';}
+
+		AnsiString SecondDigitDoubel = s.c_str();
+		double SecondDigitStringToDouble = string_to_double(SecondDigitDoubel.c_str());
+
+
+		 num_hex = translation_file(SecondDigitStringToDouble, 16, file_name,StrToInt(t) );
+		 num_dec =translation_file(SecondDigitStringToDouble, 10, file_name,StrToInt(t) );
+		  num_oct=translation_file(SecondDigitStringToDouble, 8, file_name,StrToInt(t) );
+		   num_bin=translation_file(SecondDigitStringToDouble, 2, file_name,StrToInt(t) );
+
+		TB_field_hex->Text= FloatToStr(num_hex);
+			TB_field_dec->Text= FloatToStr(num_dec);
+				TB_field_oct->Text= FloatToStr(num_oct);
+					TB_field_bin->Text= FloatToStr(num_bin);
+
+
+
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::BT_showResultClick(TObject *Sender)
+{
+	string label_text="";
+	string line;
+	ifstream in(file_name.c_str()); // окрываем файл для чтения
+		if (in.is_open()){
+			while (getline(in, line)){
+				label_text = label_text + line.c_str() + '\n';
+			}
+	}
+	in.close();
+	Form2->Label1->Caption = label_text.c_str();
+	Form2->ShowModal();
+
+}
+//---------------------------------------------------------------------------
+
+
+
+
+void __fastcall TForm1::Button21Click(TObject *Sender)
+{
+
+
+
+		if (f_accuary){f_accuary = false;}
+		else{f_accuary = true;}
+
+		if (f_accuary){
+		TB_accuracy->Color= clGradientInactiveCaption;
+		TB_field_hex->Color=clBtnHighlight;
+		 TB_field_dec->Color=clBtnHighlight;
+		 TB_field_oct->Color=clBtnHighlight;
+		 TB_field_bin->Color=clBtnHighlight;
+	Button36->Enabled = false;
+	Button37->Enabled = false;
+	Button38->Enabled = false;
+	Button39->Enabled = false;
+	Button40->Enabled = false;
+	Button41->Enabled = false;
+	Button12->Enabled = false;
+	Button17->Enabled = false;
+	Button18->Enabled = false;
+	Button19->Enabled = false;
+	Button22->Enabled = false;
+	Button23->Enabled = false;
+	Button24->Enabled = false;
+	Button25->Enabled = false;
+	Button26->Enabled = false;
+	Button31->Enabled = false;
+	Button28->Enabled = false;
+	Button29->Enabled = false;
+	Button30->Enabled = false;
+	Button16->Enabled = false;
+	Button8->Enabled = false;
+	Button4->Enabled = false;
+	Button15->Enabled = false;
+
+	Button2->Enabled = true;
+	Button14->Enabled = true;
+	Button6->Enabled = true;
+	Button7->Enabled = true;
+	Button9->Enabled = true;
+	Button13->Enabled = true;
+	Button11->Enabled = true;
+	Button10->Enabled = true;
+
+
+
+	}else {
+		if (f_hex){
+		TB_field_hex->Color= clGradientInactiveCaption;
+
+
+	Button12->Enabled = true;
+	Button17->Enabled = true;
+	Button18->Enabled = true;
+	Button19->Enabled = true;
+	Button22->Enabled = true;
+	Button23->Enabled = true;
+	Button24->Enabled = true;
+	Button25->Enabled = true;
+	Button26->Enabled = true;
+	Button31->Enabled = true;
+	Button28->Enabled = true;
+	Button29->Enabled = true;
+	Button30->Enabled = true;
+	Button16->Enabled = true;
+	Button8->Enabled = true;
+	Button4->Enabled = true;
+	Button15->Enabled = true;
+
+	Button36->Enabled = true;
+	Button37->Enabled = true;
+	Button38->Enabled = true;
+	Button39->Enabled = true;
+	Button40->Enabled = true;
+	Button41->Enabled = true;
+
+	Button2->Enabled = true;
+	Button14->Enabled = true;
+
+	Button6->Enabled = true;
+	Button7->Enabled = true;
+	Button9->Enabled = true;
+	Button13->Enabled = true;
+	Button11->Enabled = true;
+	Button10->Enabled = true;
+
+		}
+		else if (f_oct) {
+		TB_field_oct->Color= clGradientInactiveCaption;
+        Button12->Enabled = true;
+	Button17->Enabled = true;
+	Button18->Enabled = true;
+	Button19->Enabled = true;
+	Button22->Enabled = true;
+	Button23->Enabled = true;
+	Button24->Enabled = true;
+	Button25->Enabled = true;
+	Button26->Enabled = true;
+	Button31->Enabled = true;
+	Button28->Enabled = true;
+	Button29->Enabled = true;
+	Button30->Enabled = true;
+	Button16->Enabled = true;
+	Button8->Enabled = true;
+	Button4->Enabled = true;
+	Button15->Enabled = true;
+
+	Button36->Enabled = false;
+	Button37->Enabled = false;
+	Button38->Enabled = false;
+	Button39->Enabled = false;
+	Button40->Enabled = false;
+	Button41->Enabled = false;
+	Button2->Enabled = false;
+	Button14->Enabled = false;
+
+	Button6->Enabled = true;
+	Button7->Enabled = true;
+	Button9->Enabled = true;
+	Button13->Enabled = true;
+	Button11->Enabled = true;
+	Button10->Enabled = true;
+		}
+		else if (f_bin) {TB_field_bin->Color= clGradientInactiveCaption;
+        Button12->Enabled = true;
+	Button17->Enabled = true;
+	Button18->Enabled = true;
+	Button19->Enabled = true;
+	Button22->Enabled = true;
+	Button23->Enabled = true;
+	Button24->Enabled = true;
+	Button25->Enabled = true;
+	Button26->Enabled = true;
+	Button31->Enabled = true;
+	Button28->Enabled = true;
+	Button29->Enabled = true;
+	Button30->Enabled = true;
+	Button16->Enabled = true;
+	Button8->Enabled = true;
+	Button4->Enabled = true;
+	Button15->Enabled = true;
+	Button36->Enabled = false;
+	Button37->Enabled = false;
+	Button38->Enabled = false;
+	Button39->Enabled = false;
+	Button40->Enabled = false;
+	Button41->Enabled = false;
+	Button2->Enabled = false;
+	Button14->Enabled = false;
+	Button6->Enabled = false;
+	Button7->Enabled = false;
+	Button9->Enabled = false;
+	Button13->Enabled = false;
+	Button11->Enabled = false;
+	Button10->Enabled = false;
+		}
+		else {TB_field_dec->Color= clGradientInactiveCaption;
+		Button12->Enabled = true;
+	Button17->Enabled = true;
+	Button18->Enabled = true;
+	Button19->Enabled = true;
+	Button22->Enabled = true;
+	Button23->Enabled = true;
+	Button24->Enabled = true;
+	Button25->Enabled = true;
+	Button26->Enabled = true;
+	Button31->Enabled = true;
+	Button28->Enabled = true;
+	Button29->Enabled = true;
+	Button30->Enabled = true;
+	Button16->Enabled = true;
+	Button8->Enabled = true;
+	Button4->Enabled = true;
+	Button15->Enabled = true;
+	Button36->Enabled = false;
+	Button37->Enabled = false;
+	Button38->Enabled = false;
+	Button39->Enabled = false;
+	Button40->Enabled = false;
+	Button41->Enabled = false;
+
+	Button2->Enabled = true;
+	Button14->Enabled = true;
+
+	Button6->Enabled = true;
+	Button7->Enabled = true;
+	Button9->Enabled = true;
+	Button13->Enabled = true;
+	Button11->Enabled = true;
+	Button10->Enabled = true;
+
+	}
+		TB_accuracy->Color=clBtnHighlight;
+	 }
+
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+void __fastcall TForm1::TB_field_hexKeyPress(TObject *Sender, System::WideChar &Key)
+{
+
+	if (kbhit) {
+				TB_field->ReadOnly = true;
+				TB_field_hex->ReadOnly = true;
+				TB_field_dec->ReadOnly = true;
+				TB_field_oct->ReadOnly = true;
+				TB_field_bin->ReadOnly = true;
+			   ShowMessage("Ввод с клавиатуры запрещен.\nНажмите \"OK\", чтобы продолжить.");
+
+			}
+
+
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
