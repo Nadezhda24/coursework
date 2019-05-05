@@ -6,6 +6,7 @@
 
 #include "Unit1.h"
 #include "Unit2.h"
+#include "Unit3.h"
  #include <iostream>
 #include <cstdlib>
 #include <stack>
@@ -20,6 +21,7 @@
 #include "parser.h"
 #include <conio.h>
 #include <windows.h>
+#include <cmath>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -256,6 +258,23 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		} else {s+='F';d+='F';}
 	}
 	break;
+    case 42:
+     	if(f_accuary){
+		ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");	// адрес текста в окне сообщений
+	}else{
+    if (s.Length()==1) {
+      if ( isdigit(s[s.Length()]) || s[s.Length()]=='x' ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}   
+    }
+	 else  if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' || isdigit(s[s.Length()]) || s[s.Length()]=='x' ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}  else {s+='x';d+="";}
+		} else {s+='x';d+="";}
+	}
+	break;
+    
 	case 10:
 
 	if(f_accuary){
@@ -611,9 +630,24 @@ if (s=="") {
 
 	break;
 	case 23:
-	 s += " sin ";
-	 d ="";
-	break;
+    
+	if (f_accuary) {
+	ShowMessage( "Ошибка ввода.\n");
+	}else{
+    if (s.Length()==1) {
+      if ( isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}   
+    }
+	 else  if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' || isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			} else { s += " sin ( "; d ="";}
+		} else { s += " sin ( "; d ="";}}
+	
+
+		break;
+
 	case 24:
 	  s += " cos ";
 	  d ="";
@@ -817,7 +851,23 @@ if (s=="") {
 //---------------------------------------------------------------------------
 void __fastcall TForm1::BT_showResultClick(TObject *Sender)
 {
-	string label_text="";
+
+
+/*const n = 2, m = 100;
+int A[n][m]; // Вот он массив
+ 
+for( int i=0; i<n; i++ )     //// Заполняем массив точек
+  for( int j=0; j<m; j++ )     //
+    A[i][j] = random( 666 ); ////
+ 
+const r = 10;                   // Радиус точек
+Form1->Canvas->Pen->Color = clRed; // Устанавливаем цвет линий краный
+ 
+for( int i=0; i<20; i++ ) // Выводим точки на канву формы
+  Form1->Canvas->Ellipse( A[0][i]-r, A[1][i]-r, A[0][i]+r, A[1][i]+r );
+  Form1->ShowModal();  */
+
+ 	string label_text="";
 	string line;
 	ifstream in(file_name.c_str()); // окрываем файл для чтения
 		if (in.is_open()){
@@ -828,7 +878,7 @@ void __fastcall TForm1::BT_showResultClick(TObject *Sender)
 	in.close();
 	Form2->Label1->Caption = label_text.c_str();
 	Form2->ShowModal();
-
+                           
 }
 //---------------------------------------------------------------------------
 
@@ -1066,4 +1116,105 @@ void __fastcall TForm1::TB_field_hexKeyPress(TObject *Sender, System::WideChar &
 
 
 
+
+
+void __fastcall TForm1::Button43Click(TObject *Sender)
+{
+  Form3->Image1->Center = true;
+  Form3->Image1->Canvas->Pen->Color = clBlack; // Устанавливаем цвет линий краный
+  Form3->Image1->Canvas->MoveTo(300,0);
+  Form3->Image1->Canvas->LineTo(300,500);
+  Form3->Image1->Canvas->MoveTo(0,300);
+  Form3->Image1->Canvas->LineTo(700,300);
+
+ int k = 1;
+ const r = 2;
+ int answer_parser;
+  int x;
+  String s="";
+	s = TB_field->Text;
+	if (s=="") {
+			ShowMessage( "Введите выражение.\nНажмите \"OK\", и продолжите ввод.");
+	}   else {
+// String s = TB_field->Text;
+ s += ' ' ;
+ Form3->Label1->Caption = s;
+
+  AnsiString h;
+	string str;
+  int last_x=300, last_y=300;
+   std::stringstream ss;
+
+
+ for (int x = -50; x < 50; x=x+1) {
+
+ if (x < 0) {
+	//std::stringstream ss;
+	int a = x*(-1);
+
+		ss<<a;
+   //	string str;
+	ss>>str;
+
+	str = " ( ( 0 - 1 ) * " + str + " ) ";
+	}
+   else {
+	//std::stringstream ss;
+	int a = x;
+	ss<<a;
+
+	ss>>str;
+	}
+
+  int p =0;
+  int k = s.Length();
+  for (int p = 1; p <= k; p++ ) {
+
+
+
+		 if (s[p] == 'x') {
+
+		   AnsiString q = str.c_str();
+		  h = h + q;
+
+		 }else {h = h + s[p];}
+
+		 }
+
+
+
+
+				 str =  parser(h.c_str(),number_system , file_name.c_str(), StrToInt(t));
+
+		  double y = (-1)* string_to_double( str );
+
+ if (x == -50) {
+	  Form3->Image1->Canvas->Pen->Color = clInactiveBorder;
+
+ }    else {
+			  Form3->Image1->Canvas->Pen->Color = clBlack;
+ }
+
+  Form3->Image1->Canvas->MoveTo(last_x,last_y);
+
+	 Form3->Image1->Canvas->Ellipse(k *(x)-r+300,k * (y)-r+300, k *(x)+r+300,k * (y)+r+300 );
+	h ="";
+   str="";
+   ss.clear();
+
+
+ // Form3->Image1->Canvas->MoveTo(k *last_x,k *last_y);
+ Form3->Image1->Canvas->LineTo(k *(x)+300,k *(y)+300);
+
+ last_x =k *(x)+300;
+  last_y =k *(y)+300;
+
+
+ }
+
+  Form3 ->ShowModal();
+  Form3->Image1->Canvas->FillRect(Rect(0,0, Form3->Image1->Width, Form3->Image1->Height));
+  }
+}
+//---------------------------------------------------------------------------
 

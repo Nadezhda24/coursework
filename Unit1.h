@@ -59,13 +59,16 @@ __published:	// IDE-managed Components
 	TButton *Button38;
 	TButton *Button39;
 	TButton *Button40;
-	TButton *Button41;
 	TEdit *TB_field;
 	TLabel *Label3;
+	TButton *Button41;
+	TButton *Button42;
+	TButton *Button43;
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall BT_showResultClick(TObject *Sender);
 	void __fastcall Button21Click(TObject *Sender);
 	void __fastcall TB_field_hexKeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall Button43Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
