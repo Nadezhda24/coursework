@@ -7,6 +7,7 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
+#include <Vcl.ComCtrls.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -64,6 +65,7 @@ __published:	// IDE-managed Components
 	TButton *Button41;
 	TButton *Button42;
 	TButton *Button43;
+	TProgressBar *ProgressBar1;
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall BT_showResultClick(TObject *Sender);
 	void __fastcall Button21Click(TObject *Sender);

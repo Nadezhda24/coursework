@@ -53,6 +53,10 @@ int  flag_rez = 0;
  bool f_hex= false, f_dec = true, f_oct = false, f_bin = false;
 int  number_system = 10 ;
  String d ="";
+
+ String s_sin = "";
+ bool sin_f= false;
+ long double ans_sin;
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
    double num_hex, num_dec, num_oct, num_bin;
@@ -79,8 +83,8 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 			if (s.Length()>1 ) {
 				if ((s[s.Length()-1])==')'  ) {
 					ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
-				}else {s+='0';d+='0';}
-			}else {s+='0';d+='0';}
+				}else {s+='0';d+='0'; s_sin+='0';}
+			}else {s+='0';d+='0'; s_sin+='0';}
 		}
 	break;
 
@@ -91,8 +95,8 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		if (s.Length()>1) {
 			if ((s[s.Length()-1])==')' ) {
 				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
-			}else {s+='1';d+='1';}
-		} else {s+='1';d+='1';}
+			}else {s+='1';d+='1';s_sin+='1';}
+		} else {s+='1';d+='1';s_sin+='1';}
 	}
 	break;
 
@@ -103,8 +107,8 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		if (s.Length()>1) {
 			if ((s[s.Length()-1])==')' ) {
 				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
-			}else {s+='2';d+='2';}
-		} else {s+='2';d+='2';}
+			}else {s+='2';d+='2';s_sin+='2';}
+		} else {s+='2';d+='2';s_sin+='2';}
 	}
 	break;
 
@@ -114,8 +118,8 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		if (s.Length()>1) {
 			if ((s[s.Length()-1])==')' ) {
 				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
-			}else {s+='3';d+='3';}
-		} else {s+='3';d+='3';}
+			}else {s+='3';d+='3';s_sin+='3';}
+		} else {s+='3';d+='3';s_sin+='3';}
 	}
 	break;
 
@@ -126,8 +130,8 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		if (s.Length()>1) {
 			if ((s[s.Length()-1])==')' ) {
 				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
-			} else {s+='4';d+='4';}
-		} else {s+='4';d+='4';}
+			} else {s+='4';d+='4';s_sin+='4';}
+		} else {s+='4';d+='4';s_sin+='4';}
 	}
 		break;
 
@@ -138,8 +142,8 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		  if (s.Length()>1) {
 			if (s[s.Length()-1]==')') {
 				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
-			}else {s+='5';d+='5';}
-		}else {s+='5';d+='5';}
+			}else {s+='5';d+='5';s_sin+='5';}
+		}else {s+='5';d+='5';s_sin+='5';}
 	}
 		break;
 
@@ -150,8 +154,8 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		if (s.Length()>1) {
 			if ((s[s.Length()-1])==')' ) {
 				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
-			}else {s+='6';d+='6';}
-		} else {s+='6';d+='6';}
+			}else {s+='6';d+='6';s_sin+='6';}
+		} else {s+='6';d+='6';s_sin+='6';}
 	}
 		break;
 
@@ -161,8 +165,8 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		if (s.Length()>1) {
 			if ((s[s.Length()-1])==')' ) {
 				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
-			}  else {s+='7';d+='7';}
-		} else {s+='7';d+='7';}
+			}  else {s+='7';d+='7';s_sin+='7';}
+		} else {s+='7';d+='7';s_sin+='7';}
 	}
 	break;
 
@@ -172,8 +176,8 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		if (s.Length()>1) {
 			if ((s[s.Length()-1])==')' ) {
 				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
-			}  else {s+='8';d+='8';}
-		} else {s+='8';d+='8';}
+			}  else {s+='8';d+='8';s_sin+='8';}
+		} else {s+='8';d+='8';s_sin+='8';}
 	}
 	 break;
 	case 9:
@@ -182,8 +186,8 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		if (s.Length()>1) {
 			if ((s[s.Length()-1])==')' ) {
 				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
-			}  else {s+='9';d+='9';}
-		} else {s+='9';d+='9';}
+			}  else {s+='9';d+='9';s_sin+='9';}
+		} else {s+='9';d+='9';s_sin+='9';}
 	}
 	break;
    case 36:
@@ -293,7 +297,14 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 			}
 			c_b++;
 			d ="";
+
 		}
+		if (sin_f) {
+				ans_sin = sin ( StrToInt(s_sin));
+				s +=   FloatToStr(ans_sin);
+				TB_field_hex->Text = FloatToStr(ans_sin);
+				 sin_f= false;
+			}
 		break;
 
 	case 11:
@@ -485,6 +496,24 @@ if (s=="") {
 		d ="";
 	}
 	break;
+		case 23:
+	 sin_f = true;
+	if (f_accuary) {
+	ShowMessage( "Ошибка ввода.\n");
+	}else{
+	if (s.Length()==1) {
+	  if ( isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}
+	}
+	 else  if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' || isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			} else { s += " sin ( "; d ="";}
+		} else { s += " sin ( "; d ="";}}
+
+		c_b ++;
+		break;
 
 	case 18:
 
@@ -629,24 +658,6 @@ if (s=="") {
 	}
 
 	break;
-	case 23:
-    
-	if (f_accuary) {
-	ShowMessage( "Ошибка ввода.\n");
-	}else{
-    if (s.Length()==1) {
-      if ( isdigit(s[s.Length()]) ) {
-				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
-			}   
-    }
-	 else  if (s.Length()>1) {
-			if ((s[s.Length()-1])==')' || isdigit(s[s.Length()]) ) {
-				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
-			} else { s += " sin ( "; d ="";}
-		} else { s += " sin ( "; d ="";}}
-	
-
-		break;
 
 	case 24:
 	  s += " cos ";
@@ -853,19 +864,7 @@ void __fastcall TForm1::BT_showResultClick(TObject *Sender)
 {
 
 
-/*const n = 2, m = 100;
-int A[n][m]; // Вот он массив
- 
-for( int i=0; i<n; i++ )     //// Заполняем массив точек
-  for( int j=0; j<m; j++ )     //
-    A[i][j] = random( 666 ); ////
- 
-const r = 10;                   // Радиус точек
-Form1->Canvas->Pen->Color = clRed; // Устанавливаем цвет линий краный
- 
-for( int i=0; i<20; i++ ) // Выводим точки на канву формы
-  Form1->Canvas->Ellipse( A[0][i]-r, A[1][i]-r, A[0][i]+r, A[1][i]+r );
-  Form1->ShowModal();  */
+
 
  	string label_text="";
 	string line;
@@ -1120,12 +1119,10 @@ void __fastcall TForm1::TB_field_hexKeyPress(TObject *Sender, System::WideChar &
 
 void __fastcall TForm1::Button43Click(TObject *Sender)
 {
+
   Form3->Image1->Center = true;
   Form3->Image1->Canvas->Pen->Color = clBlack; // Устанавливаем цвет линий краный
-  Form3->Image1->Canvas->MoveTo(300,0);
-  Form3->Image1->Canvas->LineTo(300,500);
-  Form3->Image1->Canvas->MoveTo(0,300);
-  Form3->Image1->Canvas->LineTo(700,300);
+
 
  int k = 1;
  const r = 2;
@@ -1147,7 +1144,7 @@ void __fastcall TForm1::Button43Click(TObject *Sender)
 
 
  for (int x = -50; x < 50; x=x+1) {
-
+	   ProgressBar1->Position += 1;
  if (x < 0) {
 	//std::stringstream ss;
 	int a = x*(-1);
@@ -1211,9 +1208,14 @@ void __fastcall TForm1::Button43Click(TObject *Sender)
 
 
  }
+ Form3->Image1->Canvas->MoveTo(300,0);
+  Form3->Image1->Canvas->LineTo(300,500);
+  Form3->Image1->Canvas->MoveTo(0,300);
+  Form3->Image1->Canvas->LineTo(700,300);
 
   Form3 ->ShowModal();
   Form3->Image1->Canvas->FillRect(Rect(0,0, Form3->Image1->Width, Form3->Image1->Height));
+  ProgressBar1->Position = 0;
   }
 }
 //---------------------------------------------------------------------------
