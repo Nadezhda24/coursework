@@ -41,6 +41,7 @@ public:
 	void Multiplication(double  FirstElement, double SecondElement) { element =  FirstElement * SecondElement; } //умножение
 	void Division(double  FirstElement, double SecondElement) { element =  FirstElement / SecondElement; } // деление с остатком
 	void DivisionWithoutRemainder(double  FirstElement, double SecondElement) { element = (int) FirstElement / (int)SecondElement; } // деление без остатка
+	void Mod(double  FirstElement, double SecondElement) { element = (int) FirstElement % (int)SecondElement; }
 	double GetElement() {return element;}
 };
 
@@ -172,6 +173,19 @@ while (!num.empty()) {
 				f << '\t' << CountAction<< ") " << translation_file(n1, number_system, file_name, accuracy) << " div " << translation_file(n2, number_system, file_name, accuracy) << " = " << CalculationResult.c_str()<< endl;
 				f.close();
 				CountAction++;}
+			}  else if (num.top() == "%") {
+					if (n2 == 0) {
+					ShowMessage( "Ошибка.\nДеление на 0.\nНажмите \"OK\" и введите корректное выражение заново.");
+					}
+				else {
+				obj.Mod(n1, n2);
+				CalculationResult = FloatToStr(translation_file(obj.GetElement(), number_system, file_name,accuracy));
+				ofstream f;
+				f.open(file_name.c_str(), ios::app);
+				f << '\t' << CountAction << ") " << translation_file(n1, number_system, file_name, accuracy) << " % " << translation_file(n2, number_system, file_name, accuracy) << " = " << CalculationResult.c_str() << endl;
+				f.close();
+				CountAction++;
+				}
 			}
 			break;
 		}

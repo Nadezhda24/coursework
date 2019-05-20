@@ -3,9 +3,8 @@ object Form1: TForm1
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = #1050#1072#1083#1100#1082#1091#1083#1103#1090#1086#1088
-  ClientHeight = 569
-  ClientWidth = 514
+  ClientHeight = 577
+  ClientWidth = 586
   Color = clInactiveBorder
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -23,8 +22,8 @@ object Form1: TForm1
     Height = 13
   end
   object Label2: TLabel
-    Left = 278
-    Top = 185
+    Left = 348
+    Top = 182
     Width = 83
     Height = 18
     Caption = 'accuracy :'
@@ -51,7 +50,7 @@ object Form1: TForm1
   object TB_field_hex: TEdit
     Left = 81
     Top = 56
-    Width = 420
+    Width = 490
     Height = 21
     TabOrder = 0
     OnKeyPress = TB_field_hexKeyPress
@@ -75,7 +74,7 @@ object Form1: TForm1
     Tag = 21
     Left = 235
     Top = 467
-    Width = 266
+    Width = 337
     Height = 50
     Caption = 'detailed result'
     Font.Charset = ANSI_CHARSET
@@ -392,8 +391,8 @@ object Form1: TForm1
     OnClick = Button1Click
   end
   object TB_accuracy: TEdit
-    Left = 367
-    Top = 182
+    Left = 437
+    Top = 179
     Width = 134
     Height = 21
     Color = clBtnHighlight
@@ -419,7 +418,7 @@ object Form1: TForm1
   object TB_field_dec: TEdit
     Left = 81
     Top = 83
-    Width = 420
+    Width = 490
     Height = 21
     TabOrder = 24
     OnKeyPress = TB_field_hexKeyPress
@@ -427,7 +426,7 @@ object Form1: TForm1
   object TB_field_oct: TEdit
     Left = 81
     Top = 110
-    Width = 420
+    Width = 490
     Height = 21
     TabOrder = 25
     OnKeyPress = TB_field_hexKeyPress
@@ -435,7 +434,7 @@ object Form1: TForm1
   object TB_field_bin: TEdit
     Left = 81
     Top = 137
-    Width = 420
+    Width = 490
     Height = 21
     TabOrder = 26
     OnKeyPress = TB_field_hexKeyPress
@@ -458,7 +457,7 @@ object Form1: TForm1
   end
   object Button23: TButton
     Tag = 23
-    Left = 361
+    Left = 431
     Top = 267
     Width = 70
     Height = 50
@@ -474,7 +473,7 @@ object Form1: TForm1
   end
   object Button24: TButton
     Tag = 24
-    Left = 361
+    Left = 431
     Top = 317
     Width = 70
     Height = 50
@@ -490,7 +489,7 @@ object Form1: TForm1
   end
   object Button25: TButton
     Tag = 25
-    Left = 361
+    Left = 431
     Top = 367
     Width = 70
     Height = 50
@@ -506,7 +505,7 @@ object Form1: TForm1
   end
   object Button26: TButton
     Tag = 26
-    Left = 361
+    Left = 431
     Top = 417
     Width = 70
     Height = 50
@@ -524,7 +523,7 @@ object Form1: TForm1
     Tag = 31
     Left = 431
     Top = 217
-    Width = 70
+    Width = 141
     Height = 50
     Caption = 'c'
     Font.Charset = ANSI_CHARSET
@@ -537,8 +536,8 @@ object Form1: TForm1
     OnClick = Button1Click
   end
   object Button28: TButton
-    Tag = 27
-    Left = 431
+    Tag = 44
+    Left = 501
     Top = 267
     Width = 70
     Height = 50
@@ -553,8 +552,8 @@ object Form1: TForm1
     OnClick = Button1Click
   end
   object Button29: TButton
-    Tag = 28
-    Left = 431
+    Tag = 45
+    Left = 501
     Top = 317
     Width = 70
     Height = 50
@@ -569,8 +568,8 @@ object Form1: TForm1
     OnClick = Button1Click
   end
   object Button30: TButton
-    Tag = 29
-    Left = 431
+    Tag = 46
+    Left = 501
     Top = 367
     Width = 70
     Height = 50
@@ -585,8 +584,8 @@ object Form1: TForm1
     OnClick = Button1Click
   end
   object Button31: TButton
-    Tag = 30
-    Left = 431
+    Tag = 47
+    Left = 501
     Top = 417
     Width = 70
     Height = 50
@@ -747,7 +746,7 @@ object Form1: TForm1
   object TB_field: TEdit
     Left = 81
     Top = 13
-    Width = 420
+    Width = 490
     Height = 31
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -776,7 +775,7 @@ object Form1: TForm1
   end
   object Button42: TButton
     Tag = 42
-    Left = 431
+    Left = 502
     Top = 517
     Width = 70
     Height = 50
@@ -794,7 +793,7 @@ object Form1: TForm1
     Tag = 43
     Left = 11
     Top = 517
-    Width = 420
+    Width = 490
     Height = 50
     Caption = 'diagram'
     Font.Charset = ANSI_CHARSET
@@ -809,9 +808,73 @@ object Form1: TForm1
   object ProgressBar1: TProgressBar
     Left = 11
     Top = 183
-    Width = 246
+    Width = 318
     Height = 17
     BackgroundColor = clInactiveBorder
     TabOrder = 50
+  end
+  object Button44: TButton
+    Tag = 27
+    Left = 361
+    Top = 267
+    Width = 70
+    Height = 50
+    Caption = 'e'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Showcard Gothic'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 51
+    OnClick = Button1Click
+  end
+  object Button45: TButton
+    Tag = 28
+    Left = 361
+    Top = 317
+    Width = 70
+    Height = 50
+    Caption = 'pi'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Showcard Gothic'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 52
+    OnClick = Button1Click
+  end
+  object Button46: TButton
+    Tag = 29
+    Left = 361
+    Top = 367
+    Width = 70
+    Height = 50
+    Caption = '^'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Showcard Gothic'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 53
+    OnClick = Button1Click
+  end
+  object Button47: TButton
+    Tag = 30
+    Left = 361
+    Top = 417
+    Width = 70
+    Height = 50
+    Caption = '!'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Showcard Gothic'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 54
+    OnClick = Button1Click
   end
 end

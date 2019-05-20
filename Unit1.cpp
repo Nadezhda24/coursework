@@ -43,11 +43,12 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
 }
+
 //---------------------------------------------------------------------------
-bool f_accuary= false;
-bool flag_ans = false;
 ofstream f;
 double answer_parser;
+bool f_accuary= false;
+bool flag_ans = false;
 int  flag_rez = 0;
  int c_b=0;
  bool f_hex= false, f_dec = true, f_oct = false, f_bin = false;
@@ -328,7 +329,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 			 if (s[s.Length()-1]=='(') {
 					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else{
-			if (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+			if (s[s.Length()-1] == '+' || s[s.Length()-1] == '%' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
 				if (s[s.Length()-1]=='v') {
 					s.Delete(s.Length()-4,5);
 					s+=" div ";}
@@ -357,7 +358,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 			 else if (s[s.Length()-1] == '(' || s[s.Length()-1] == ')' ) {
 				s.Delete(s.Length()-2,3);
 			   }
-			 else if  (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v'){
+			 else if  (s[s.Length()-1] == '+' ||  s[s.Length()-1] == '%' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v'){
 					if (s[s.Length()-1] == 'v'){ s.Delete(s.Length()-4,5);}
 					else {s.Delete(s.Length()-2,3);}
 			}
@@ -371,7 +372,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 
 			else {
-				if  (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v'){
+				if  (s[s.Length()-1] == '+' || s[s.Length()-1] == '%' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v'){
 					if (s[s.Length()-1] == 'v'){ s.Delete(s.Length()-4,5);}
 					else {s.Delete(s.Length()-2,3);}
 			}
@@ -388,6 +389,22 @@ if (s=="") {
 	}
 	break;
 
+	case 31:
+f_accuary= false;
+ flag_ans = false;
+  flag_rez = 0;
+  c_b=0;
+  f_hex= false, f_dec = true, f_oct = false, f_bin = false;
+  number_system = 10 ;
+ d ="";
+ s ="";
+ t ="";
+ TB_field_hex->Text= 0;
+ TB_field_dec->Text= 0;
+ TB_field_oct->Text= 0;
+ TB_field_bin->Text= 0;
+	 break;
+
 	case 14:
 
 	if (f_accuary) {
@@ -400,7 +417,7 @@ if (s=="") {
 					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else  {
 
-		   if (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+		   if (s[s.Length()-1] == '+' || s[s.Length()-1] == '%' || s[s.Length()-1] == '*' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
 			   if (s[s.Length()-1]!='v') {s[s.Length()-1] = '/'; }
 				else {
 					s.Delete(s.Length()-4,5);
@@ -426,7 +443,7 @@ if (s=="") {
 					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else{
 
-	if (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+	if (s[s.Length()-1] == '+' ||  s[s.Length()-1] == '%' ||s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
 			  if (s[s.Length()-1]!='v') {	  s[s.Length()-1] = '*'; }
 				else {
 				s.Delete(s.Length()-4,5);
@@ -447,7 +464,7 @@ if (s=="") {
 		  if (s[s.Length()-1]=='(') {
 					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else{
-			if (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+			if (s[s.Length()-1] == '+' || s[s.Length()-1] == '%' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
 				if (s[s.Length()-1]!='v') {s[s.Length()-1] = '-'; }
 				else {
 					s.Delete(s.Length()-4,5);
@@ -459,6 +476,29 @@ if (s=="") {
 	}
 	break;
 
+	case 22 :
+	if (f_accuary) {
+		ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");
+	}else {
+		if (s.Length()==0) {
+			ShowMessage( "Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
+		else if (s.Length() > 1) {
+			if (s[s.Length()-1]=='(') {
+					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
+		else  {
+
+		   if (s[s.Length()-1] == '+' || s[s.Length()-1] == '%' ||s[s.Length()-1] == '-' ||  s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+			   if (s[s.Length()-1]!='v') {s[s.Length()-1] = '%'; }
+				else {
+					s.Delete(s.Length()-4,5);
+					s+=" % ";
+				}
+		   }
+		   else {s+=" % ";} }
+		}else {s+=" % ";}
+		d ="";
+	}
+	 break;
 	case 17:
 
 		 if(f_accuary){
@@ -470,7 +510,7 @@ if (s=="") {
 			 if (s[s.Length()-1]=='(') {
 					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else{
-				if (s[s.Length()-1] == '+' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+				if (s[s.Length()-1] == '+' || s[s.Length()-1] == '%' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
 					if (s[s.Length()-1]!='v') { s[s.Length()-1] = '+'; }
 						else {
 							s.Delete(s.Length()-4,5);
@@ -1194,7 +1234,7 @@ void __fastcall TForm1::Button43Click(TObject *Sender)
 
   Form3->Image1->Canvas->MoveTo(last_x,last_y);
 
-	 Form3->Image1->Canvas->Ellipse(k *(x)-r+300,k * (y)-r+300, k *(x)+r+300,k * (y)+r+300 );
+	// Form3->Image1->Canvas->Ellipse(k *(x)-r+300,k * (y)-r+300, k *(x)+r+300,k * (y)+r+300 );
 	h ="";
    str="";
    ss.clear();

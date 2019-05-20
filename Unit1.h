@@ -66,6 +66,10 @@ __published:	// IDE-managed Components
 	TButton *Button42;
 	TButton *Button43;
 	TProgressBar *ProgressBar1;
+	TButton *Button44;
+	TButton *Button45;
+	TButton *Button46;
+	TButton *Button47;
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall BT_showResultClick(TObject *Sender);
 	void __fastcall Button21Click(TObject *Sender);
