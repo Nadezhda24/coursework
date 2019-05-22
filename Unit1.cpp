@@ -329,7 +329,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 			 if (s[s.Length()-1]=='(') {
 					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else{
-			if (s[s.Length()-1] == '+' || s[s.Length()-1] == '%' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+			if (s[s.Length()-1] == '+' ||s[s.Length()-1] == '^'|| s[s.Length()-1] == '%' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
 				if (s[s.Length()-1]=='v') {
 					s.Delete(s.Length()-4,5);
 					s+=" div ";}
@@ -358,7 +358,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 			 else if (s[s.Length()-1] == '(' || s[s.Length()-1] == ')' ) {
 				s.Delete(s.Length()-2,3);
 			   }
-			 else if  (s[s.Length()-1] == '+' ||  s[s.Length()-1] == '%' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v'){
+			 else if  (s[s.Length()-1] == '+' || s[s.Length()-1] == '^'||    s[s.Length()-1] == '%' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v'){
 					if (s[s.Length()-1] == 'v'){ s.Delete(s.Length()-4,5);}
 					else {s.Delete(s.Length()-2,3);}
 			}
@@ -372,7 +372,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 
 			else {
-				if  (s[s.Length()-1] == '+' || s[s.Length()-1] == '%' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v'){
+				if  (s[s.Length()-1] == '+' || s[s.Length()-1] == '^'||   s[s.Length()-1] == '%' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v'){
 					if (s[s.Length()-1] == 'v'){ s.Delete(s.Length()-4,5);}
 					else {s.Delete(s.Length()-2,3);}
 			}
@@ -417,7 +417,7 @@ f_accuary= false;
 					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else  {
 
-		   if (s[s.Length()-1] == '+' || s[s.Length()-1] == '%' || s[s.Length()-1] == '*' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+		   if (s[s.Length()-1] == '+' || s[s.Length()-1] == '^'||   s[s.Length()-1] == '%' || s[s.Length()-1] == '*' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
 			   if (s[s.Length()-1]!='v') {s[s.Length()-1] = '/'; }
 				else {
 					s.Delete(s.Length()-4,5);
@@ -443,7 +443,7 @@ f_accuary= false;
 					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else{
 
-	if (s[s.Length()-1] == '+' ||  s[s.Length()-1] == '%' ||s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+	if (s[s.Length()-1] == '+' || s[s.Length()-1] == '^'||    s[s.Length()-1] == '%' ||s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
 			  if (s[s.Length()-1]!='v') {	  s[s.Length()-1] = '*'; }
 				else {
 				s.Delete(s.Length()-4,5);
@@ -464,7 +464,7 @@ f_accuary= false;
 		  if (s[s.Length()-1]=='(') {
 					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else{
-			if (s[s.Length()-1] == '+' || s[s.Length()-1] == '%' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+			if (s[s.Length()-1] == '+' || s[s.Length()-1] == '^'||   s[s.Length()-1] == '%' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
 				if (s[s.Length()-1]!='v') {s[s.Length()-1] = '-'; }
 				else {
 					s.Delete(s.Length()-4,5);
@@ -487,7 +487,7 @@ f_accuary= false;
 					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else  {
 
-		   if (s[s.Length()-1] == '+' || s[s.Length()-1] == '%' ||s[s.Length()-1] == '-' ||  s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+		   if (s[s.Length()-1] == '+' ||s[s.Length()-1] == '^'|| s[s.Length()-1] == '%' ||s[s.Length()-1] == '-' ||  s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
 			   if (s[s.Length()-1]!='v') {s[s.Length()-1] = '%'; }
 				else {
 					s.Delete(s.Length()-4,5);
@@ -510,7 +510,7 @@ f_accuary= false;
 			 if (s[s.Length()-1]=='(') {
 					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
 		else{
-				if (s[s.Length()-1] == '+' || s[s.Length()-1] == '%' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+				if (s[s.Length()-1] == '+' ||s[s.Length()-1] == '^'|| s[s.Length()-1] == '%' || s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
 					if (s[s.Length()-1]!='v') { s[s.Length()-1] = '+'; }
 						else {
 							s.Delete(s.Length()-4,5);
@@ -536,25 +536,7 @@ f_accuary= false;
 		d ="";
 	}
 	break;
-		case 23:
-	 sin_f = true;
-	if (f_accuary) {
-	ShowMessage( "Ошибка ввода.\n");
-	}else{
-	if (s.Length()==1) {
-	  if ( isdigit(s[s.Length()]) ) {
-				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
-			}
-	}
-	 else  if (s.Length()>1) {
-			if ((s[s.Length()-1])==')' || isdigit(s[s.Length()]) ) {
-				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
-			} else { s += " sin ( "; d ="";}
-		} else { s += " sin ( "; d ="";}}
-
-		c_b ++;
-		break;
-
+	
 	case 18:
 
 	  if( TB_field->Text==""){
@@ -698,34 +680,226 @@ f_accuary= false;
 	}
 
 	break;
+		case 23:
+	 sin_f = true;
+	if (f_accuary) {
+	ShowMessage( "Ошибка ввода.\n");
+	}else{
+	if (s.Length()==1) {
+	  if ( isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}
+	}
+	 else  if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' || isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			} else { s += " sin ( "; d ="";}
+		} else { s += " sin ( "; d ="";}}
+
+		c_b ++;
+		break;
 
 	case 24:
-	  s += " cos ";
-	  d ="";
-	break;
+	  sin_f = true;
+	if (f_accuary) {
+	ShowMessage( "Ошибка ввода.\n");
+	}else{
+	if (s.Length()==1) {
+	  if ( isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}
+	}
+	 else  if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' || isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			} else { s += " cos ( "; d ="";}
+		} else { s += " cos ( "; d ="";}}
+
+		c_b ++;
+		break;
 	case 25:
-	 s += " tg ";
-	 d ="";
+	 sin_f = true;
+	if (f_accuary) {
+	ShowMessage( "Ошибка ввода.\n");
+	}else{
+	if (s.Length()==1) {
+	  if ( isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}
+	}
+	 else  if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' || isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			} else { s += " tg ( "; d ="";}
+		} else { s += " tg ( "; d ="";}}
+
+		c_b ++;
+		break;
 	break;
 	case 26:
-	 s += " ctg ";
-	 d ="";
+	 sin_f = true;
+	if (f_accuary) {
+	ShowMessage( "Ошибка ввода.\n");
+	}else{
+	if (s.Length()==1) {
+	  if ( isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}
+	}
+	 else  if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' || isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			} else { s += " ctg ( "; d ="";}
+		} else { s += " ctg ( "; d ="";}}
+
+		c_b ++;
+		break;
 	break;
+
+			case 44:
+	 sin_f = true;
+	if (f_accuary) {
+	ShowMessage( "Ошибка ввода.\n");
+	}else{
+	if (s.Length()==1) {
+	  if ( isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}
+	}
+	 else  if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' || isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			} else { s += " arcsin ( "; d ="";}
+		} else { s += " arcsin ( "; d ="";}}
+
+		c_b ++;
+		break;
+
+	case 45:
+	  sin_f = true;
+	if (f_accuary) {
+	ShowMessage( "Ошибка ввода.\n");
+	}else{
+	if (s.Length()==1) {
+	  if ( isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}
+	}
+	 else  if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' || isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			} else { s += " arccos ( "; d ="";}
+		} else { s += " arccos ( "; d ="";}}
+
+		c_b ++;
+		break;
+	case 46:
+	 sin_f = true;
+	if (f_accuary) {
+	ShowMessage( "Ошибка ввода.\n");
+	}else{
+	if (s.Length()==1) {
+	  if ( isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}
+	}
+	 else  if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' || isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			} else { s += " arctg ( "; d ="";}
+		} else { s += " arctg ( "; d ="";}}
+
+		c_b ++;
+		break;
+
+	case 47:
+	 sin_f = true;
+	if (f_accuary) {
+	ShowMessage( "Ошибка ввода.\n");
+	}else{
+	if (s.Length()==1) {
+	  if ( isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}
+	}
+	 else  if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' || isdigit(s[s.Length()]) ) {
+				ShowMessage( "Ошибка ввода.\nПропущен знак операции.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			} else { s += " arcctg ( "; d ="";}
+		} else { s += " arcctg ( "; d ="";}}
+
+		c_b ++;
+		break;
+	break;
+
+
+
+
 	case 27:
-	 s += " arcsin ";
-	 d ="";
+
+	if (f_accuary) { ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");}
+	else{
+		   if (s.Length()==1&& (isdigit(s[s.Length()])||s[s.Length()-1]=='e'||s[s.Length()-1]=='п'  )) {
+			  ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+		   }
+		  else if (s.Length()>1) {
+			if (s[s.Length()-1]==')' ||isdigit(s[s.Length()])||s[s.Length()-1]=='e'||s[s.Length()-1]=='п'  ) {
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}else {s+=" e ";d+=" e ";}
+		}else {s+=" e ";d+=" e ";}
+	}
 	break;
 	case 28:
-	 s += " arccos ";
-	 d ="";
+
+	if (f_accuary) { ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");}
+	else{
+		   if (s.Length()==1&& (isdigit(s[s.Length()])||s[s.Length()-1]=='e'||s[s.Length()-1]=='п'  )) {
+			  ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+		   }
+		  else if (s.Length()>1) {
+			if (s[s.Length()-1]==')' ||isdigit(s[s.Length()])||s[s.Length()-1]=='e'||s[s.Length()-1]=='п'  ) {
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}else {s+=" п ";d+=" п ";}
+		}else {s+=" п ";d+=" п ";}
+	}
 	break;
 	case 29:
-	 s += " arctg ";
-	 d ="";
-	break;
+	if (f_accuary) {
+			ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");
+	}else {
+		if (s.Length()==0) {
+			ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");
+		}
+		 else if (s.Length() > 1) {
+		 if (s[s.Length()-1]=='(') {
+					ShowMessage("Ошибка ввода.\nРабота с унарными операциями запрещена.\nНажмите \"OK\" и продолжите ввод.");}
+		else{
+
+	if (s[s.Length()-1] == '+' ||  s[s.Length()-1] == '^'||  s[s.Length()-1] == '%' ||s[s.Length()-1] == '-' || s[s.Length()-1] == '*' ||s[s.Length()-1] == '/' || s[s.Length()-1] == 'v') {
+			  if (s[s.Length()-1]!='v') {	  s[s.Length()-1] = '^'; }
+				else {
+				s.Delete(s.Length()-4,5);
+				s+=" ^ ";   }
+		   }else {s+=" ^ "; } }
+		   }else {s+=" ^ ";}
+		   d ="";
+	}
+		break;
 	case 30:
-	 s += " arcctg ";
-	 d ="";
+
+	if (f_accuary) {	ShowMessage( "Ошибка ввода.\nИспользуйте только числа для задания точности.\nНажмите \"OK\" и продолжите ввод.");}
+	else{
+	   if (s.Length()==1 &&(isdigit(s[s.Length()]) || s[s.Length()]=='!')  ) {
+		 ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+	   }
+	   else	if (s.Length()>1) {
+			if ((s[s.Length()-1])==')' || isdigit(s[s.Length()]) || s[s.Length()-1]=='!') {
+				ShowMessage( "Ошибка ввода.\nНажмите \"OK\", исправьте ошибку и продолжите ввод.");
+			}  else {s+='!';}
+		} else {s+='!';}
+		   d ="";
+	}
+
 	break;
 	case 32:
 	f_hex = true;
@@ -864,6 +1038,15 @@ f_accuary= false;
 
 	if (d!="") {
 
+	if (d==" e "){
+		 d = "2,71";
+
+
+
+	}
+	if (d==" п ") {
+			 d = "3,14" ;
+	}
  if (number_system!=16) {
 
 

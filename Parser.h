@@ -4,7 +4,7 @@
 #include "translation.h"
 #include "index.h"
 #include <sstream>
-
+# include <math.h>
 double string_to_double( const std::string& s )
 {
 std::istringstream i(s);
@@ -31,6 +31,17 @@ char tochnost[5] = "";
 int t_ind = 0; // индекс строки для точности числа
 string p = ""; // для преобразования char to string
 
+long double fact(int N)
+{
+    if(N < 0) // если пользователь ввел отрицательное число
+        return 0; // возвращаем ноль
+    if (N == 0) // если пользователь ввел ноль,
+		return 1; // возвращаем факториал от нуля - не удивляетесь, но это 1 =)
+    else // Во всех остальных случаях
+	   { return N * fact(N - 1);
+	   } // делаем рекурсию.
+}
+
 class counter {
 private :
 	double element;
@@ -42,6 +53,17 @@ public:
 	void Division(double  FirstElement, double SecondElement) { element =  FirstElement / SecondElement; } // деление с остатком
 	void DivisionWithoutRemainder(double  FirstElement, double SecondElement) { element = (int) FirstElement / (int)SecondElement; } // деление без остатка
 	void Mod(double  FirstElement, double SecondElement) { element = (int) FirstElement % (int)SecondElement; }
+	void Fact(double  FirstElement)  {element = fact ((int)FirstElement);}
+	void Power (double  FirstElement, double SecondElement) { element = powl( FirstElement , SecondElement); }
+	void Sin (double  FirstElement)  {element = sinl(FirstElement);}
+	void Cos   (double  FirstElement)  {element = cosl(FirstElement);}
+	void Tg  (double  FirstElement)  {element = tanl(FirstElement);}
+	void Ctg  (double  FirstElement)  {element = cosl(FirstElement)/sinl(FirstElement);}
+	void ArcSin (double  FirstElement)  {element = asinl(FirstElement);}
+	void ArcCos (double  FirstElement)  {element = acosl(FirstElement);}
+	void ArcTg  (double  FirstElement)  {element = atanl(FirstElement);}
+	void ArcCtg  (double  FirstElement)  {element =  M_PI_2 -atanl(FirstElement);}
+
 	double GetElement() {return element;}
 };
 
@@ -52,8 +74,9 @@ public:
 
 //преобразование выражения в опз
 void opz(string operation) {
-	if (indexk_op(operation) == 4) { number_stack.push(operation); }
-	else if (indexk_op(operation) == 3 || indexk_op(operation) == 2) {
+	if (indexk_op(operation) == 7) { number_stack.push(operation); }
+	else if (indexk_op(operation) >= 2 ) {
+
 		if (operation_stack.empty() || indexk_op(operation_stack.top()) < 2) {
 			operation_stack.push(operation);
 		}
@@ -83,7 +106,7 @@ double n1, n2;
 int CountAction = 1; // номер действия
 ofstream f;
 while (!num.empty()) {
-	if (indexk_op(num.top()) == 4) {
+	if (indexk_op(num.top()) == 7) {
 	operation_stack.push(num.top());
 	num.pop();
 	}
@@ -117,6 +140,50 @@ while (!num.empty()) {
 
 		AnsiString CalculationResult;
 		switch (indexk_op(num.top())) {
+			case 5 :
+			obj.Power(n1, n2);
+			CalculationResult = FloatToStr(translation_file(obj.GetElement(), number_system, file_name,accuracy));
+			break;
+			case 4 :
+			if (num.top()== "cos") {
+			 obj.Cos(n1);
+			 CalculationResult = FloatToStr(translation_file(obj.GetElement(), number_system, file_name, accuracy)) ;
+			}
+			else if (num.top()== "sin") {
+			 obj.Sin(n1);
+			 CalculationResult = FloatToStr(translation_file(obj.GetElement(), number_system, file_name, accuracy)) ;
+			}
+				else if (num.top()== "tg") {
+			 obj.Tg(n1);
+			 CalculationResult = FloatToStr(translation_file(obj.GetElement(), number_system, file_name, accuracy)) ;
+			}	else if (num.top()== "ctg") {
+			 obj.Ctg(n1);
+			 CalculationResult = FloatToStr(translation_file(obj.GetElement(), number_system, file_name, accuracy)) ;
+			}
+			else 	if (num.top()== "arccos") {
+			 obj.ArcCos(n1);
+			 CalculationResult = FloatToStr(translation_file(obj.GetElement(), number_system, file_name, accuracy)) ;
+			}
+			else if (num.top()== "arcsin") {
+			 obj.ArcSin(n1);
+			 CalculationResult = FloatToStr(translation_file(obj.GetElement(), number_system, file_name, accuracy)) ;
+			}
+				else if (num.top()== "arctg") {
+			 obj.ArcTg(n1);
+			 CalculationResult = FloatToStr(translation_file(obj.GetElement(), number_system, file_name, accuracy)) ;
+			}	else if (num.top()== "arcctg") {
+			 obj.ArcCtg(n1);
+			 CalculationResult = FloatToStr(translation_file(obj.GetElement(), number_system, file_name, accuracy)) ;
+			}
+			break;
+			case 6:
+			if(num.top()== "!"){
+				ShowMessage( "!");
+			}
+			 obj.Fact(n1);
+
+			 CalculationResult = FloatToStr(translation_file(obj.GetElement(), number_system, file_name, accuracy)) ;
+			break;
 			case 2:
 				if (num.top() == "+") {
 					obj.Addition(n1, n2);
@@ -237,6 +304,12 @@ while (i < s.length() - 1) {
 				sl = sl + c;
 				if (index(next_c) == 4) {
 					state = start;
+					if (sl == "e") {
+					  sl =(M_E);
+					}
+				if (sl == "п") {
+					  sl = "3,14";
+					}
 					cl.opz(sl);
 					sl = "";
 				}
