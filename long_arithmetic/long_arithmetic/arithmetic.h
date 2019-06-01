@@ -19,18 +19,18 @@ public:
 	}
 
       void StrToVector(string str) {
-		
+		  a.clear();
+
 		for (int i = str.size()-1; i >= 0; i--) {
 			a.push_back(str[i] - '0' );
 			
 		}
 		
-		
 	}
 
 	void Output()
 	{
-		for (int i = 0; i < a.size(); i++)
+		for (int i = a.size()-1; i >= 0; i--)
 			cout << a[i];
 	}
 
@@ -73,8 +73,38 @@ public:
 		
 		return  temp;
 	}
-	void sub(string a, string b) {
+	ar operator-(ar b){
+		ar temp;
 
+		int max_size;
+		if (a.size() < b.a.size()) {
+			max_size = b.a.size();
+			while (a.size() < max_size) {
+				a.push_back(0);
+			}
+		}
+		else {
+			max_size = a.size();
+			while (b.a.size() < max_size) {
+				b.a.push_back(0);
+			}
+		}
+
+		temp.a = a;
+		int r = 0;
+
+		for (int i = 0; i < a.size(); i++) {
+		
+			temp.a.at(i) -= b.a.at(i) + r;
+			if (temp.a.at(i) < 0) {
+				temp.a.at(i) += osn;
+				temp.a.at(i + 1)--;
+			}	
+		}
+
+		//int pos = temp.a.size();
+		//while (pos && !temp.a.at(pos)) pos--;
+		return temp;
 	}	
 	void mul(string a, string b) {
 

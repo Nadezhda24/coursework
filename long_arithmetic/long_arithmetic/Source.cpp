@@ -17,6 +17,12 @@ int main() {
 	str_a.Output();
 	cout << endl;
 
+	str_a.StrToVector(st_a);
+	str_b.StrToVector(st_b);
+	str_a = str_a - str_b;
+	cout << "a-b=";
+	str_a.Output();
+	cout << endl;
 
 	system("pause");
 	return 0;
