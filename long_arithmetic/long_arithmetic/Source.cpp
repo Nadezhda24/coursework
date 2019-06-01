@@ -23,7 +23,20 @@ int main() {
 	cout << "a-b=";
 	str_a.Output();
 	cout << endl;
+	str_a.StrToVector(st_a);
+	str_b.StrToVector(st_b);
+	if (str_a == str_b) { cout << "true\n"; }
+	else { cout << "false\n"; }
 
+	str_a.StrToVector(st_a);
+	str_b.StrToVector(st_b);
+	if (str_a > str_b) { cout << "true\n"; }
+	else { cout << "false\n"; }
+
+	str_a.StrToVector(st_a);
+	str_b.StrToVector(st_b);
+	if (str_a < str_b) { cout << "true\n"; }
+	else { cout << "false\n"; }
 	system("pause");
 	return 0;
 }

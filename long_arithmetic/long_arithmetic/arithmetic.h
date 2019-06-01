@@ -35,6 +35,39 @@ public:
 	}
 
 
+	bool  operator==(ar b) {
+		
+		if (a.size() != b.a.size()) { 
+			return false; }
+		for (int i = 0; i < a.size(); i++) {
+			if (a.at(i) != b.a.at(i)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	bool operator>(ar b) {
+		if (a.size() != b.a.size())
+			return a.size() > b.a.size();
+		for (int i = a.size() - 1; i >= 0; i--) {
+			if (a.at(i) != b.a.at(i)) {
+				return a.at(i) > b.a.at(i);
+			}
+		}
+		return false;
+	}
+
+	bool operator<(ar b) {
+		if (a.size() != b.a.size())
+			return a.size() < b.a.size();
+		for (int i = a.size() - 1; i >= 0; i--) {
+			if (a.at(i) != b.a.at(i)) {
+				return a.at(i) < b.a.at(i);
+			}
+		}
+		return false;
+	}
 
 	ar operator+(ar b) {
 	
