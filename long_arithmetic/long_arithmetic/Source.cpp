@@ -35,8 +35,11 @@ int main() {
 
 	str_a.StrToVector(st_a);
 	str_b.StrToVector(st_b);
-	if (str_a < str_b) { cout << "true\n"; }
-	else { cout << "false\n"; }
+	str_a = str_a * str_b;
+	cout << "a*b=";
+	str_a.Output();
+	cout << endl;
+
 	system("pause");
 	return 0;
 }

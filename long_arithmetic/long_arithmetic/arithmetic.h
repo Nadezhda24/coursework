@@ -14,10 +14,18 @@ vector<int> a;
 
 public:
 	
+
+
 	vector<int> GetA() {
 		return a;
 	}
-
+	ar() {
+		
+	}
+	
+	ar(int n) {
+		vector<int> a(n);
+	}
       void StrToVector(string str) {
 		  a.clear();
 
@@ -135,12 +143,38 @@ public:
 			}	
 		}
 
-		//int pos = temp.a.size();
-		//while (pos && !temp.a.at(pos)) pos--;
+	
 		return temp;
 	}	
-	void mul(string a, string b) {
+	ar operator*(ar b) {
+		ar temp(a.size() + b.a.size());
+		while (temp.a.size() <a.size() * b.a.size()) {
+			temp.a.push_back(0);
+		
+		}
+		temp.a.push_back(0);
+		b.a.push_back(0);
+		
+	
 
+		for (int i = 0; i < a.size(); i++) {
+			int r = 0;
+			
+			for (int j = 0; j < b.a.size() | r; j++) {
+
+				
+				temp.a.at(i + j) += a.at(i) * b.a.at(j) + r;
+				
+				r = temp.a.at(i + j) / osn;
+				
+				int n = temp.a.at(i + j);
+				
+				temp.a.at(i + j) = n - (r*osn);
+				
+			}
+		}
+
+		return temp;
 	}	
 	void div(string a, string b) {
 
