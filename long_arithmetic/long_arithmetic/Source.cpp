@@ -7,7 +7,7 @@ using namespace std;
 
 int main() {
 
-	ar str_a, str_b;
+	ar str_a(1000), str_b(1000);
 	string st_a, st_b;
 	cin >> st_a >> st_b;
 	str_a.StrToVector(st_a);
@@ -39,6 +39,7 @@ int main() {
 	cout << "a*b=";
 	str_a.Output();
 	cout << endl;
+
 
 	system("pause");
 	return 0;

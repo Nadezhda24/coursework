@@ -2,30 +2,39 @@
 #define _ARITHMETIC_H
 #include <string>
 #include <vector>
-
+#include <sstream>
 using namespace std;
 
 int osn = 10;
 
+int num = 1000;
 
 class ar {
-	
+
 vector<int> a;
 
 public:
 	
+	ar(int n) {
+	
+		for(int i = 0; i<n; i++){
+			a.push_back(0);
+		
+		}
+		
+	
+	
+	}
 
+	ar() {
+	
+	}
 
 	vector<int> GetA() {
 		return a;
 	}
-	ar() {
-		
-	}
 	
-	ar(int n) {
-		vector<int> a(n);
-	}
+
       void StrToVector(string str) {
 		  a.clear();
 
@@ -115,7 +124,7 @@ public:
 		return  temp;
 	}
 	ar operator-(ar b){
-		ar temp;
+		ar temp(num);
 
 		int max_size;
 		if (a.size() < b.a.size()) {
@@ -134,7 +143,7 @@ public:
 		temp.a = a;
 		int r = 0;
 
-		for (int i = 0; i < a.size(); i++) {
+		for (int i = 0; i < a.size()-1; i++) {
 		
 			temp.a.at(i) -= b.a.at(i) + r;
 			if (temp.a.at(i) < 0) {
@@ -174,13 +183,77 @@ public:
 			}
 		}
 
+		int index;
+		for (int i = 0; i < temp.a.size(); i++) {
+			if (temp.a.at(i) != 0) { index = i; }
+
+		}
+		
+		temp.a.erase(temp.a.begin() + index +1, temp.a.begin() + temp.a.size());
 		return temp;
 	}	
-	void div(string a, string b) {
 
+	/*void Levelup() {
+		for (int i = a.size(); i >= 1; i--)
+			a.at(i) = a.at(i - 1);
+		
+			a.push_back(0);
 	}
-	
 
+	ar operator/(ar b) {
+		ar temp(num), temp1(num);
+		for (int i = a.size() - 1; i >= 0; i--) {
+			//temp1.Levelup();
+			temp1.a.at(0) = a.at(i);
+			ar x(num) ;
+			x.a.clear();
+			ar l(num);
+			l.a.clear();
+			ar r(num);
+			int a = osn;
+			stringstream ss;
+			ss << a;
+			string str = ss.str();
+			r.StrToVector(str);
+			cout << "r: ";
+			r.Output();
+			while (l < r  || l==r ) {
+				ar m = (l + r) * 2 ;
+				cout << "b: ";
+				b.Output();
+
+				ar cur = m *b;
+
+				if (cur < temp1 || cur == temp1) {
+				
+					x = m;
+					m.Output();
+					cout << endl;
+					l = m + 1;
+					l.Output();
+					cout << endl;
+
+				}
+				else {
+					ar j(1);
+					j.a.push_back(1);
+					r = m - j;
+					j.a.clear();
+					r.Output();
+					cout << endl;
+				}
+				cout << temp.a.at(i)<< endl;
+				cout << x.a.at(0)<< endl;
+				temp.a.at(i) = x.a.at(0);
+				temp = temp - b * x;
+			}
+		
+		
+		}
+		return temp;
+
+	}*/
+		
 };
 
 #define _CRT_SECURE_NO_WARNINGS
