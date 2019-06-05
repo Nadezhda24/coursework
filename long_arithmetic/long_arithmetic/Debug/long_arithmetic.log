@@ -1,0 +1,12 @@
+﻿  Source.cpp
+c:\users\asus\documents\github\from_github\coursework\long_arithmetic\long_arithmetic\arithmetic.h(59): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\asus\documents\github\from_github\coursework\long_arithmetic\long_arithmetic\arithmetic.h(95): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\asus\documents\github\from_github\coursework\long_arithmetic\long_arithmetic\arithmetic.h(101): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\asus\documents\github\from_github\coursework\long_arithmetic\long_arithmetic\arithmetic.h(132): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\asus\documents\github\from_github\coursework\long_arithmetic\long_arithmetic\arithmetic.h(138): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\asus\documents\github\from_github\coursework\long_arithmetic\long_arithmetic\arithmetic.h(146): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\asus\documents\github\from_github\coursework\long_arithmetic\long_arithmetic\arithmetic.h(169): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\asus\documents\github\from_github\coursework\long_arithmetic\long_arithmetic\arithmetic.h(172): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\asus\documents\github\from_github\coursework\long_arithmetic\long_arithmetic\arithmetic.h(172): warning C4554: "|": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+c:\users\asus\documents\github\from_github\coursework\long_arithmetic\long_arithmetic\arithmetic.h(187): warning C4018: <: несоответствие типов со знаком и без знака
+  long_arithmetic.vcxproj -> C:\Users\Asus\Documents\GitHub\from_github\coursework\long_arithmetic\Debug\long_arithmetic.exe
